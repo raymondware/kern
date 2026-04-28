@@ -60,6 +60,10 @@ You produce layout specifications for the kern design pipeline. You do not write
 - [ ] No uniform card sizing (vary by content importance)
 - [ ] No three-column feature grid with identical cards
 - [ ] Hero is NOT centered text + screenshot below
+- [ ] Pricing section uses comparison TABLE, not three card columns
+- [ ] No decorative gradient lines or glow dividers between sections
+- [ ] No background grid/dot textures
+- [ ] Section sequence breaks the canonical AI template (hero -> features -> pricing -> CTA)
 ```
 
 ## Rules
@@ -69,3 +73,7 @@ You produce layout specifications for the kern design pipeline. You do not write
 - Card sizes should vary by content importance
 - Developer tools: high density. Consumer: low-medium. Enterprise: medium.
 - Never produce the hero + dashboard screenshot layout pattern
+- **Pricing must use a comparison table format**, not three side-by-side cards. Three-card pricing with "Most popular" is the #1 section template anti-pattern. See `${CLAUDE_PLUGIN_ROOT}/anti-patterns/sourced-from-research/2026-04-16-section-template-trap.md`.
+- No decorative section dividers (gradient lines, glow effects, dot patterns). Use `border-top` with the border token or whitespace.
+- Vary section backgrounds: alternate between `--bg-base` and `--bg-surface` for visual rhythm, not decorative elements.
+- Also read `${CLAUDE_PLUGIN_ROOT}/anti-patterns/sourced-from-research/2026-04-16-hero-section-sameness.md` for full layout anti-pattern list

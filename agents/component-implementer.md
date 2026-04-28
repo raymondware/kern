@@ -50,9 +50,42 @@ export function ComponentName({ ...props }: ComponentProps) {
 }
 ```
 
+### Banned Patterns (will trigger rework if present)
+
+These patterns MUST NOT appear in your output regardless of what feels natural:
+
+**Typography bans:**
+- `font-extrabold` or `font-weight: 800` - use `font-semibold` (600) for headings
+- `font-bold` on headings - use `font-semibold`; `font-bold` is only for numbers/metrics
+- Any `font-family` declaration - fonts come from the style system only
+- Inter, Roboto, Open Sans in any import or font-family
+
+**Radius bans:**
+- `rounded-2xl` or `rounded-3xl` on cards or containers - use `rounded-lg` (8px) for cards, `rounded-xl` (12px) max for outer containers
+- Uniform radius across all elements - buttons should be `rounded-md`, cards `rounded-lg`, outer shells `rounded-xl`
+
+**Layout bans:**
+- Three identical cards in a row with the same dimensions for pricing
+- "Most popular" or "Recommended" badges on pricing tiers
+- `text-center` on hero headlines or multi-line subheadlines
+- Decorative gradient lines or glow effects as section dividers
+
+**Animation bans:**
+- `translateY` on button hover states - use color transitions only
+- `translateY(-4px)` or larger on card hover - max `translateY(-2px)`
+- Any spring, bounce, or elastic easing
+- Any animation duration > 250ms
+
+**Decoration bans:**
+- Background grid textures or dot patterns
+- Gradient glow lines between sections
+- Radial glow behind headlines
+- Large circular avatars with initials in testimonials
+
 ### What You Do NOT Do
 - Do not choose fonts, colors, or spacing (that is the specialists' job)
 - Do not add animations beyond what the motion spec defines
 - Do not add business logic beyond what the component spec requires
 - Do not add error handling beyond what the accessibility spec requires
 - Do not write tests (that is a separate concern)
+- Do not add decorative elements not specified in the design spec

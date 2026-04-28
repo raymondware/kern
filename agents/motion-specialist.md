@@ -71,3 +71,7 @@ You produce motion specifications for the kern design pipeline. You do not write
 - No scroll-triggered animations with delay
 - Entrance animations: opacity + small translate only (no scale, no rotate)
 - Every async action must have pending, success, and error states
+- **No translateY on button hover states.** Buttons transition color only. translateY on hover is a decorative pattern that signals AI-generated UI.
+- **Card hover translateY max 2px.** If cards need hover elevation, `translateY(-2px)` max with `duration: 120ms, ease-out`. Never `-4px` or larger.
+- **No decorative animations.** Every animation must serve a functional purpose: feedback for user action, state transition, or content appearance. "It looks polished" is not a purpose.
+- **No unused animation keyframes.** If a keyframe is defined, it must be applied to an element. Remove dead animation code.

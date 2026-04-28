@@ -46,7 +46,7 @@ Criteria for transitioning between pipeline phases. The conductor evaluates thes
 
 | Issue | Max rework cycles | On exhaustion |
 |---|---|---|
-| Sameness score > 60 | 2 | Present with score + full critic report |
+| Sameness score > 40 | 2 | Present with score + full critic report |
 | Copy violations | 1 | Present with before/after table, user decides |
 | Accessibility violations | 1 | Present with violation list |
 
@@ -62,9 +62,9 @@ Criteria for transitioning between pipeline phases. The conductor evaluates thes
 |---|---|
 | 0-20 | Pass. Distinctive. |
 | 21-40 | Pass. Has character. |
-| 41-60 | Pass. Generic but acceptable. |
-| 61-80 | Fail. Rework required. |
-| 81-100 | Fail. Significant rework required. |
+| 41-60 | Fail. Rework required. Kern-produced output should not be generic. |
+| 61-80 | Fail. Significant rework required. |
+| 81-100 | Fail. Critical. Multiple spec violations likely. |
 
 ## Completeness Check for INTERVIEW
 

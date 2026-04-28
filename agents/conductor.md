@@ -44,9 +44,18 @@ Check completeness criteria from quality-gates.md. If gaps exist:
 ### DEVELOP Phase
 Sequential execution:
 1. Spawn style-implementer with: color spec, typography spec, token references
-2. Spawn component-implementer with: component spec, style output, layout spec
-3. Spawn accessibility-implementer with: implemented component code
-4. Validate output: check files exist, run quick syntax check
+2. **Cross-check style output against specs before proceeding:**
+   - Font family in CSS must match typography spec font name exactly
+   - Hue value in CSS must match color spec accent hue exactly
+   - Radius scale must NOT include values larger than 12px (xl)
+   - Font weights in import must NOT include 700 or 800
+   - If any mismatch: re-run style-implementer with explicit correction
+3. Spawn component-implementer with: component spec, style output, layout spec
+4. **Scan component output for banned patterns before proceeding:**
+   - grep for: `font-extrabold`, `font-bold` on headings, `rounded-2xl`, `rounded-3xl`, `translateY(-4`, gradient glow, grid-bg
+   - If any found: re-run component-implementer with explicit correction listing each violation
+5. Spawn accessibility-implementer with: implemented component code
+6. Validate output: check files exist, run quick syntax check
 
 ### REVIEW Phase
 Parallel execution:
@@ -93,3 +102,15 @@ sameness_score: number
 - Never return from REVIEW to PLAN
 - Always report which agents were spawned, which succeeded, and which failed
 - If an agent fails, note the gap in the output rather than silently omitting it
+
+## Consistency Checks (run between DEVELOP steps)
+
+The biggest failure mode is agents ignoring specialist specs. After each implementer runs, verify:
+
+1. **Font consistency**: The font loaded in CSS/HTML must be the EXACT font the typography-specialist named. If the spec says "Geist Sans" and the output loads "Inter", that is a critical failure. Re-run immediately.
+2. **Hue consistency**: If using a hue-anchored color system, the hue number must match across ALL files. A spec saying hue 185 and output using hue 172 is a critical failure.
+3. **Weight consistency**: If the typography spec says max weight 600, the output must not contain `font-extrabold` (800) or `font-bold` (700) on headings.
+4. **Radius consistency**: If the token scale tops out at `xl` (12px), the output must not contain `rounded-2xl` or `rounded-3xl`.
+5. **Pricing format**: If the layout spec says "comparison table", the output must NOT use three side-by-side cards with a "Most popular" badge.
+
+These are not style preferences - they are spec violations that the design-critic will also catch, but catching them here avoids a wasted review cycle.

@@ -47,18 +47,24 @@ This is the output of a tool run with default settings. No meaningful design dec
 
 **What raises the sameness score**:
 - Indigo-500 or the purple-to-blue gradient spectrum as primary color (+10)
-- Inter as the only font (+5)
+- Inter as the only font (+8) -- raised from +5 because Inter is now the single strongest AI-default signal
 - Centered symmetry throughout (+8)
 - Three-column feature card grid with identical cards (+10)
 - Hero + dashboard screenshot below (+8)
 - Default shadcn button styling (+7)
-- Excessive uniform border-radius (+5)
+- Excessive uniform border-radius (rounded-2xl everywhere) (+8) -- raised from +5
 - Generic heroic copy ("Transform your workflow", "Build the Future") (+10)
 - Testimonial grid with circular avatars (+7)
-- Three-tier Starter/Pro/Business pricing (+8)
+- Three-tier Starter/Pro/Business pricing as cards (+10) -- raised from +8
+- "Most popular" or "Recommended" badge on pricing tier (+5) -- new
 - FAQ accordion at bottom (+5)
 - Numbered-step how-it-works section (+6)
 - Slow entrance animations (300ms+) (+4)
+- font-extrabold (800) on headings (+5) -- new; signals no weight discipline
+- Decorative gradient glow lines between sections (+5) -- new
+- Background grid/dot texture patterns (+4) -- new
+- Button hover translateY effect (+3) -- new
+- Large circular avatar with initials in testimonial (+4) -- new
 
 **What lowers the sameness score**:
 - Distinctive font choice that reflects the product (-10)
@@ -67,6 +73,13 @@ This is the output of a tool run with default settings. No meaningful design dec
 - Layout that varies by section content (-8)
 - Copy specific enough that a competitor cannot use it (-12)
 - One distinctive design element not common in the category (-10)
+- Pricing as comparison table instead of three cards (-8) -- new
+- Border radius hierarchy (different sizes for different element types) (-5) -- new
+- Font weight discipline (max 3 weights, no extrabold) (-5) -- new
+
+## Kern-Produced Output Gate
+
+When reviewing output from the kern pipeline (not external designs), the sameness gate is **40, not 60**. Kern-produced output should be held to a higher standard than external designs being audited. If the sameness score exceeds 40 on kern-produced output, flag it as a REVIEW FAIL and trigger rework.
 
 ## Output Format
 
