@@ -1,0 +1,113 @@
+{
+  "reddit": {
+    "subreddits": [
+      "web_design",
+      "UI_Design",
+      "userexperience",
+      "ProductDesign",
+      "webdev",
+      "reactjs"
+    ],
+    "search_queries": [
+      "AI design template",
+      "gradient hero section",
+      "every SaaS looks the same",
+      "bounce animation UI",
+      "purple gradient landing page",
+      "Inter font everywhere default",
+      "modal fatigue",
+      "toast notification spam",
+      "empty state motivation",
+      "loading marketing",
+      "dark pattern UI",
+      "AI generated design",
+      "SaaS UI boring",
+      "nested card design",
+      "AI generated website looks",
+      "AI landing page all look the same",
+      "v0 design criticism",
+      "lovable app design",
+      "bolt.new design problems",
+      "cursor generated UI",
+      "why does every AI website look the same",
+      "AI slop design",
+      "claude generated UI",
+      "chatgpt website design",
+      "shadcn default tired",
+      "v0 aesthetic",
+      "tailwind default boring",
+      "SaaS template overused",
+      "indigo button everywhere"
+    ]
+  },
+  "hn": {
+    "search_queries": [
+      "AI generated UI design",
+      "every startup website looks",
+      "SaaS design homogeneity",
+      "why do landing pages look",
+      "gradient startup",
+      "developer UI design mistakes",
+      "dark mode inverted",
+      "v0 vercel design quality",
+      "lovable design criticism",
+      "bolt new UI problems",
+      "cursor UI consistency",
+      "AI builder design defaults",
+      "shadcn default aesthetic"
+    ]
+  },
+  "x": {
+    "search_queries": [
+      "AI design site:x.com",
+      "gradient hero tired",
+      "another SaaS landing page",
+      "Inter font default",
+      "bounce animation please stop",
+      "modal hell UX",
+      "empty state motivation text",
+      "#v0 design",
+      "v0 aesthetic",
+      "lovable UI",
+      "bolt.new design output",
+      "indigo button everywhere",
+      "AI slop design"
+    ]
+  },
+  "blogs": {
+    "sites": [
+      "nngroup.com",
+      "smashingmagazine.com",
+      "alistapart.com",
+      "css-tricks.com",
+      "paulstamatiou.com",
+      "925studios.co",
+      "monet.design",
+      "conversion-haus.com"
+    ],
+    "rss_note": "No RSS scraping -- manual additions only"
+  },
+  "tool_review_sites": {
+    "note": "Product review and comparison sites for AI builders. Check comments on new releases for design quality complaints.",
+    "sites": [
+      "superblocks.com/blog",
+      "trickle.so/blog",
+      "devclass.com",
+      "producthunt.com",
+      "alternativeto.net"
+    ],
+    "tools_to_monitor": [
+      "v0 (Vercel)",
+      "Lovable",
+      "Bolt.new",
+      "Cursor",
+      "Replit Agent",
+      "GitHub Copilot Workspace"
+    ]
+  },
+  "_meta": {
+    "last_updated": "2026-04-16",
+    "maintained_by": "manual + research-scout",
+    "note": "Add new queries when you notice emerging complaint patterns in the community. Remove queries that consistently return zero signal. Tool-specific queries (v0, Lovable, Bolt, Cursor) are high-priority: they help build tool fingerprint libraries."
+  }
+}

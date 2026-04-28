@@ -1,0 +1,22 @@
+{
+  "name": "kern",
+  "version": "3.0.0",
+  "description": "Multi-agent design quality harness. Orchestrates specialist agents for typography, color, layout, copy, and accessibility. Audits anti-patterns, enforces personas, and scores sameness against AI defaults. Built for Shadcn/Radix/Next.js stacks.",
+  "author": {
+    "name": "raymondware"
+  },
+  "homepage": "https://github.com/raymondware/kern",
+  "repository": "https://github.com/raymondware/kern",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "ui",
+    "ux",
+    "anti-patterns",
+    "quality",
+    "audit",
+    "sameness",
+    "multi-agent",
+    "orchestration"
+  ]
+}

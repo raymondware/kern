@@ -1,0 +1,53 @@
+{
+  "last_run": "2026-04-16T00:00:00Z",
+  "run_duration_seconds": null,
+  "sources_checked": [
+    "reddit.com/r/web_design",
+    "reddit.com/r/UI_Design",
+    "community.vercel.com",
+    "dev.to",
+    "925studios.co",
+    "monet.design",
+    "conversion-haus.com",
+    "superblocks.com",
+    "trickle.so",
+    "devclass.com",
+    "en.wikipedia.org/wiki/AI_slop"
+  ],
+  "posts_scanned": 40,
+  "patterns_found": 21,
+  "patterns_filed": 21,
+  "patterns_pending": 0,
+  "findings_added": [
+    "indigo-500-everywhere",
+    "shadcn-button-defaults",
+    "excessive-border-radius",
+    "shadcn-gray-defaults",
+    "hero-dashboard-screenshot",
+    "centered-symmetry",
+    "three-col-feature-grid",
+    "uniform-card-sizing",
+    "bento-grid-overuse",
+    "generic-heroic-copy",
+    "overused-buzzwords",
+    "vague-testimonials",
+    "three-tier-pricing-table",
+    "faq-accordion-default",
+    "testimonial-grid-avatars",
+    "features-step-numbers",
+    "slow-fade-in-marketing",
+    "no-loading-states",
+    "obvious-icon-set",
+    "missing-font-hierarchy",
+    "broken-image-integrity"
+  ],
+  "files_created": [
+    "2026-04-16-v0-default-aesthetic.md",
+    "2026-04-16-hero-section-sameness.md",
+    "2026-04-16-ai-copy-patterns.md",
+    "2026-04-16-section-template-trap.md",
+    "2026-04-16-animation-and-feedback.md"
+  ],
+  "pr_url": null,
+  "notes": "Initial research run. Scanned community forums, product reviews, and design blogs for AI tool-specific complaints. All 21 patterns filed across 5 cluster files."
+}

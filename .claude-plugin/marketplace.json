@@ -1,0 +1,15 @@
+{
+  "name": "kern-marketplace",
+  "description": "Design quality harness with multi-agent orchestration",
+  "owner": {
+    "name": "raymondware"
+  },
+  "plugins": [
+    {
+      "name": "kern",
+      "description": "Multi-agent design quality harness with anti-pattern detection and sameness scoring",
+      "version": "3.0.0",
+      "source": "./"
+    }
+  ]
+}
