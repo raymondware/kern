@@ -24,9 +24,9 @@ Paste the component or file after the command.
 
 ## What Kern Changes
 
-Applies changes from all three anti-pattern files (`${CLAUDE_PLUGIN_ROOT}/anti-patterns/visual.md`, `${CLAUDE_PLUGIN_ROOT}/anti-patterns/copy.md`, `${CLAUDE_PLUGIN_ROOT}/anti-patterns/interaction.md`) and the reference files (`${CLAUDE_PLUGIN_ROOT}/skills/kern/references/`).
+Spawns `anti-pattern-selector` to pick a varied subset (weighted toward the input's surface and persona). Then the critic ensemble runs against the subset. Then the affected specialists or implementers apply changes for in-scope findings only. Produces a unified diff.
 
-Spawns the design-critic agent first for assessment, then the copy-editor agent for copy changes. Produces a unified diff.
+Reference files for hue, font, and token guidance: `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/`.
 
 ## What Kern Does NOT Change
 

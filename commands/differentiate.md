@@ -23,17 +23,17 @@ Run `/kern:differentiate` when:
 
 ## Workflow
 
-### Step 1: Baseline Sameness Score
-The design-critic agent runs a full audit to establish the sameness score and identify the tool fingerprint.
+### Step 1: Draw + Baseline
+The `anti-pattern-selector` picks a varied subset weighted toward tool-fingerprint patterns (since differentiation is about removing the fingerprint). The critic ensemble plus `critique-synthesizer` produce a baseline sameness score and identify the tool fingerprint.
 
 ### Step 2: Apply Targeted Opposites
-For each identified tool or pattern cluster, apply the inverse. See `${CLAUDE_PLUGIN_ROOT}/anti-patterns/sourced-from-research/` for tool-specific defaults.
+For each identified tool or pattern cluster in the subset, apply the inverse. See `${CLAUDE_PLUGIN_ROOT}/anti-patterns/sourced-from-research/` for tool-specific defaults.
 
 ### Step 3: Introduce One Distinctive Element
 Every well-designed product has one element that is unmistakably its own. Kern suggests one appropriate to the persona.
 
 ### Step 4: Verify Score Dropped
-The design-critic runs again. Score must drop below input score to confirm differentiation worked.
+The critic ensemble + synthesizer run again on the same `selected_subset` (no second draw -- rework operates within the original draw). Score must drop below input score to confirm differentiation worked.
 
 ## Output Format
 

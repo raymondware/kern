@@ -17,18 +17,24 @@ Paste or reference the code to review.
 
 ## What It Does
 
-Spawns in parallel:
-1. **design-critic**: Anti-pattern scan + sameness score
-2. **copy-editor**: Copy audit with persona voice
-3. **accessibility-auditor**: WCAG 2.1 AA compliance check
+1. **DRAW**: Spawns `anti-pattern-selector` to pick a varied subset for this run and append the audit log line.
+2. **REVIEW** (parallel critic ensemble):
+   - **design-critic**: Anti-pattern scan + per-dimension score
+   - **hierarchy-critic**: Layout and information density slice
+   - **interaction-critic**: Motion, feedback, dark-pattern slice
+   - **microcopy-critic**: Inline product copy slice
+   - **copy-editor**: Headline and marketing copy slice
+   - **accessibility-auditor**: WCAG 2.1 AA compliance check
+3. **SYNTHESIZE**: `critique-synthesizer` merges, deduplicates, computes consensus sameness score, emits final report.
 
 ## Output
 
-Combined report:
-- Sameness score with breakdown
-- Copy changes table (before/after)
+Audit header (verbatim from selector) followed by the synthesizer report:
+- Consensus sameness score with per-critic breakdown
+- Critical / Moderate / Low findings with consensus tags
+- Microcopy before/after table
 - Accessibility pass/fail report
-- Priority recommendations
+- Top three actions
 
 ## When to Use
 

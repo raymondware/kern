@@ -12,3 +12,11 @@ Thumbs.db
 # Node (if build tooling is added later)
 node_modules/
 dist/
+
+# Local kern state used during development. The committed state/draws.jsonl
+# starts empty; if you want a clean local slate, move history here.
+state/_local/
+
+# Python
+__pycache__/
+*.pyc
