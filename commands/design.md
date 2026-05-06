@@ -23,17 +23,18 @@ The description should include:
 
 Read `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/pipeline.md` for the full state machine.
 
-The conductor agent manages 5 phases:
+The conductor agent manages 6 phases:
 
-1. **PLAN**: Detect persona, research references, run design specialists (typography, color, layout, motion) in parallel, then component architect
-2. **INTERVIEW** (conditional): Ask targeted questions if specs have gaps
-3. **DEVELOP**: Style implementer -> component implementer -> accessibility implementer
-4. **REVIEW**: Design critic + copy editor + accessibility auditor in parallel. Targeted rework if needed (max 2 cycles).
-5. **PRESENT**: Final code + design report + sameness score + references
+1. **DRAW**: anti-pattern-selector picks a varied subset for this run, writes the audit log to `state/draws.jsonl`, and emits the audit_header. Every downstream agent receives `selected_subset`.
+2. **PLAN**: Detect persona, research references, run design specialists (typography, color, layout, motion) in parallel, then component architect
+3. **INTERVIEW** (conditional): Ask targeted questions if specs have gaps
+4. **DEVELOP**: Style implementer -> component implementer -> accessibility implementer
+5. **REVIEW**: Critic ensemble in parallel (design-critic, hierarchy-critic, interaction-critic, microcopy-critic, copy-editor, accessibility-auditor) followed by the critique-synthesizer. Targeted rework if needed (max 2 cycles).
+6. **PRESENT**: Audit header + synthesizer report + final code
 
 ## Sameness Gate
 
-The design-critic agent reviews output in the REVIEW phase. If sameness score exceeds 60, the conductor routes specific issues to the relevant specialist for targeted rework. Max 2 rework cycles. Score must decrease monotonically.
+The critique-synthesizer combines per-dimension scores from the four parallel critics into a consensus 0-100 sameness score. For kern-produced output the gate threshold is **40**. If the score exceeds the threshold, the conductor routes specific issues to the relevant specialist for targeted rework. Max 2 rework cycles. Score must decrease monotonically.
 
 ## Example
 
@@ -42,13 +43,14 @@ The design-critic agent reviews output in the REVIEW phase. If sameness score ex
 ```
 
 Expected behavior:
-1. Persona detected: `developer-tool`
-2. References: neon.tech, planetscale.com, railway.app hero sections
-3. Specialists produce: Geist font, custom dark palette, left-aligned dense layout, subtle motion spec
-4. Component architect: single hero component with embedded code sample
-5. Implementation: React/TSX with Tailwind, CSS variables
-6. Review: sameness score probably 20-30 if applied correctly
-7. Copy edit: headline made more specific
+1. DRAW: selector picks ~14 patterns weighted toward developer-tool + landing-page signals; writes the line to `state/draws.jsonl`; the second run on the same prompt produces a different subset
+2. Persona detected: `developer-tool`
+3. References: neon.tech, planetscale.com, railway.app hero sections
+4. Specialists produce: Geist font, custom dark palette, left-aligned dense layout, subtle motion spec (all read only the assigned subset)
+5. Component architect: single hero component with embedded code sample
+6. Implementation: React/TSX with Tailwind, CSS variables
+7. Review: parallel critic ensemble produces per-dimension scores; synthesizer merges into a consensus score (target <= 40)
+8. Output: audit_header at the top, then the synthesizer report, then the code
 
 ## Notes
 

@@ -1,7 +1,7 @@
 {
   "name": "kern",
-  "version": "3.0.0",
-  "description": "Multi-agent design quality harness. Orchestrates specialist agents for typography, color, layout, copy, and accessibility. Audits anti-patterns, enforces personas, and scores sameness against AI defaults. Built for Shadcn/Radix/Next.js stacks.",
+  "version": "3.1.0",
+  "description": "Multi-agent design quality harness. Orchestrates specialist agents for typography, color, layout, copy, and accessibility through a 6-phase pipeline. Picks a varied subset of anti-patterns per run with an audit log, runs four critics in parallel (design, hierarchy, interaction, microcopy), and synthesizes findings into a consensus sameness score. Built for Shadcn/Radix/Next.js stacks.",
   "author": {
     "name": "raymondware"
   },
@@ -17,6 +17,8 @@
     "audit",
     "sameness",
     "multi-agent",
-    "orchestration"
+    "orchestration",
+    "rotation",
+    "variation"
   ]
 }

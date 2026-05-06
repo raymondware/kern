@@ -13,7 +13,9 @@ kern/
 ├── commands/           # /kern:* slash commands
 ├── skills/kern/        # SKILL.md + reference files
 ├── anti-patterns/      # Base + research-sourced anti-pattern library
-└── research/           # Research pipeline state files
+│   └── manifest.json   # Stable ID catalog read by the selector and critics
+├── research/           # Research pipeline state files
+└── state/              # Append-only audit log (state/draws.jsonl)
 ```
 
 ## Conventions

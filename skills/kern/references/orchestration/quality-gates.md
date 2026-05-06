@@ -2,6 +2,20 @@
 
 Criteria for transitioning between pipeline phases. The conductor evaluates these gates.
 
+## Gate: INIT -> DRAW
+
+**Pass if**: Always. DRAW is the entry point for every kern command that involves critique or generation. The only way to skip DRAW is to use a non-kern command.
+
+## Gate: DRAW -> PLAN
+
+**Pass if ALL true**:
+- `state/draws.jsonl` had exactly one line appended this run
+- The selector returned a non-empty `selected_subset`
+- The audit_header markdown block is non-empty
+- The subset does not equal the previous run's subset (set comparison)
+
+**Fail triggers**: Any false condition aborts the run with a hard error. The audit rule is the foundation of the variation guarantee. There is no recovery path.
+
 ## Gate: PLAN -> INTERVIEW
 
 **Pass if ALL true**:
@@ -22,6 +36,7 @@ Criteria for transitioning between pipeline phases. The conductor evaluates thes
 - Component types are defined (what to build)
 - Target context is clear (page type, product type, user type)
 - Persona-specific constraints are loaded
+- If persona changed during interview: a fresh DRAW has been performed and the new audit log line written
 
 **Skip INTERVIEW entirely if**: All of the above were established during PLAN from the user's description alone.
 
@@ -37,24 +52,29 @@ Criteria for transitioning between pipeline phases. The conductor evaluates thes
 
 ## Gate: REVIEW -> PRESENT
 
+The synthesizer evaluates this gate on behalf of the conductor.
+
 **Pass if ALL true**:
-- Sameness score <= 60
-- Zero critical copy violations remaining
+- Consensus sameness score <= gate_threshold
+  - Threshold = 40 for kern-produced output (`/kern:design`, `/kern:differentiate`, `/kern:polish`)
+  - Threshold = 60 for external designs being audited (`/kern:audit`, `/kern:review` on third-party code)
+- Zero critical microcopy violations remaining
 - Zero critical accessibility violations remaining (WCAG 2.1 AA)
 
 **Fail triggers rework with these bounds**:
 
 | Issue | Max rework cycles | On exhaustion |
 |---|---|---|
-| Sameness score > 40 | 2 | Present with score + full critic report |
-| Copy violations | 1 | Present with before/after table, user decides |
+| Sameness score > threshold | 2 | Present with score + full synthesizer report |
+| Microcopy violations | 1 | Present with before/after table, user decides |
 | Accessibility violations | 1 | Present with violation list |
 
 **Rework rules**:
 1. Only re-run the agents in the rework path (see pipeline.md routing table)
-2. Score must decrease after rework (monotonic improvement required)
-3. If score increases or stays same: stop, present the better version
-4. Cross-category rework is sequential (fix color first, then re-score, then fix layout if still needed)
+2. The selected_subset is locked. Rework operates within the original draw.
+3. Score must decrease after rework (monotonic improvement required)
+4. If score increases or stays same: stop, present the better version
+5. Cross-category rework is sequential (fix color first, then re-score, then fix layout if still needed)
 
 ## Sameness Score Interpretation
 
@@ -62,8 +82,8 @@ Criteria for transitioning between pipeline phases. The conductor evaluates thes
 |---|---|
 | 0-20 | Pass. Distinctive. |
 | 21-40 | Pass. Has character. |
-| 41-60 | Fail. Rework required. Kern-produced output should not be generic. |
-| 61-80 | Fail. Significant rework required. |
+| 41-60 | Fail for kern-produced. Pass for external audit. |
+| 61-80 | Fail in both modes. Significant rework required. |
 | 81-100 | Fail. Critical. Multiple spec violations likely. |
 
 ## Completeness Check for INTERVIEW
@@ -79,10 +99,20 @@ When the conductor evaluates whether to skip the INTERVIEW phase, it checks thes
 - Brand color or color preference
 - Existing design system or component library
 - Tech stack constraints
-- Real copy vs placeholder (affects copy-editor value)
+- Real copy vs placeholder (affects copy-editor and microcopy-critic value)
 
 **Nice to have (do not block for)**:
 - Specific breakpoint requirements
 - Animation preferences
-- Competitor references
+- Competitor references (the selector uses these as a site-specific signal, but the run can proceed without)
 - Content inventory
+
+## Audit Log Verification
+
+Before any agent other than the anti-pattern-selector runs, verify:
+
+1. `state/draws.jsonl` exists and is writable
+2. The last line of `state/draws.jsonl` matches the selector's reported audit line (string equality)
+3. The selector's run_id is unique vs the prior 5 lines
+
+If any check fails, abort the run. There is no soft-fail path. The variation rule and the audit rule are the foundation of kern's value proposition.

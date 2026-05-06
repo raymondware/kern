@@ -35,16 +35,16 @@ Valid personas: `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterpr
 
 ## What Kern Does
 
-1. Reads all three base anti-pattern files: `${CLAUDE_PLUGIN_ROOT}/anti-patterns/visual.md`, `${CLAUDE_PLUGIN_ROOT}/anti-patterns/copy.md`, `${CLAUDE_PLUGIN_ROOT}/anti-patterns/interaction.md`
-2. Reads all files in `${CLAUDE_PLUGIN_ROOT}/anti-patterns/sourced-from-research/`
-3. Loads the persona file from `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/personas/` (detected or specified)
-4. Scans the input against every base pattern AND persona-specific patterns
-5. Calculates the sameness score
-6. Reports findings bucketed by severity
+1. **DRAW**: Spawns the `anti-pattern-selector` agent. The selector reads `${CLAUDE_PLUGIN_ROOT}/anti-patterns/manifest.json` and the rotation history at `${CLAUDE_PLUGIN_ROOT}/state/draws.jsonl`, picks a varied subset weighted by site-specific signals, and appends the draw to the audit log.
+2. **REVIEW** (parallel ensemble): Spawns design-critic, hierarchy-critic, interaction-critic, microcopy-critic, and accessibility-auditor in parallel. Each critic reads only the source-file sections referenced by IDs in the assigned subset. Each produces a per-dimension score capped at 40 plus specific findings.
+3. **SYNTHESIZE**: Spawns critique-synthesizer. It deduplicates across critics, computes the consensus sameness score, and emits the final report.
+4. **PRESENT**: The audit_header from the selector appears at the top of the output, then the synthesizer report.
+
+External `/kern:audit` runs use a gate threshold of **60** (vs **40** for kern-produced output). The synthesizer applies the threshold based on the command.
 
 ## Output Format
 
-The output follows the design-critic agent's format. Spawn the design-critic agent to perform the audit.
+Audit header (from anti-pattern-selector) followed by the synthesizer report. See `agents/critique-synthesizer.md` for the format.
 
 ## Sameness Score Thresholds
 
