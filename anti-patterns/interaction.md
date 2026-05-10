@@ -1,3 +1,11 @@
+---
+file: anti-patterns/interaction.md
+tags: [cta, animation, empty-state, modal, toast, dark-pattern, loading, trust]
+affects: all
+severity_default: medium
+pattern_count: 8
+---
+
 # Interaction Anti-Patterns
 
 Patterns that erode trust, confuse users, or waste time. Ordered roughly by severity.
@@ -5,6 +13,7 @@ Patterns that erode trust, confuse users, or waste time. Ordered roughly by seve
 ---
 
 ## Dishonest CTAs
+_Tags: cta, trust, ethics · Affects: consumer-saas, e-commerce · Severity: critical_
 
 **What it is**: The button label says one thing and the action does something different or more expansive.
 
@@ -32,6 +41,7 @@ Examples:
 ---
 
 ## Loading as Marketing
+_Tags: loading, marketing, ai-tell · Affects: all · Severity: medium_
 
 **What it is**: Loading states that display product copy, slogans, or feature highlights while the user waits.
 
@@ -47,6 +57,7 @@ Examples:
 ---
 
 ## Motivational Copy in Empty States
+_Tags: empty-state, copy, ai-tell · Affects: all · Severity: medium_
 
 **What it is**: Empty states that use encouraging, sales-y, or inspiring language instead of showing sample data or a clear action.
 
@@ -57,6 +68,8 @@ Examples:
 - Illustrations of a person looking up at a horizon
 
 **Why it fails**: Motivational empty states tell the user what they don't have instead of showing them what they could have. They're also condescending -- the user knows the space is empty, they're using the product for the first time. The job of an empty state is to demonstrate value and lower the barrier to the first action, not to cheerlead.
+
+_Community: "AI generates the perfect happy path every time. No loading state, no empty state, no error state. Ship it and users see blank screens when the API is slow. Every. Single. Time." — r/webdev. "The AI optimizes for the demo screenshot, not the shipped product." — Hacker News_
 
 **Fix**: Show sample data by default if the product supports it. This is what Linear, Notion, and most well-designed tools do -- the first time you open them, there's already something there. If sample data isn't appropriate, the empty state should be: a description of what appears here + one clear CTA.
 
@@ -79,6 +92,7 @@ Examples:
 ---
 
 ## Bouncy Interactions
+_Tags: animation, motion, spring · Affects: all · Severity: medium_
 
 **What it is**: Spring animations, overshoot effects, elastic easing, and physics simulations applied to UI transitions.
 
@@ -111,6 +125,7 @@ Examples:
 ---
 
 ## Modal Fatigue
+_Tags: modal, interrupt, ux · Affects: all · Severity: high_
 
 **What it is**: Using modals for things that don't require modals. Signs: there are multiple modals in your app that appear in sequence, or modals appear for informational content that could be inline or in a sheet.
 
@@ -127,6 +142,7 @@ Examples:
 ---
 
 ## Toast Spam
+_Tags: toast, notification, feedback · Affects: all · Severity: medium_
 
 **What it is**: Toasting every action the user takes, including non-destructive, non-notable, and trivially reversible actions.
 
@@ -143,6 +159,7 @@ Examples:
 ---
 
 ## Dark Patterns
+_Tags: ethics, trust, dark-pattern · Affects: consumer-saas, e-commerce · Severity: critical_
 
 **What it is**: Design choices that benefit the product at the user's expense. Not an exhaustive list -- just the ones that appear most in dev-built products.
 
@@ -169,6 +186,7 @@ Examples:
 ---
 
 ## Unnecessary Confirmations
+_Tags: modal, confirmation, ux · Affects: all · Severity: medium_
 
 **What it is**: Confirmation dialogs for actions that are trivially reversible or not destructive.
 

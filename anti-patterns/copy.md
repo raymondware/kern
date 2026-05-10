@@ -1,3 +1,11 @@
+---
+file: anti-patterns/copy.md
+tags: [voice, headline, cta, punctuation, ai-tell, microcopy, marketing]
+affects: all
+severity_default: medium
+pattern_count: 9
+---
+
 # Copy Anti-Patterns
 
 Copy rules for developer-built UIs. The standard is: write like a peer, not a product marketer.
@@ -5,6 +13,7 @@ Copy rules for developer-built UIs. The standard is: write like a peer, not a pr
 ---
 
 ## The Em-Dash Problem
+_Tags: punctuation, ai-tell · Affects: all · Severity: low_
 
 **What it is**: Using `--` or `&mdash;` as a punctuation crutch -- like this -- to add emphasis, introduce an aside, or avoid committing to sentence structure.
 
@@ -23,6 +32,7 @@ After:  Ship when you're ready.
 ---
 
 ## En-Dash as Em-Dash
+_Tags: punctuation · Affects: all · Severity: low_
 
 **What it is**: Using `&ndash;` (--) where writers mean an em-dash or a hyphen. Often appears in date ranges used as prose connectors.
 
@@ -33,6 +43,7 @@ After:  Ship when you're ready.
 ---
 
 ## Marketing Verbs
+_Tags: voice, marketing, developer-tool · Affects: developer-tool, b2b-enterprise · Severity: high_
 
 Never use these verbs in a developer-facing product:
 
@@ -53,6 +64,7 @@ Never use these verbs in a developer-facing product:
 ---
 
 ## Hedging Language
+_Tags: voice, confidence · Affects: all · Severity: medium_
 
 **What it is**: Softening claims or instructions with qualifiers that make the product sound uncertain about itself.
 
@@ -78,6 +90,7 @@ After:  Enable two-factor authentication.
 ---
 
 ## Filler Openers
+_Tags: headline, ai-tell, marketing · Affects: all · Severity: high_
 
 Never open copy with these phrases:
 
@@ -101,6 +114,7 @@ After:  Deploys in under 30 seconds.
 ---
 
 ## Self-Descriptors
+_Tags: headline, value-proposition · Affects: all · Severity: high_
 
 **What it is**: Describing your product in terms of what it is rather than what it does.
 
@@ -123,6 +137,7 @@ After:  Deploy from git push. Rollback in one click.
 ---
 
 ## Passive Voice in Action Contexts
+_Tags: voice, instructions, error-states · Affects: all · Severity: medium_
 
 **What it is**: Using passive voice in button labels, instructions, or descriptions where an active subject is implied.
 
@@ -149,6 +164,7 @@ After:  The request timed out. Try again, or check your network.
 ---
 
 ## Vague Headlines
+_Tags: headline, value-proposition, ai-tell · Affects: all · Severity: high_
 
 **What it is**: Headlines that describe a category instead of a specific benefit.
 
@@ -163,6 +179,8 @@ Examples:
 
 **Why it fails**: These headlines are interchangeable across products. "Seamless Collaboration" appears on every B2B SaaS site since 2017. They're category descriptions, not differentiators.
 
+_Community: "AI generates headline copy by averaging every headline it has ever seen. 'Build the future of work', 'Scale without limits', 'Your all-in-one platform.' Swap the copy between any five SaaS landing pages and nothing breaks. That's the problem." — r/startups. "The biggest issue with AI-generated website content isn't that it's poorly written; it's that it sounds like everyone else." — Hacker News_
+
 **Fix**: Specific claim or imperative.
 
 ```
@@ -176,6 +194,7 @@ After:  Auto-close resolved issues. No cron jobs.
 ---
 
 ## Microcopy Table
+_Tags: microcopy, empty-state, error, cta, button-labels · Affects: all · Severity: medium_
 
 Common microcopy patterns and their fixes:
 

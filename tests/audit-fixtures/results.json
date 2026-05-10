@@ -1,0 +1,50 @@
+{
+  "fx-01": {
+    "hits": ["gradient-slop", "centered-glowing-hero", "gradient-text", "get-started-cta", "marketing-verbs", "hedging-language"],
+    "notes": "All 4 seeded violations detected plus bonus hits: 'Supercharge your workflow' (marketing-verbs) and 'We believe this is the fastest way' (hedging-language)."
+  },
+  "fx-02": {
+    "hits": ["nested-card-soup", "drop-shadow-decoration"],
+    "notes": "Three-level Card nesting (outer shadow-xl, feature shadow-lg, inner highlight shadow-md) clearly flags both seeded violations."
+  },
+  "fx-03": {
+    "hits": ["inter-default", "identical-three-card-grid"],
+    "notes": "Inter loaded from Google Fonts with no design rationale (style fontFamily); three FEATURES items mapped with identical className strings."
+  },
+  "fx-04": {
+    "hits": ["ai-palette", "neon-without-context"],
+    "notes": "Explicit 6-color AI-generated PALETTE object; sky-500 (#0ea5e9) used as universal neon accent across nav, CTA, metric bars, and status badges on a SaaS dashboard with no gaming context."
+  },
+  "fx-05": {
+    "hits": ["marketing-verbs", "self-descriptors"],
+    "notes": "Dense marketing-verb seeding: Supercharge, Revolutionize, transforms, Unleash, amplify, Elevate, 10x, Level up, Skyrocket; self-descriptors: 'all-in-one solution', 'powerful platform', 'next-generation approach'."
+  },
+  "fx-06": {
+    "hits": ["hedging-language", "passive-voice-action-context"],
+    "notes": "Six hedging phrases (We believe, We think x2, we hope, You may want to consider, This might be useful); five passive-voice action statements in instructional copy contexts."
+  },
+  "fx-07": {
+    "hits": ["vague-headlines", "self-descriptors", "filler-opener"],
+    "notes": "Four interchangeable feature headlines (Seamless Collaboration, Powerful Integrations, Smart Automation, Better Workflows); self-descriptor paragraph; h2 opens with exact listed filler phrase 'In today's fast-paced development environment'."
+  },
+  "fx-08": {
+    "hits": ["motivational-empty-state"],
+    "notes": "Three motivational empty-state messages: 'Your canvas awaits!', 'Great things start with a single step. Build something amazing.', 'It's quiet here... for now. Your next masterpiece is just a click away.'"
+  },
+  "fx-09": {
+    "hits": ["dishonest-cta", "unnecessary-confirmation", "generic-cta"],
+    "notes": "All 3 seeded violations present: 'Get Started Free' with credit-card-required footnote; 'Learn more' routing to pricing; logout confirmation dialog for a trivially reversible action; 'Submit' button and 'Click here' link text."
+  },
+  "fx-10": {
+    "hits": ["toast-spam", "loading-as-marketing"],
+    "notes": "Toast fired on name blur, every checkbox tick, every favorite click, every toggle flip — clearly non-notable actions; loading overlay contains explicit marketing copy ('Did you know? 10x faster...') and a feature plug."
+  },
+  "fx-11": {
+    "hits": ["pure-black-background", "inverted-light-as-dark"],
+    "notes": "Root div uses bg-black (Tailwind alias for #000000) as main dark-mode background; blue-500 CTA and text-blue-500 links carried over at full light-mode saturation with no dark-mode adjustment."
+  },
+  "fx-12": {
+    "hits": ["gradient-slop", "centered-glowing-hero", "gradient-text", "inter-default", "marketing-verbs", "hedging-language", "vague-headlines", "get-started-cta", "motivational-empty-state"],
+    "notes": "All 9 seeded violations detected: purple-pink linear-gradient hero, radial glow overlay, gradient-clipped h1, Inter fontFamily with no rationale, 'Supercharge'/'revolutionize' verbs, 'We believe' hedge, 'Seamless Collaboration' vague headline, two 'Get Started' CTAs, motivational empty state with 'Your workspace awaits!'."
+  }
+}
