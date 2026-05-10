@@ -1,128 +1,195 @@
 # Persona: Creative Tool
 
-Products in this category: design tools, video editors, 3D apps, motion graphics tools, illustration software, music production, prototyping tools, generative art platforms.
+Products in this category: design tools, video editors, audio production, writing environments, presentation builders, generative AI creation tools, photo editors, font tools.
 
-The primary user creates artifacts for others to experience. The product's own design is part of the sales pitch. If the tool is supposed to help users make beautiful things, the tool itself must be beautiful, opinionated, and distinctive. Generic design is disqualifying.
+Users: Designers, illustrators, writers, musicians, filmmakers -- people who evaluate aesthetics professionally. They will immediately notice if the tool itself doesn't meet the visual bar they hold for their own work. The tool's design is a trust signal.
+
+---
+
+## Core Aesthetic
+
+The tool's interface should feel like it was made by someone who uses creative tools. It should have a point of view. Neutral is not a safe choice here -- neutral reads as lazy. Pick a direction and own it.
+
+Restraint works (Figma's neutral chrome lets the canvas be the design). Expressiveness also works (Adobe's dark-and-saturated palette matches the output they're designed for). Bland does not work.
+
+Think: Figma, Arc browser, Pitch, Craft, iA Writer, Framer (the actual tool, not the templates it produces).
 
 ---
 
 ## Font Pairing
 
-**Display**: Distinctive over neutral. Choose a typeface that makes a statement.
+**UI font:** Depends on the tool's character.
 
-- **Space Grotesk**: Geometric personality, slightly quirky. Good for products that want warmth with character.
-- **Clash Display** (Indian Type Foundry): High contrast, editorial weight. For products with a bold visual identity.
-- **Cabinet Grotesk** (Fontshare): Friendly and distinctive. Works across design and consumer creative contexts.
-- **Custom or commissioned**: The highest signal of commitment. If the brand has a custom typeface, use it.
+For minimal/neutral chrome (canvas-first tools): System-ui or Geist. The chrome disappears, the canvas is the thing.
 
-**Body**: Can be the same family as display, lighter weight. Or a clean complementary sans.
-- Body should not compete with display for attention
-- Geist, Figtree, or Inter are acceptable body choices when display font is strong enough to carry the identity
+For editorial/writing tools: Consider a serif body (Newsreader, iA Writer Quattro). The tool should feel like the medium.
 
-**Mono**: Less prominent than in developer tools, but required when showing code or technical output. JetBrains Mono or Geist Mono.
+For design/visual tools: Something with more character. Söhne, GT Walsheim, or a bespoke choice that signals craft.
 
-**Avoid**: Inter + Inter (no personality). Default system fonts. Any font that reads as chosen for neutrality.
+**Mono:** For code-adjacent creative tools (Framer, animation tools with easing curves): JetBrains Mono or iA Writer Quattro.
+
+**Avoid:** Inter (too neutral for a category that values aesthetic signal). Anything that reads as generic SaaS.
 
 ---
 
 ## Color Philosophy
 
-**Background approach**: Dark mode as primary default. Creative tools live in dark environments because: (1) designers work in dark environments, (2) dark backgrounds make color and content pop, (3) dark-first signals that the product takes visual design seriously.
+This is the one category where a distinctive palette is actively expected. The audience has taste and will evaluate yours.
 
-```css
-/* Dark mode base */
---background: 220 13% 9%;          /* dark, slightly blue-grey */
---surface: 220 10% 13%;            /* card surfaces */
---border: 220 8% 18%;              /* structural edges */
---foreground: 220 14% 96%;         /* near-white text */
---muted-foreground: 220 9% 58%;    /* secondary text */
-
-/* Accent: bold and considered */
---accent: 255 85% 65%;             /* violet -- or product-specific */
---accent-foreground: 0 0% 100%;
-```
-
-**Accent strategy**: Creative tools can push the accent harder than other categories. The accent is part of the product's visual identity. It should appear in the logo, the primary CTA, and key interactive states. It should not appear in body text, borders, or decorative elements.
-
-**Unexpected combinations**: Creative tools have license to use color combinations that other categories cannot. High-contrast pairs (black + acid yellow, deep navy + coral) are appropriate when they reflect a deliberate visual identity, not when they are applied randomly.
-
-**What to avoid**: Safe corporate palettes (navy + grey), overly harmonious palettes that lack personality, muted accents on a dark background (creates low contrast), pure black backgrounds without surface differentiation.
+- Dark mode is common and appropriate -- creative work happens in focused, low-distraction environments
+- But do not default to dark just because "creative tool" -- iA Writer is light, Craft is light
+- Consider what the output looks like on the canvas: if the output is colorful (design tool), a neutral chrome is right. If the output is text (writing tool), the chrome can have more character.
+- Accent: ONE primary. May be more saturated than a developer tool would accept. Still: restraint earns trust.
 
 ---
 
 ## Layout Patterns
 
-**Density**: Variable. The canvas or work area should be maximized. Navigation and toolbars should be compact. Marketing pages should be editorial: large type, generous spacing, strong visual hierarchy.
-
-**Grid approach**: Asymmetric. Creative tools earn the right to break grid conventions. Not arbitrarily, but when the asymmetry communicates something -- a product that does unexpected things should look unexpected.
-
-**Typography as layout**: At the editorial scale of a marketing site, type can carry layout weight. A 96px headline needs no supporting visuals if the headline is strong enough.
-
-**Showcase-oriented**: The marketing page should show output, not describe process. User-created artifacts, rendered outputs, production shots of work made with the tool. Not abstract feature icons.
+- **Canvas-first.** The creative surface is the product. The toolbar and sidebar are secondary.
+- **Minimal chrome.** Panels that auto-hide. Controls that appear when relevant.
+- **Keyboard-first.** Creative professionals live on keyboard shortcuts. Expose them in the UI.
+- **Real-time preview.** Changes should reflect immediately. Latency in a creative tool is an experience failure.
+- **Undo is a first-class feature.** Full history, accessible from keyboard, not buried in a menu.
 
 ---
 
-## Component Style
+## Exemplars
 
-**Buttons**: Distinctive. This is the one context where unusual button styles are appropriate -- pill shapes, outlined with bright stroke, or heavy solid fills that contrast strongly with the dark background.
+- **Figma** -- neutral chrome that disappears, puts canvas forward, keyboard-first
+- **iA Writer** -- the writing environment IS the design; every pixel serves reading and writing
+- **Pitch** -- presentation tool that feels like a design tool, not a PowerPoint clone
+- **Arc browser** -- expressive, opinionated, not afraid to be different from every other browser
+- **Framer** -- the canvas IS the output; what you design is what gets published; exemplar for "interface matches the medium" and for restraining chrome so creative work stays in focus
 
-```tsx
-// Example: creative tool primary CTA
-<Button className="rounded-full bg-violet-500 hover:bg-violet-400 text-white font-semibold px-8 py-3 text-base">
-  Start for free
-</Button>
-// or: high-contrast bordered
-<Button className="rounded-full border-2 border-white text-white hover:bg-white hover:text-black font-semibold px-8 py-3 transition-colors">
-  Try it now
-</Button>
+---
+
+## Signature Moves
+
+Concrete Tailwind decisions that signal "creative tool" identity.
+
+**1. Neutral chrome — not blue-tinted dark**
+```
+// Before (AI default — blue-gray dark, generic "dark mode")
+<aside className="bg-gray-900 border-r border-gray-800">
+
+// After (Creative Tool — pure neutral, canvas stays as hero)
+<aside className="bg-[oklch(12%_0_0)] border-r border-[oklch(22%_0_0)]">
 ```
 
-**Cards**: If used, should feel designed -- not default shadcn Cards. Consider colored borders, gradient backgrounds in one surface level, or no cards at all (let the layout do the work).
+**2. Hairline borders — not chunky dividers**
+```
+// Before (AI default — 1px solid visible border)
+<div className="border border-gray-700 rounded-md">
 
-**Navigation**: Minimal in product, editorial in marketing. In product: icon-based toolbar, compact and always accessible. In marketing: clean horizontal nav that does not compete with the showcase content.
+// After (Creative Tool — near-invisible, panel feels like infrastructure)
+<div className="border border-[rgba(255,255,255,0.06)] rounded-[3px]">
+```
 
----
+**3. Compact tool labels — not default text-sm**
+```
+// Before (AI default — normal weight, full-size label)
+<span className="text-sm text-gray-400">Opacity</span>
 
-## Exemplar Sites
-
-**figma.com**
-- Makes typography do the heavy lifting: large, bold, editorial
-- Community showcases are the content; the design language frames them without competing
-- Color discipline: one primary (blue), used sparingly
-- The product's promise (collaborative design) is demonstrated by the site's collaborative community feel
-
-**framer.com**
-- Dark-first, bold, personality-forward
-- Shows the product's capability through the marketing site's own animations
-- Headline copy earns its size: specific, not generic
-- The site is itself a Framer site -- highest form of dogfooding
-
-**rive.app**
-- Motion is the product; motion is the marketing
-- Interactive embeds that let users play before signing up
-- Restrained layout that makes the interactive elements the stars
-
-**spline.design**
-- 3D as background, not decoration
-- Product demonstrations embedded directly in the marketing page
-- Distinctive visual identity that communicates "this is for people who care about aesthetics"
-
-**linear.app** (marketing, different use from developer tool context)
-- Product page aesthetics demonstrate what a team with design values builds
-- The brand identity (sharp, flat, fast) is consistent from marketing to product
+// After (Creative Tool — minimal, stepped back from the work)
+<span className="text-[11px] font-medium tracking-[0.08em] uppercase text-white/40">Opacity</span>
+```
 
 ---
 
-## Anti-Patterns Specific to Creative Tools
+## Persona-Specific Anti-Patterns
 
-**Generic creativity signaling**: Rainbow gradients, paint splashes, and "unleash your creativity" copy are the creative-tool equivalent of stock photos for technical products. They signal that the designer reached for visual metaphors of creativity rather than demonstrating creative confidence.
+**AP-CT-1: Template-first onboarding**
+Showing a grid of templates before the user has created anything. For creative professionals, this signals "we didn't trust you to start from scratch." Offer blank canvas + templates as equal options.
 
-**Dribbble award-bait aesthetic**: Overly polished, glossy UI that looks beautiful in a static screenshot and fails in actual use. Glassmorphism, excessive blur, neon on dark that fails contrast. Creative tools need to look good in the screenshot AND in the browser.
+**AP-CT-2: Tool panels that compete with the canvas**
+Thick, colorful sidebars that draw the eye away from the work. The panel should feel like infrastructure, not a design statement.
 
-**Style without substance**: A marketing page that is visually impressive but takes more than three seconds for a user to understand what the product does. Bold design must serve clarity, not substitute for it.
+**AP-CT-3: Animated UI in a creative environment**
+Bouncing panels, sliding drawers, springy popovers. Animation in the chrome is noise during creative work. Reserve it for explicit moments (export completion, collaboration join).
 
-**Feature parity marketing**: Listing every feature the tool has instead of showcasing what users make with it. Creative tool users buy outcomes -- the things they will create -- not feature lists. Lead with output.
+**AP-CT-4: Consumer voice in a professional tool**
+"Let's get creative!" "You're on fire today!" "Great job completing your first project!" Professional users do not want their tool to cheer for them. State the status and move on.
 
-**Template gallery as the only proof**: Showing only pre-made templates rather than user-created work signals that the product requires templates to look good. The highest-value proof is diverse, distinctive user work.
+**AP-CT-5: Generic icon sets for a tool whose output involves icons**
+If your product is used to create visual work, and your own UI uses Lucide default icons, that is a mismatch. The tool's aesthetics are a portfolio piece. Commission custom icons or at minimum use Lucide at non-default sizes with intentional weight.
 
-**Dark mode that is actually inverted light mode**: Especially damaging for creative tools because users will immediately notice. If the dark mode has the same shadows, the same border brightness, the same contrast ratios as the light mode, it is not a real dark mode. Creative tool users use dark mode all day, every day. They know what a good dark mode feels like.
+---
+
+## Empty State Patterns
+
+An empty state in a creative tool is not an opportunity to explain the product. It is the first experience of the creative surface itself.
+
+**The canvas-first rule:** Show the creative surface, not a description of it. The blank canvas is the invitation.
+
+### What to do
+
+- Fill the viewport with canvas surface (not a card or modal)
+- One quiet center affordance: a `+` button or keyboard shortcut hint — nothing else
+- If examples are shown, render them ghosted/faded behind the canvas as ambient context, not as a card grid above the fold
+- Keyboard shortcut to start (`N` for new, `⌘N`) — professionals use keys, not buttons
+- For AI/generative tools: the prompt input at full size IS the empty state — the blinking cursor is the call to action
+
+### What NOT to do (all are AI defaults that add to Sameness Score)
+
+- Dashed-border upload zone (see PSI-CT-1)
+- Template gallery grid as default first screen (see PSI-CT-2)
+- Motivational headline: "Let's get creative!", "Start your first project!", "You're one click away from something great"
+- Feature checklist in the empty state: "Add shapes • Export SVG • Share with team"
+- Three-card feature highlight grid (generic SaaS pattern, wrong for a creative tool)
+- Centered card with icon + title + subtitle + button (the universal empty state pattern — too generic here)
+- **Dot-grid `radial-gradient` as canvas texture** — this is the Figma/Excalidraw cliché and AI tools reach for it by default. Use a fine hairline crosshatch (`linear-gradient` grid lines at low opacity) or no texture. The dot-grid signals "I looked at Figma for inspiration," not "I made a considered decision."
+- **Vignette `radial-gradient` as canvas overlay** — darkening-corner effects via `radial-gradient(ellipse at center, transparent ..., rgba(0,0,0,0.N) 100%)` layered over the canvas. AI tools reach for this to add "atmospheric depth." The hairline crosshatch texture and pure neutral dark background already provide sufficient depth cues. A vignette overlay triggers the structural sameness indicator for radial gradients without adding aesthetic value. Use box-shadow on the canvas border instead if edge definition is needed.
+
+### TSX signature: canvas-first empty state
+
+```tsx
+// Before (AI default — centered card, motivational copy, dashed border)
+<div className="flex flex-col items-center justify-center h-full p-12 text-center">
+  <div className="border-2 border-dashed border-gray-300 rounded-xl p-16 mb-8">
+    <Sparkles className="mx-auto mb-4 text-gray-400" size={48} />
+    <h2 className="text-xl font-semibold mb-2">No projects yet</h2>
+    <p className="text-gray-500 mb-6">Create your first illustration to get started</p>
+    <Button>New Project</Button>
+  </div>
+</div>
+
+// After (canvas-first — the surface IS the invitation)
+<div className="h-screen bg-[oklch(10%_0_0)] flex flex-col">
+  <div className="flex-1 relative cursor-crosshair bg-[oklch(13%_0_0)]">
+    {/* Hairline crosshatch — NOT dot-grid (dot-grid is the Figma/Excalidraw cliché) */}
+    <div
+      className="absolute inset-0 opacity-[0.07]"
+      style={{
+        backgroundImage: "linear-gradient(oklch(60% 0 0) 1px, transparent 1px), linear-gradient(90deg, oklch(60% 0 0) 1px, transparent 1px)",
+        backgroundSize: "32px 32px"
+      }}
+    />
+    {/* Single quiet start affordance */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="flex flex-col items-center gap-3">
+        <button className="w-10 h-10 rounded-full bg-white/8 hover:bg-white/14 flex items-center justify-center transition-colors">
+          <Plus className="text-white/50" size={18} />
+        </button>
+        <span className="text-[11px] font-medium tracking-[0.08em] uppercase text-white/25">N · new illustration</span>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Why this works:** The canvas occupies the viewport. The single affordance is subordinate to the surface. No explanation of features. Professionals know what to do — they just need the tool to get out of the way.
+
+---
+
+## Persona Sameness Indicators
+
+These patterns are AI-default for creative tools specifically. They supplement the global Sameness Score rubric. Each indicator present in the design adds +1 to the score.
+
+**PSI-CT-1: Dashed-border upload zone as empty state**
+Using a dashed rectangle with a cloud-upload icon and "Drop files here" copy as the empty state for a creative tool. This is the generic file-input pattern — appropriate for a form, not for a canvas-based creative app. Real creative tools start with a blank canvas (Figma), a full-screen writing environment (iA Writer), or a contextual invitation to create (Pitch). The dashed box signals "this was designed by engineers who haven't used creative tools."
+
+**PSI-CT-2: Inspiration gallery grid before the canvas**
+An onboarding or empty state that shows a browsable grid of "example" or "template" thumbnails before the user has done anything. AI tools default to this because it fills whitespace with pixels. Real creative tools for professionals either go straight to blank canvas (power move) or offer templates as equal to blank — never as the default first screen. Templates before canvas signals "we don't trust you to start from scratch."
+
+**PSI-CT-3: Pill-tab switcher for every tool panel category**
+A top-bar row of pill-shaped tabs to switch between "Design / Prototype / Code" or "Layers / Assets / Plugins" — organizing the entire tool's panels through a single pill switcher. This is an AI-default structure that collapses the tool's capability model into a flat tab row. Real creative tools use icon-based collapsible panels (Figma), contextual panel appearance (Adobe XD), or keyboard-driven mode switching — never a marketing-style tab row inside the app chrome.

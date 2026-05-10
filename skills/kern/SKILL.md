@@ -3,9 +3,38 @@ name: kern
 description: Multi-agent design quality harness for dev-built UIs. Orchestrates specialist agents for typography, color, layout, copy, and accessibility through a 6-phase pipeline (draw, plan, interview, develop, review, present). Picks a VARIED subset of anti-patterns per run with an audit log so two distinct prompts cannot produce identical critiques. Runs four critics in parallel (design, hierarchy, interaction, microcopy) and synthesizes their findings. Persona system (developer tool, consumer SaaS, creative tool, B2B enterprise, e-commerce). Sameness score catches AI defaults. Research-backed pattern library sourced from v0, Lovable, Bolt.new, and Cursor criticism. Built for Shadcn/Radix/Next.js stacks.
 ---
 
-# Kern v3.1
+# Kern v3.2
 
 Multi-agent design harness for developers who care about craft. Named after kerning: the small adjustments that make type feel right. Kern orchestrates specialist agents to find and fix the small adjustments that make UIs feel right.
+
+## Quick Start (5 minutes)
+
+```bash
+# Generate a component or page from scratch
+/kern:design hero section for a CI/CD observability platform for platform engineers
+
+# Audit existing code
+/kern:audit
+# (paste in TSX or describe the component to audit)
+
+# De-AI an existing design
+/kern:differentiate
+
+# Run only the anti-pattern selector (verifies rotation)
+/kern:draw landing page for a creative-agency workflow tool
+```
+
+What kern does behind the scenes:
+1. anti-pattern-selector picks a varied subset of anti-patterns for THIS run, weighted by site signals (persona, surface, industry, audience, competitors, brand tokens). Excludes the previous run's subset. Audits to `state/draws.jsonl`.
+2. Detects one of 5 product personas from your brief or code
+3. Loads that persona's font, color, layout, copy rules
+4. Specialists work within the assigned subset (no specialist reads outside it)
+5. Critic ensemble runs in parallel; synthesizer merges into a 0-100 sameness score
+6. Score above gate threshold (40 for kern output, 60 for external audit) routes to targeted rework
+
+**Respect for stated direction:** kern targets AI-default USES of elements (gradients, glow, identical-card grids, undeclared default fonts) — not the elements themselves. If the user says "electric violet on dark with Inter," use those. Apply Sameness discipline within their constraints.
+
+---
 
 ## The Core Problem
 
@@ -95,7 +124,7 @@ The pool is grouped into three base files plus a research-sourced directory:
 | `${CLAUDE_PLUGIN_ROOT}/anti-patterns/interaction.md` | Dishonest CTAs, loading as marketing, motivational empty states, bouncy interactions, modal fatigue, toast spam, dark patterns |
 | `${CLAUDE_PLUGIN_ROOT}/anti-patterns/sourced-from-research/` | Filed by the research-scout agent. Each pattern requires 2+ independent complaints. |
 
-Total: 48 anti-patterns across base and sourced files. Add a new pattern by writing it into the source file and appending an entry to `manifest.json`.
+Total: 69 anti-patterns across base and sourced files (manifest v1.1.0). The base files include community citations on each pattern. Add a new pattern by writing it into the source file and appending an entry to `manifest.json`.
 
 ## Persona System
 
@@ -148,6 +177,28 @@ Append-only audit log lives at `${CLAUDE_PLUGIN_ROOT}/state/draws.jsonl`. Every 
 | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/tokens.md` | Spacing, radius, type scale, color philosophy |
 | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/exemplars.md` | Sites that get it right and why |
 | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/dribbble-refs.md` | Reference shots by category |
+| `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/ai-fingerprints.md` | Tool-specific fingerprints (v0, Lovable, Bolt.new, Cursor) for `/kern:differentiate` |
+| `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/single-agent-workflow.md` | Simple non-conductor workflow for single-agent invocation |
+| `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/subagent-contract.md` | Protocol for external systems spawning kern as a subagent (used by app-factory) |
+| `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/differentiate-detailed.md` | Iter-evolved worked examples for v0/Lovable/Bolt.new/Cursor de-AI-ing |
+| `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/compare-detailed.md` | Iter-evolved compare workflow with vs-baseline mode |
+
+## Tools
+
+| File | Purpose |
+|---|---|
+| `${CLAUDE_PLUGIN_ROOT}/tools/render-check.sh` | Validate generated TSX compiles (Tailwind + Shadcn type shims) |
+| `${CLAUDE_PLUGIN_ROOT}/tools/reproducibility-report.sh` | Windowed history of audit scores |
+| `${CLAUDE_PLUGIN_ROOT}/tools/draw_simulator.py` | Reference Python implementation of anti-pattern-selector for deterministic rotation testing |
+
+## Tests
+
+| File | Purpose |
+|---|---|
+| `${CLAUDE_PLUGIN_ROOT}/tests/audit-fixtures/` | 12 .tsx fixtures with seeded violations + expected results |
+| `${CLAUDE_PLUGIN_ROOT}/tests/run-audit-fixtures.sh` | Regression runner against expected results |
+| `${CLAUDE_PLUGIN_ROOT}/tests/audit-agent.md` | Audit-fixture evaluator agent spec |
+| `${CLAUDE_PLUGIN_ROOT}/tests/onboarding-test.md` | 5-minute onboarding test (verifies new contributors can run kern in under 5 min) |
 
 ## Voice
 
