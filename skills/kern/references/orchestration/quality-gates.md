@@ -26,6 +26,9 @@ Criteria for transitioning between pipeline phases. The conductor evaluates thes
 - motion-specialist produced a motion spec (timing, easing, behaviors)
 - component-architect produced a component tree with variant strategy
 - design-researcher returned 3+ reference sites
+- For brand-match requests, `brand-evidence` exists with at least two official reference URLs or screenshots. If not, `claim_calibration` is set to `brand-informed draft` and unknowns are listed.
+- Brand evidence extracts colors, typography, spacing rhythm, button treatment, card or form treatment, image treatment, section order and persuasion rhythm, voice, and CTA patterns.
+- Brand evidence includes `match`, `do_not_copy`, and `unknowns_or_risks` lists.
 
 **Fail triggers**: Missing specialist output. Conductor re-runs the failed specialist once before failing the gate.
 
@@ -36,6 +39,7 @@ Criteria for transitioning between pipeline phases. The conductor evaluates thes
 - Component types are defined (what to build)
 - Target context is clear (page type, product type, user type)
 - Persona-specific constraints are loaded
+- Brand-match work has a claim calibration: `style-match`, `brand-informed`, `loose inspiration`, or `rejected/mismatched`
 - If persona changed during interview: a fresh DRAW has been performed and the new audit log line written
 
 **Skip INTERVIEW entirely if**: All of the above were established during PLAN from the user's description alone.
@@ -60,6 +64,8 @@ The synthesizer evaluates this gate on behalf of the conductor.
   - Threshold = 60 for external designs being audited (`/kern:audit`, `/kern:review` on third-party code)
 - Zero critical microcopy violations remaining
 - Zero critical accessibility violations remaining (WCAG 2.1 AA)
+- For brand-match or page-level work, desktop and mobile screenshot review completed, or the final report states style-match scoring is incomplete
+- If final wording claims `style match`, style-match score is 85 or higher and evidence includes at least two official references
 
 **Fail triggers rework with these bounds**:
 
@@ -68,6 +74,8 @@ The synthesizer evaluates this gate on behalf of the conductor.
 | Sameness score > threshold | 2 | Present with score + full synthesizer report |
 | Microcopy violations | 1 | Present with before/after table, user decides |
 | Accessibility violations | 1 | Present with violation list |
+| Style-match score below claimed level | 1 | Downgrade claim and list gaps |
+| Missing screenshot review | 0 | State scoring is incomplete |
 
 **Rework rules**:
 1. Only re-run the agents in the rework path (see pipeline.md routing table)
@@ -85,6 +93,50 @@ The synthesizer evaluates this gate on behalf of the conductor.
 | 41-60 | Fail for kern-produced. Pass for external audit. |
 | 61-80 | Fail in both modes. Significant rework required. |
 | 81-100 | Fail. Critical. Multiple spec violations likely. |
+
+## Style-Match Score
+
+Style-match score is separate from Sameness Score. Use it only for brand-match or brand-informed work, and only after brand evidence has been extracted.
+
+Rubric:
+
+| Dimension | Points |
+|---|---:|
+| Brand color fidelity | 15 |
+| Typography fidelity | 20 |
+| Layout and spacing rhythm | 20 |
+| Component fidelity | 15 |
+| Imagery and content treatment | 10 |
+| Voice and CTA fidelity | 10 |
+| Persona appropriateness | 10 |
+| Total | 100 |
+
+Claim calibration:
+
+| Score | Allowed claim |
+|---|---|
+| 85-100 | style match |
+| 70-84 | brand-informed |
+| 50-69 | loose inspiration |
+| 0-49 | mismatched or rejected |
+
+Rules:
+- Do not report `style match` if official evidence is missing, even when the score is high. Use `brand-informed draft`.
+- Do not report a numeric style-match score as complete unless desktop and mobile screenshots were reviewed.
+- The synthesizer must downgrade final wording when score, evidence, screenshots, or persona do not support the stronger claim.
+
+## Screenshot Review Gate
+
+Required for brand-match or page-level work before REVIEW -> PRESENT:
+
+- Desktop screenshot reviewed.
+- Mobile screenshot reviewed.
+- Typography questions answered.
+- Spacing and density questions answered.
+- Brand-match questions answered.
+- Copy and claims questions answered.
+
+If screenshots cannot be captured, continue only with explicit limitation text: `Style-match scoring incomplete: desktop and mobile screenshot review was not completed.`
 
 ## Completeness Check for INTERVIEW
 

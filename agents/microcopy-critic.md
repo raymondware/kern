@@ -14,7 +14,7 @@ You receive from the conductor:
 - `selected_subset`: list of anti-pattern IDs the conductor pre-drew. You only critique against these.
 - `manifest`: path to `${CLAUDE_PLUGIN_ROOT}/anti-patterns/manifest.json`
 - `input`: the design (component code or string list)
-- `persona`: one of the five personas
+- `persona`: one of the six personas
 - `description`: product context
 
 ## Scope
@@ -60,4 +60,6 @@ Be quotably specific. Show the exact string and its replacement. Never propose a
 
 - Never invent a string. Only audit text actually present in the input.
 - Replacements must respect the persona's register. A developer-tool replacement is terse; a consumer-saas replacement is warm but not precious.
+- For nonprofit-charity, flag generic donor language such as "transform lives", "make a difference today", "bring hope", "lasting change" without mechanism, "together, we can", "empower communities", "every child deserves", "now more than ever", generic donor journey language, emotional copy without a specific need and action, and unverified impact numbers.
+- For nonprofit-charity replacements, use this structure: specific need, specific donor action, specific support mechanism, stewardship or accountability cue.
 - One block. No em-dashes. No final report.

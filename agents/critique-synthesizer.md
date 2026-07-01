@@ -23,9 +23,12 @@ You receive from the conductor:
   - `microcopy-critic` (inline copy slice)
   - `copy-editor` (marketing/headline copy)
   - `accessibility-auditor` (WCAG)
-- `persona`: one of the five
+- `persona`: one of the six
 - `description`: product context
 - `gate_threshold`: integer (40 for kern-produced output, 60 for external audits)
+- `brand_evidence` when the work requests brand match or names a real brand
+- `screenshot_review`: desktop and mobile screenshot review status for page-level or brand-match work
+- `requested_claim`: any user-facing claim such as style match, brand-informed, or loose inspiration
 
 Each critic block contains a `Dimension score contribution` integer.
 
@@ -72,6 +75,32 @@ Re-clip to 0-100.
 | <= gate_threshold and zero critical findings remaining | PASS |
 | > gate_threshold OR any critical accessibility finding | FAIL with rework routing |
 
+### Step 4b. Calibrate Style-Match Claims
+
+When `brand_evidence` exists, compute a style-match score separate from Sameness Score:
+
+- Brand color fidelity: 15
+- Typography fidelity: 20
+- Layout and spacing rhythm: 20
+- Component fidelity: 15
+- Imagery and content treatment: 10
+- Voice and CTA fidelity: 10
+- Persona appropriateness: 10
+
+Use critic findings, brand evidence, screenshot review notes, and persona fit to assign each dimension. Do not invent evidence. If screenshots are missing, mark style-match scoring incomplete.
+
+Claim thresholds:
+- 85+: `style match`
+- 70-84: `brand-informed`
+- 50-69: `loose inspiration`
+- Below 50: `mismatched` or `rejected`
+
+Downgrade final wording when evidence does not support the claim:
+- Fewer than two official references: strongest claim is `brand-informed draft`.
+- Missing desktop or mobile screenshot review: style-match score is incomplete.
+- Wrong persona: cap at `loose inspiration` until corrected.
+- Unsourced impact, charity, or product claims: cap at `brand-informed` and list risks.
+
 ### Step 5. Emit Report
 
 ```markdown
@@ -83,6 +112,8 @@ Re-clip to 0-100.
 
 **Persona**: <persona>
 **Sameness score**: <score> / 100 -- <interpretation: Distinctive | Has character | Generic | Default AI aesthetic | Template unmodified>
+**Style-match score**: <score or incomplete> / 100 -- <style match | brand-informed | loose inspiration | mismatched | brand-informed draft>
+**Style-match evidence**: <official refs count>, <desktop screenshot reviewed yes/no>, <mobile screenshot reviewed yes/no>
 **Gate**: <PASS | FAIL>
 **Threshold applied**: <gate_threshold>
 
@@ -123,6 +154,24 @@ Patterns in the selected subset that were checked and not found:
 | Consensus bonus | +<int> |
 | Tool-fingerprint absences | -<int> |
 | **Total** | **<int>** |
+
+## Style-Match Breakdown (brand-match work only)
+
+| Dimension | Points |
+|---|---:|
+| Brand color fidelity | <0-15> |
+| Typography fidelity | <0-20> |
+| Layout and spacing rhythm | <0-20> |
+| Component fidelity | <0-15> |
+| Imagery and content treatment | <0-10> |
+| Voice and CTA fidelity | <0-10> |
+| Persona appropriateness | <0-10> |
+| **Total** | **<int or incomplete>** |
+
+### Brand Evidence Gaps
+- Match:
+- Do not copy:
+- Unknowns or risks:
 
 ## Rework Routing (if FAIL)
 

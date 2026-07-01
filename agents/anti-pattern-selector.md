@@ -23,7 +23,7 @@ Hard rules from the project owner:
 You receive from the conductor or command:
 - `command`: e.g. `design`, `audit`, `review`, `differentiate`, `polish`, `copy`
 - `product`: the user's description string
-- `persona`: one of `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterprise`, `e-commerce`, or `unknown` (selector infers if unknown)
+- `persona`: one of `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterprise`, `e-commerce`, `nonprofit-charity`, or `unknown` (selector infers if unknown)
 - `surface` (optional): `landing-page`, `pricing-page`, `dashboard`, `signup`, `checkout`, `product-ui`, `feature-grid`, `hero-section`, `marketing`, or `any`
 - `industry` (optional): free-text industry hint
 - `audience` (optional): free-text user description
@@ -55,6 +55,7 @@ Build `must_include` -- patterns whose `personas` or `site_signals` strongly mat
 | `persona` is `creative-tool` | `motivational-empty-states`, `bouncy-interactions`, `flat-typographic-scale` |
 | `persona` is `b2b-enterprise` | `ai-buzzword-inventory`, `hedging-language`, `vague-testimonials` |
 | `persona` is `e-commerce` | `dishonest-ctas`, `dark-patterns`, `vague-testimonials` |
+| `persona` is `nonprofit-charity` | `generic-charity-copy`, `vague-headlines`, `self-descriptors`, `industry-context-blindness`, `three-col-feature-grid` |
 | `competitors` contain `linear`, `stripe`, `vercel`, `neon`, `planetscale`, or similar dev infra | `hero-dashboard-screenshot` |
 | `industry` mentions AI, ML, or developer infra | `indigo-500-everywhere`, `inter-default`, `shadcn-button-defaults` |
 | `brand_tokens` mention purple, indigo, or violet | `indigo-500-everywhere` (always include if user already drifted toward it) |

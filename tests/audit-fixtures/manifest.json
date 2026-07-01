@@ -5,90 +5,180 @@
     {
       "id": "fx-01",
       "file": "fx-01-gradient-hero.tsx",
-      "expected_violations": ["gradient-slop", "centered-glowing-hero", "gradient-text", "get-started-cta"],
+      "expected_violations": [
+        "gradient-slop",
+        "centered-glowing-hero",
+        "gradient-text",
+        "get-started-cta"
+      ],
       "min_expected_hits": 3,
-      "categories": ["visual", "copy"]
+      "categories": [
+        "visual",
+        "copy"
+      ]
     },
     {
       "id": "fx-02",
       "file": "fx-02-nested-cards.tsx",
-      "expected_violations": ["nested-card-soup", "drop-shadow-decoration"],
+      "expected_violations": [
+        "nested-card-soup",
+        "drop-shadow-decoration"
+      ],
       "min_expected_hits": 1,
-      "categories": ["visual"]
+      "categories": [
+        "visual"
+      ]
     },
     {
       "id": "fx-03",
       "file": "fx-03-inter-default.tsx",
-      "expected_violations": ["inter-default", "identical-three-card-grid"],
+      "expected_violations": [
+        "inter-default",
+        "identical-three-card-grid"
+      ],
       "min_expected_hits": 1,
-      "categories": ["visual"]
+      "categories": [
+        "visual"
+      ]
     },
     {
       "id": "fx-04",
       "file": "fx-04-ai-palette.tsx",
-      "expected_violations": ["ai-palette", "neon-without-context"],
+      "expected_violations": [
+        "ai-palette",
+        "neon-without-context"
+      ],
       "min_expected_hits": 1,
-      "categories": ["visual"]
+      "categories": [
+        "visual"
+      ]
     },
     {
       "id": "fx-05",
       "file": "fx-05-marketing-verbs.tsx",
-      "expected_violations": ["marketing-verbs", "self-descriptors"],
+      "expected_violations": [
+        "marketing-verbs",
+        "self-descriptors"
+      ],
       "min_expected_hits": 1,
-      "categories": ["copy"]
+      "categories": [
+        "copy"
+      ]
     },
     {
       "id": "fx-06",
       "file": "fx-06-hedging-language.tsx",
-      "expected_violations": ["hedging-language", "passive-voice-action-context"],
+      "expected_violations": [
+        "hedging-language",
+        "passive-voice-action-context"
+      ],
       "min_expected_hits": 1,
-      "categories": ["copy"]
+      "categories": [
+        "copy"
+      ]
     },
     {
       "id": "fx-07",
       "file": "fx-07-vague-headlines.tsx",
-      "expected_violations": ["vague-headlines", "self-descriptors", "filler-opener"],
+      "expected_violations": [
+        "vague-headlines",
+        "self-descriptors",
+        "filler-opener"
+      ],
       "min_expected_hits": 2,
-      "categories": ["copy"]
+      "categories": [
+        "copy"
+      ]
     },
     {
       "id": "fx-08",
       "file": "fx-08-empty-state-motivational.tsx",
-      "expected_violations": ["motivational-empty-state"],
+      "expected_violations": [
+        "motivational-empty-state"
+      ],
       "min_expected_hits": 1,
-      "categories": ["interaction"]
+      "categories": [
+        "interaction"
+      ]
     },
     {
       "id": "fx-09",
       "file": "fx-09-dishonest-cta.tsx",
-      "expected_violations": ["dishonest-cta", "unnecessary-confirmation", "generic-cta"],
+      "expected_violations": [
+        "dishonest-cta",
+        "unnecessary-confirmation",
+        "generic-cta"
+      ],
       "min_expected_hits": 2,
-      "categories": ["interaction", "copy"]
+      "categories": [
+        "interaction",
+        "copy"
+      ]
     },
     {
       "id": "fx-10",
       "file": "fx-10-toast-spam.tsx",
-      "expected_violations": ["toast-spam", "loading-as-marketing"],
+      "expected_violations": [
+        "toast-spam",
+        "loading-as-marketing"
+      ],
       "min_expected_hits": 1,
-      "categories": ["interaction"]
+      "categories": [
+        "interaction"
+      ]
     },
     {
       "id": "fx-11",
       "file": "fx-11-pure-black-dark.tsx",
-      "expected_violations": ["pure-black-background", "inverted-light-as-dark"],
+      "expected_violations": [
+        "pure-black-background",
+        "inverted-light-as-dark"
+      ],
       "min_expected_hits": 1,
-      "categories": ["visual"]
+      "categories": [
+        "visual"
+      ]
     },
     {
       "id": "fx-12",
       "file": "fx-12-combined-violations.tsx",
-      "expected_violations": ["gradient-slop", "centered-glowing-hero", "gradient-text", "inter-default", "marketing-verbs", "hedging-language", "vague-headlines", "get-started-cta", "motivational-empty-state"],
+      "expected_violations": [
+        "gradient-slop",
+        "centered-glowing-hero",
+        "gradient-text",
+        "inter-default",
+        "marketing-verbs",
+        "hedging-language",
+        "vague-headlines",
+        "get-started-cta",
+        "motivational-empty-state"
+      ],
       "min_expected_hits": 6,
-      "categories": ["visual", "copy", "interaction"]
+      "categories": [
+        "visual",
+        "copy",
+        "interaction"
+      ]
+    },
+    {
+      "id": "fx-13",
+      "file": "fx-13-nonprofit-charity-ai-copy.tsx",
+      "expected_violations": [
+        "generic-charity-copy",
+        "unverified-impact-numbers",
+        "saas-feature-grid-for-mission",
+        "style-match-overclaim-without-evidence"
+      ],
+      "min_expected_hits": 3,
+      "categories": [
+        "copy",
+        "persona",
+        "brand"
+      ]
     }
   ],
-  "total_fixtures": 12,
-  "total_seeded_violations": 30,
-  "release_threshold": 0.90,
+  "total_fixtures": 13,
+  "total_seeded_violations": 34,
+  "release_threshold": 0.9,
   "notes": "A fixture 'passes' when kern audit hits at least min_expected_hits violations from expected_violations. Hit rate = passing fixtures / total fixtures."
 }

@@ -55,6 +55,8 @@ DRAW is the new first phase. The anti-pattern-selector picks a varied subset and
 
 1. Detect persona from description signals if not already done. Load persona file: `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/personas/[persona].md`
 2. Spawn design-researcher with persona + description + selected_subset
+   - For brand-match or named-brand page work, require at least two official reference URLs or screenshots, or mark the run as `brand-informed draft`.
+   - Persist extracted brand evidence: colors, typography, spacing rhythm, button treatment, card or form treatment, image treatment, section order and persuasion rhythm, voice, CTA patterns, `match`, `do_not_copy`, and `unknowns_or_risks`.
 3. Spawn in parallel: typography-specialist, color-specialist, layout-specialist, motion-specialist
    - Pass each: persona file content, product description, reference findings, selected_subset
 4. Wait for all 4 specialists
@@ -96,13 +98,15 @@ Sequential execution:
 6. Spawn `accessibility-auditor`
 All six receive: implemented code, persona, description, selected_subset, manifest path.
 
+For brand-match or page-level work, also provide desktop and mobile screenshots when available. If either screenshot is missing, tell the synthesizer that style-match scoring is incomplete.
+
 Wait for all six.
 
 **Synthesis** (sequential, after ensemble):
-7. Spawn `critique-synthesizer` with: audit_header, all six critic outputs, persona, description, gate_threshold (40 for kern-produced output, 60 for /kern:audit on external designs).
+7. Spawn `critique-synthesizer` with: audit_header, all six critic outputs, persona, description, gate_threshold (40 for kern-produced output, 60 for /kern:audit on external designs), brand evidence when present, screenshot review status, and style-match claim requested by the user.
 8. The synthesizer returns the final ranked report with consensus score and rework routing.
 
-9. Evaluate REVIEW gate using the synthesizer's score and findings (sameness <= gate_threshold, zero critical violations).
+9. Evaluate REVIEW gate using the synthesizer's score and findings (sameness <= gate_threshold, zero critical violations). For brand-match work, reject or downgrade any `style match` claim unless the style-match score is 85 or higher, at least two official references support it, and desktop plus mobile screenshot review is complete.
 
 ### REWORK (if REVIEW gate fails)
 

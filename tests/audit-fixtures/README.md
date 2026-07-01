@@ -1,6 +1,6 @@
 # Kern Audit Fixtures
 
-Regression test suite for `/kern audit`. Twelve TSX fixtures with seeded violations. Used to verify audit coverage against the 90% release threshold.
+Regression test suite for `/kern audit`. Thirteen TSX fixtures with seeded violations. Used to verify audit coverage against the 90% release threshold.
 
 ## How to run
 
@@ -63,6 +63,7 @@ Reports pass/fail per fixture and overall hit rate. Release threshold: 90%.
 | fx-10 | fx-10-toast-spam.tsx | toast-spam, loading-as-marketing | interaction |
 | fx-11 | fx-11-pure-black-dark.tsx | pure-black-background, inverted-light-as-dark | visual |
 | fx-12 | fx-12-combined-violations.tsx | gradient-slop, centered-glowing-hero, gradient-text, inter-default, marketing-verbs, hedging-language, vague-headlines, get-started-cta, motivational-empty-state | visual, copy, interaction |
+| fx-13 | fx-13-nonprofit-charity-ai-copy.tsx | generic-charity-copy, unverified-impact-numbers, saas-feature-grid-for-mission, style-match-overclaim-without-evidence | copy, persona, brand |
 
 ## Adding fixtures
 

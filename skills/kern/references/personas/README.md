@@ -10,7 +10,7 @@ When you run `/kern:design` or `/kern:audit`, Kern detects or asks which persona
 
 **Persona files**: Each file defines the full design language for that category.
 
-## The Five Personas
+## The Six Personas
 
 | Persona | File | Register | Exemplar |
 |---|---|---|---|
@@ -19,6 +19,7 @@ When you run `/kern:design` or `/kern:audit`, Kern detects or asks which persona
 | Creative tool | `creative-tool.md` | Bold, editorial, personality-forward | figma.com, framer.com |
 | B2B enterprise | `b2b-enterprise.md` | Conservative, trust-building, data-forward | tailscale.com, 1password.com |
 | E-commerce | `e-commerce.md` | Product-first, conversion-focused | apple.com/store, allbirds.com |
+| Nonprofit charity | `nonprofit-charity.md` | Grounded, trustworthy, human, restrained | worldvision.org, charitywater.org |
 
 ## Choosing the Right Persona
 
@@ -33,6 +34,8 @@ A product can blend personas, but it should have a primary one. Use these signal
 **B2B enterprise**: The primary buyer is a department head, IT lead, or executive. Procurement involves multiple stakeholders. Trust, compliance, and integration with existing systems are primary purchase drivers.
 
 **E-commerce**: The primary goal is product discovery and purchase. Products are the content. Conversion rate is the primary metric.
+
+**Nonprofit charity**: The primary goal is donor trust and a concrete support action. Signals include nonprofit, charity, NGO, humanitarian, child sponsorship, disaster relief, donor, monthly giving, ministry, foundation, impact report, clean water, hunger, and crisis response. The page should use mission-led editorial hierarchy, a concrete donation module, stewardship near the ask, human dignity, real imagery, and a restrained palette.
 
 ## What Each Persona File Contains
 

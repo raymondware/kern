@@ -14,8 +14,9 @@ You receive from the conductor:
 - `selected_subset`: list of anti-pattern IDs the conductor pre-drew. You only critique against these.
 - `manifest`: path to `${CLAUDE_PLUGIN_ROOT}/anti-patterns/manifest.json`
 - `input`: the design (component code, HTML, screenshot, or class list)
-- `persona`: one of the five personas
+- `persona`: one of the six personas
 - `description`: product context
+- `brand_evidence` and desktop/mobile screenshots when the task is brand-match or page-level
 
 ## Scope
 
@@ -28,8 +29,9 @@ If the filtered list is empty, return the empty critique block (see Output) -- d
 1. Read the manifest. For each pattern in your filtered scope, read the source file at `source_file` and locate the section by `anchor` (kebab-case heading match). Pull the rule content.
 2. Inspect the input. For each in-scope pattern, decide: present, partially present, or absent.
 3. For each present or partially-present pattern, write one finding with severity, specific location, and concrete fix. No general principles. No platitudes.
-4. Compute a per-dimension score: count of CRITICAL findings * 8 + MODERATE * 4 + LOW * 1, capped at 40.
-5. Output the block. Do not output anything outside the format.
+4. For brand-match or page-level work, use screenshots to check typography hierarchy, spacing rhythm, section density, and mobile stacking. If screenshots are missing, report that style-match scoring is incomplete.
+5. Compute a per-dimension score: count of CRITICAL findings * 8 + MODERATE * 4 + LOW * 1, capped at 40.
+6. Output the block. Do not output anything outside the format.
 
 ## Output Format
 

@@ -14,7 +14,7 @@ You receive from the conductor:
 - `selected_subset`: list of anti-pattern IDs the conductor pre-drew. You only critique against these.
 - `manifest`: path to `${CLAUDE_PLUGIN_ROOT}/anti-patterns/manifest.json`
 - `input`: the design (component code, HTML, screenshot, or interaction description)
-- `persona`: one of the five personas
+- `persona`: one of the six personas
 - `description`: product context
 
 ## Scope

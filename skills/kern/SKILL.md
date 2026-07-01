@@ -1,6 +1,6 @@
 ---
 name: kern
-description: Multi-agent design quality harness for dev-built UIs. Orchestrates specialist agents for typography, color, layout, copy, and accessibility through a 6-phase pipeline (draw, plan, interview, develop, review, present). Picks a VARIED subset of anti-patterns per run with an audit log so two distinct prompts cannot produce identical critiques. Runs four critics in parallel (design, hierarchy, interaction, microcopy) and synthesizes their findings. Persona system (developer tool, consumer SaaS, creative tool, B2B enterprise, e-commerce). Sameness score catches AI defaults. Research-backed pattern library sourced from v0, Lovable, Bolt.new, and Cursor criticism. Built for Shadcn/Radix/Next.js stacks.
+description: Multi-agent design quality harness for dev-built UIs. Orchestrates specialist agents for typography, color, layout, copy, and accessibility through a 6-phase pipeline (draw, plan, interview, develop, review, present). Picks a VARIED subset of anti-patterns per run with an audit log so two distinct prompts cannot produce identical critiques. Runs four critics in parallel (design, hierarchy, interaction, microcopy) and synthesizes their findings. Persona system (developer tool, consumer SaaS, creative tool, B2B enterprise, e-commerce, nonprofit charity). Sameness score catches AI defaults. Research-backed pattern library sourced from v0, Lovable, Bolt.new, and Cursor criticism. Built for Shadcn/Radix/Next.js stacks.
 ---
 
 # Kern v3.2
@@ -26,7 +26,7 @@ Multi-agent design harness for developers who care about craft. Named after kern
 
 What kern does behind the scenes:
 1. anti-pattern-selector picks a varied subset of anti-patterns for THIS run, weighted by site signals (persona, surface, industry, audience, competitors, brand tokens). Excludes the previous run's subset. Audits to `state/draws.jsonl`.
-2. Detects one of 5 product personas from your brief or code
+2. Detects one of 6 product personas from your brief or code
 3. Loads that persona's font, color, layout, copy rules
 4. Specialists work within the assigned subset (no specialist reads outside it)
 5. Critic ensemble runs in parallel; synthesizer merges into a 0-100 sameness score
@@ -124,7 +124,7 @@ The pool is grouped into three base files plus a research-sourced directory:
 | `${CLAUDE_PLUGIN_ROOT}/anti-patterns/interaction.md` | Dishonest CTAs, loading as marketing, motivational empty states, bouncy interactions, modal fatigue, toast spam, dark patterns |
 | `${CLAUDE_PLUGIN_ROOT}/anti-patterns/sourced-from-research/` | Filed by the research-scout agent. Each pattern requires 2+ independent complaints. |
 
-Total: 69 anti-patterns across base and sourced files (manifest v1.1.0). The base files include community citations on each pattern. Add a new pattern by writing it into the source file and appending an entry to `manifest.json`.
+Total: 70 anti-patterns across base and sourced files (manifest v1.1.0). The base files include community citations on each pattern. Add a new pattern by writing it into the source file and appending an entry to `manifest.json`.
 
 ## Persona System
 
@@ -135,6 +135,7 @@ Total: 69 anti-patterns across base and sourced files (manifest v1.1.0). The bas
 | Creative tool | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/personas/creative-tool.md` | Bold, editorial, personality-forward |
 | B2B enterprise | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/personas/b2b-enterprise.md` | Conservative, trust-building, data-forward |
 | E-commerce | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/personas/e-commerce.md` | Product-first, conversion-focused |
+| Nonprofit charity | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/personas/nonprofit-charity.md` | Grounded, trustworthy, human, restrained |
 
 ## Sameness Score
 
@@ -149,6 +150,24 @@ Every audit and design workflow produces a sameness score (0-100) computed by th
 | 81-100 | Template unmodified. The tool's defaults, shipped as-is. |
 
 Gate threshold: **40** for kern-produced output, **60** for `/kern:audit` on external designs.
+
+## Brand Evidence and Style-Match Score
+
+Brand-match work requires at least two official reference URLs or screenshots, or the output must be labeled `brand-informed draft`. The plan must extract colors, typography, spacing rhythm, button treatment, card or form treatment, image treatment, section order and persuasion rhythm, voice, CTA patterns, `match`, `do_not_copy`, and `unknowns_or_risks`.
+
+Style-match score is separate from Sameness Score:
+
+| Dimension | Points |
+|---|---:|
+| Brand color fidelity | 15 |
+| Typography fidelity | 20 |
+| Layout and spacing rhythm | 20 |
+| Component fidelity | 15 |
+| Imagery and content treatment | 10 |
+| Voice and CTA fidelity | 10 |
+| Persona appropriateness | 10 |
+
+Thresholds: 85+ = style match, 70-84 = brand-informed, 50-69 = loose inspiration, below 50 = mismatched or rejected. Desktop and mobile screenshot review are required for complete style-match scoring.
 
 ## Commands
 

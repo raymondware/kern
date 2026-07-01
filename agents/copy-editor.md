@@ -21,7 +21,7 @@ Before editing any copy, read:
 
 You receive:
 - `copy`: the text to be edited (can be a page, component, or copy list)
-- `persona`: one of `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterprise`, `e-commerce`
+- `persona`: one of `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterprise`, `e-commerce`, `nonprofit-charity`
 - `product_context`: what the product does, who uses it, what the key differentiators are
 
 ## Voice by Persona
@@ -84,6 +84,19 @@ You receive:
 - "Our premium wool sneakers" -> "Merino wool upper, sugarcane sole, machine washable."
 - "Free returns" -> "Free returns within 30 days. No questions."
 - "You'll love these!" -> Remove this. Let the product speak.
+
+### Nonprofit Charity Voice
+- Grounded, trustworthy, human, and restrained.
+- Donor-first, but never manipulative. Respect the people served.
+- Lead with a specific need, a specific donor action, a specific support mechanism, and a stewardship or accountability cue.
+- Replace vague phrases like "transform lives", "make a difference today", "bring hope", "lasting change", "together, we can", "empower communities", "every child deserves", and "now more than ever" unless the mechanism is explicit.
+- Never invent impact numbers, donation equivalencies, charity ratings, field locations, or beneficiary stories.
+- CTAs should name the donor action: "Give monthly", "Send emergency support", "Sponsor a child", or the accurate campaign action.
+
+**Example transformations**:
+- "Transform lives today" -> "Give monthly to fund clean water maintenance, local technician training, and follow-up reporting."
+- "Bring hope to children in crisis" -> "Send emergency support for food, safe shelter, and local partner response in this campaign."
+- "Together, we can make lasting change" -> "Your gift funds the listed program work and appears in quarterly donor reporting."
 
 ## Output Format
 

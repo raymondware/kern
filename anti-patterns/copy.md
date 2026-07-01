@@ -3,7 +3,7 @@ file: anti-patterns/copy.md
 tags: [voice, headline, cta, punctuation, ai-tell, microcopy, marketing]
 affects: all
 severity_default: medium
-pattern_count: 9
+pattern_count: 10
 ---
 
 # Copy Anti-Patterns
@@ -213,3 +213,42 @@ Common microcopy patterns and their fixes:
 | Button label | "Submit" | Name the action: "Save changes", "Create account", "Send invite" |
 | Button label | "Cancel" | Fine for dialog dismiss. Not fine as the only way to exit a destructive flow. |
 | Onboarding | "Welcome to [Product]! Let's get you started." | Skip to the first action. |
+
+
+---
+
+## Generic Charity Copy
+_Tags: voice, nonprofit-charity, donor, claims · Affects: nonprofit-charity · Severity: high_
+
+**What it is**: Donor-facing copy that borrows the average charity appeal without a concrete need, action, mechanism, or accountability cue.
+
+Flag these phrases unless the sentence immediately provides the mechanism and proof:
+
+- "Transform lives."
+- "Make a difference today."
+- "Bring hope."
+- "Lasting change" without mechanism.
+- "Together, we can."
+- "Empower communities."
+- "Every child deserves."
+- "Now more than ever."
+- Generic donor journey language.
+- Emotional copy without specific need and action.
+- Unverified impact numbers.
+
+**Why it fails**: Nonprofit trust depends on specificity and stewardship. Vague emotional copy can manipulate donors, flatten the dignity of people served, and make unsourced claims feel like proof.
+
+**Fix**: Replace generic appeals with this structure:
+
+1. Specific need.
+2. Specific donor action.
+3. Specific support mechanism.
+4. Stewardship or accountability cue.
+
+```
+Before: Transform lives with lasting change.
+After:  Give monthly to fund clean water maintenance, local technician training, and quarterly donor reporting.
+
+Before: Every child deserves hope.
+After:  Sponsor a child to fund school fees, local mentor visits, and program updates from the field office.
+```

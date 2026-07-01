@@ -1,0 +1,48 @@
+{
+  "harness": "worldvision-nonprofit-style-match-harness",
+  "branch": "feat/nonprofit-style-match-harness",
+  "worktree": "/Users/ottobot/clawd/worktrees/kern-nonprofit-style-match-harness",
+  "tasks": [
+    {
+      "id": "persona-nonprofit-charity",
+      "status": "pending",
+      "description": "Add nonprofit-charity persona and reference it from persona README and SKILL.md."
+    },
+    {
+      "id": "brand-evidence-gate",
+      "status": "pending",
+      "description": "Document and wire brand evidence gate into pipeline, quality gates, and relevant agent prompts."
+    },
+    {
+      "id": "style-match-score",
+      "status": "pending",
+      "description": "Add style-match score rubric and final claim calibration separate from Sameness Score."
+    },
+    {
+      "id": "screenshot-review-gate",
+      "status": "pending",
+      "description": "Require desktop/mobile screenshot review for brand-match and page-level work."
+    },
+    {
+      "id": "charity-copy-antipatterns",
+      "status": "pending",
+      "description": "Add charity/nonprofit copy anti-patterns and replacement pattern."
+    },
+    {
+      "id": "audit-fixture",
+      "status": "pending",
+      "description": "Add fixture coverage for charity AI-isms or overclaimed style-match output."
+    },
+    {
+      "id": "verify-and-commit",
+      "status": "pending",
+      "description": "Run available verification commands, capture output, and create a local conventional commit."
+    }
+  ],
+  "verification_commands": [
+    "git status --short --branch",
+    "bash tests/run-audit-fixtures.sh",
+    "bash tools/reproducibility-report.sh || true",
+    "bash tools/render-check.sh || true"
+  ]
+}

@@ -28,9 +28,20 @@ Before critiquing any design, read:
 You receive from the conductor:
 - `selected_subset`: list of anti-pattern IDs that define the scope of this critique
 - `input`: a screenshot, component code, HTML, or Tailwind class list -- the design being critiqued
-- `persona`: one of `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterprise`, `e-commerce`
+- `persona`: one of `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterprise`, `e-commerce`, `nonprofit-charity`
 - `description`: what the product is and who it is for (context for the critique)
 - `audit_header`: the block from the selector (do not modify, just be aware)
+- `brand_evidence` and desktop/mobile screenshots when the task claims brand match or is page-level
+
+## Brand-Match and Screenshot Review
+
+For brand-match or page-level work, check the rendered screenshots if provided. Flag missing screenshots as a limitation. Answer these questions in your findings when relevant:
+
+- Do colors, typography, spacing rhythm, buttons, forms, cards, imagery, section order, voice, and CTA patterns match the extracted evidence?
+- Does the desktop screenshot reveal type scale, spacing, or density problems that code review would miss?
+- Does the mobile screenshot preserve hierarchy, donation or purchase flow, and CTA clarity?
+- Is the output claiming style match without two official references or without screenshot review?
+- For nonprofit-charity, is the persona donor-first, concrete, and restrained rather than SaaS-like or self-referential?
 
 ## The Sameness Score
 
@@ -82,6 +93,8 @@ This is the output of a tool run with default settings. No meaningful design dec
 - Pricing as comparison table instead of three cards (-8) -- new
 - Border radius hierarchy (different sizes for different element types) (-5) -- new
 - Font weight discipline (max 3 weights, no extrabold) (-5) -- new
+- Brand evidence matched without copying protected assets (-8)
+- Nonprofit donor flow uses a concrete giving module and stewardship cue (-6)
 
 ## Score Cap
 

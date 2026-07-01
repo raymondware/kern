@@ -31,7 +31,7 @@ Paste in (or reference) the content you want audited after the command. Accepted
 
 Persona flag is optional. If omitted, Kern infers the persona from the input. If inference is ambiguous, Kern asks.
 
-Valid personas: `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterprise`, `e-commerce`
+Valid personas: `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterprise`, `e-commerce`, `nonprofit-charity`
 
 ## What Kern Does
 
@@ -39,6 +39,8 @@ Valid personas: `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterpr
 2. **REVIEW** (parallel ensemble): Spawns design-critic, hierarchy-critic, interaction-critic, microcopy-critic, and accessibility-auditor in parallel. Each critic reads only the source-file sections referenced by IDs in the assigned subset. Each produces a per-dimension score capped at 40 plus specific findings.
 3. **SYNTHESIZE**: Spawns critique-synthesizer. It deduplicates across critics, computes the consensus sameness score, and emits the final report.
 4. **PRESENT**: The audit_header from the selector appears at the top of the output, then the synthesizer report.
+
+For brand-match audits, include at least two official reference URLs or screenshots if the report will score style fidelity. The synthesizer must use the style-match rubric and calibrate the final claim as `style match`, `brand-informed`, `loose inspiration`, or `mismatched/rejected`. If screenshots are unavailable, report that style-match scoring is incomplete.
 
 External `/kern:audit` runs use a gate threshold of **60** (vs **40** for kern-produced output). The synthesizer applies the threshold based on the command.
 

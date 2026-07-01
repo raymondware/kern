@@ -1521,6 +1521,35 @@
       "site_signals": [
         "product-ui"
       ]
+    },
+    {
+      "id": "generic-charity-copy",
+      "title": "Generic Charity Copy",
+      "categories": [
+        "copy-voice",
+        "headline",
+        "microcopy"
+      ],
+      "tags": [
+        "nonprofit-charity",
+        "donor",
+        "impact-claims",
+        "hope",
+        "transform-lives"
+      ],
+      "severity_default": "high",
+      "source_file": "anti-patterns/copy.md",
+      "anchor": "generic-charity-copy",
+      "personas": [
+        "nonprofit-charity"
+      ],
+      "site_signals": [
+        "landing-page",
+        "marketing",
+        "donation",
+        "nonprofit",
+        "charity"
+      ]
     }
   ]
 }

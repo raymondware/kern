@@ -27,6 +27,8 @@ Paste or reference the code to review.
    - **accessibility-auditor**: WCAG 2.1 AA compliance check
 3. **SYNTHESIZE**: `critique-synthesizer` merges, deduplicates, computes consensus sameness score, emits final report.
 
+For brand-match or page-level review, provide desktop and mobile screenshots plus at least two official references when possible. Without two official references, the strongest supported wording is `brand-informed draft`. Without screenshots, style-match scoring is incomplete. The synthesizer must calibrate claims using the style-match thresholds in quality-gates.md.
+
 ## Output
 
 Audit header (verbatim from selector) followed by the synthesizer report:

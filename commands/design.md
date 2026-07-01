@@ -36,6 +36,14 @@ The conductor agent manages 6 phases:
 
 The critique-synthesizer combines per-dimension scores from the four parallel critics into a consensus 0-100 sameness score. For kern-produced output the gate threshold is **40**. If the score exceeds the threshold, the conductor routes specific issues to the relevant specialist for targeted rework. Max 2 rework cycles. Score must decrease monotonically.
 
+## Brand-Match Gate
+
+If the prompt asks for a named brand, style match, or redesign against an existing organization, the conductor must collect at least two official reference URLs or screenshots before implementation. Otherwise the output is labeled `brand-informed draft`.
+
+Brand evidence must extract colors, typography, spacing rhythm, button treatment, card or form treatment, image treatment, section order and persuasion rhythm, voice, CTA patterns, `match`, `do_not_copy`, and `unknowns_or_risks`.
+
+Brand-match and page-level work also require desktop and mobile screenshot review. Without screenshots, style-match scoring is incomplete and the final report must say so. The output may only claim `style match` when the style-match score is 85 or higher and the evidence supports it.
+
 ## Example
 
 ```

@@ -82,7 +82,7 @@ A score of 0 means the design avoids those 10 specific indicators. It does not m
 - Microcopy and marketing-register audits
 - Interaction pattern anti-pattern detection
 - Sameness Score (0-10, 10 indicators)
-- Persona-first design generation (5 personas)
+- Persona-first design generation (6 personas)
 - AI tool fingerprint identification and removal (v0, Lovable, Bolt.new, Cursor Composer)
 - Cross-persona divergence measurement
 - TSX compilability constraints (Tailwind v4 + Shadcn imports)

@@ -40,6 +40,9 @@ DRAW always runs first. The selected_subset is locked once the audit log line is
 2. Detect persona (or ask if ambiguous)
 3. Load persona file from `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/personas/`
 4. Spawn design-researcher agent (reference sites)
+   - For brand-match work, design-researcher must return at least two official reference URLs or screenshots. If fewer than two official references are available, label the run `brand-informed draft`, not `style match`.
+   - Extract brand evidence before specialists start: colors, typography, spacing rhythm, button treatment, card or form treatment, image treatment, section order and persuasion rhythm, voice, and CTA patterns.
+   - Record three lists in `plan-context`: `match`, `do_not_copy`, and `unknowns_or_risks`.
 5. Spawn in parallel:
    - typography-specialist
    - color-specialist
@@ -52,10 +55,11 @@ DRAW always runs first. The selected_subset is locked once the audit log line is
 
 **Artifacts produced**:
 - `plan-context`: persona, product description, references, constraints, surface, industry, audience, competitors
+- `brand-evidence` for brand-match work: official references, extracted visual and voice evidence, match list, do-not-copy list, unknowns or risks, and initial claim calibration
 - `design-spec`: typography, color, layout, motion specifications
 - `component-spec`: component tree, variant strategy, composition
 
-**Gate to Phase 2**: All spec artifacts exist. Color spec uses typography spec's font families. Layout spec spacing matches token scale.
+**Gate to Phase 2**: All spec artifacts exist. Color spec uses typography spec's font families. Layout spec spacing matches token scale. Brand-match work also requires the brand evidence artifact, or an explicit `brand-informed draft` fallback when official references are insufficient.
 
 ## Phase 2: INTERVIEW (conditional)
 
@@ -90,7 +94,15 @@ Each implementer receives the `selected_subset` and avoids generating code that 
 
 ## Phase 4: REVIEW
 
-**Purpose**: Validate against the selected subset, accessibility, and copy quality.
+**Purpose**: Validate against the selected subset, accessibility, copy quality, visual screenshots, and brand evidence when the work claims brand match.
+
+**Screenshot gate for brand-match or page-level work**:
+- Capture and review one desktop screenshot and one mobile screenshot before synthesis.
+- Ask typography critic questions: Does the rendered hierarchy match the evidence? Are font sizes, weights, line lengths, and line heights credible at both breakpoints?
+- Ask spacing and density questions: Does the page rhythm match the evidence? Are sections cramped, over-spaced, or uniformly templated?
+- Ask brand-match questions: Do color, typography, buttons, forms, cards, imagery, section order, voice, and CTA patterns match the extracted evidence?
+- Ask copy and claims questions: Are impact claims sourced? Is the persona correct? Is any user-facing copy self-referential?
+- If screenshots cannot be captured, the final report must state: `Style-match scoring incomplete: desktop and mobile screenshot review was not completed.`
 
 **Spawn in parallel** (critic ensemble, all six receive `selected_subset`):
 - design-critic (broad subset scan, score capped at 40)
@@ -101,12 +113,13 @@ Each implementer receives the `selected_subset` and avoids generating code that 
 - accessibility-auditor (WCAG 2.1 AA)
 
 **Synthesis** (sequential, after ensemble):
-- critique-synthesizer: deduplicates, weights by reviewer agreement, computes consensus 0-100 score, applies gate, emits final report
+- critique-synthesizer: deduplicates, weights by reviewer agreement, computes consensus 0-100 sameness score, computes style-match score when brand evidence exists, calibrates claims, applies gate, emits final report
 
 **Gate evaluation** (synthesizer):
 - Sameness score <= gate_threshold (40 for kern-produced, 60 for /kern:audit on external): PASS
 - Sameness score > gate_threshold: REWORK
 - Critical accessibility violations: REWORK
+- Brand-match work cannot claim `style match` unless style-match score is 85 or higher and screenshot review is complete. If evidence is missing, the strongest allowed claim is `brand-informed draft`.
 
 ## REWORK (sub-state of REVIEW)
 
