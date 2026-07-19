@@ -1,0 +1,62 @@
+{
+  "fx-01": {
+    "hits": [],
+    "notes": "Run tests/run-audit-fixtures.sh and paste TSX into /kern:audit, then record results here.",
+    "run_date": ""
+  },
+  "fx-02": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-03": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-04": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-05": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-06": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-07": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-08": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-09": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-10": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-11": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  },
+  "fx-12": {
+    "hits": [],
+    "notes": "",
+    "run_date": ""
+  }
+}

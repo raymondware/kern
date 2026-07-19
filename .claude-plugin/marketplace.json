@@ -1,0 +1,58 @@
+{
+  "name": "raymondware",
+  "id": "raymondware",
+  "owner": {
+    "name": "raymondware"
+  },
+  "metadata": {
+    "description": "Personal Claude Code plugins by raymondware",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "kern",
+      "source": "./",
+      "description": "Multi-agent design quality harness with anti-pattern detection and sameness scoring. 69 anti-patterns, 5 product personas, 6-phase pipeline with parallel critic ensemble. Built for Shadcn/Radix/Next.js stacks.",
+      "version": "1.0.0",
+      "author": {
+        "name": "raymondware"
+      },
+      "keywords": [
+        "design",
+        "ui",
+        "ux",
+        "anti-patterns",
+        "quality",
+        "audit",
+        "sameness",
+        "multi-agent",
+        "orchestration"
+      ],
+      "category": "design",
+      "strict": false
+    },
+    {
+      "name": "scribe",
+      "source": {
+        "source": "github",
+        "repo": "raymondware/scribe"
+      },
+      "description": "Multi-agent writing harness that catches AI-default writing patterns before they ship. Five writer personas, parallel critic ensemble, 0-100 sameness score. Built for longform authors, essayists, and editors.",
+      "version": "1.0.0",
+      "author": {
+        "name": "raymondware"
+      },
+      "keywords": [
+        "writing",
+        "books",
+        "ai-isms",
+        "voice",
+        "anti-pattern",
+        "multi-agent",
+        "longform"
+      ],
+      "category": "writing",
+      "strict": false
+    }
+  ]
+}
