@@ -57,3 +57,4 @@ Expected behavior:
 - For existing designs, use `/kern:audit` instead
 - For making an existing design less AI-looking, use `/kern:differentiate`
 - The workflow can be interrupted; intermediate artifacts are usable independently
+- For same-session or same-batch generation, Kern must vary structure, not just anti-pattern subset. Each output needs a distinct hero composition, proof surface, component rhythm, and domain-specific visual metaphor.

@@ -14,8 +14,9 @@ You receive the outputs of all design specialists:
 - Typography spec (fonts, scale, weights)
 - Color spec (accent, neutrals, semantic colors)
 - Layout spec (grid, spacing, density, breakpoints)
-- Motion spec (timing, easing, feedback patterns)
+- Motion spec (timing, easing from motion-specialist)
 - Persona and product description
+- `batch_diversity_context` when same-session batch generation is active
 
 ## Output: Component Spec
 
@@ -57,6 +58,12 @@ You receive the outputs of all design specialists:
 - [How variants are structured: prop-based, compound, class-based]
 - [Maximum variants per component]
 
+### Batch Differentiation
+- **Applies**: [yes | no]
+- **Prior structures avoided**: [list]
+- **Structural choices that make this output distinct**: [at least 3 concrete choices when applies]
+- **Domain metaphor preserved in component tree**: [component names that carry it]
+
 ### Composition Rules
 - [How components compose together]
 - [What can be nested in what]
@@ -72,6 +79,7 @@ You receive the outputs of all design specialists:
 
 - Every component must reference specific tokens from the specialist specs (not hardcoded values)
 - Prefer flat component trees (max 3 levels of nesting)
+- If `batch_diversity_context` is present, preserve the layout-specialist's domain metaphor in named components and do not fall back to the prior same-batch shell.
 - No nested cards (cards inside cards)
 - Each component serves one clear purpose
 - Variant count should be minimal (prefer composition over variants)
