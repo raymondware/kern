@@ -39,19 +39,26 @@ DRAW always runs first. The selected_subset is locked once the audit log line is
 1. Read user description
 2. Detect persona (or ask if ambiguous)
 3. Load persona file from `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/personas/`
-4. Spawn design-researcher agent (reference sites)
-5. Spawn in parallel:
+4. Detect whether this request is part of a same-session or same-batch generation set. Evidence includes phrases such as "five leads", "batch", "another one", "same outreach run", "generate for these businesses", or multiple adjacent `/kern:design` runs in the same chat.
+5. If same-batch generation is detected, create a `batch_diversity_context` before spawning specialists:
+   - prior surfaces generated in this session, if visible;
+   - forbidden repeated structures from those surfaces;
+   - required structural delta for this run;
+   - business-specific visual metaphor for this run.
+6. Spawn design-researcher agent (reference sites)
+7. Spawn in parallel:
    - typography-specialist
    - color-specialist
    - layout-specialist
    - motion-specialist
 
-   Each specialist receives the `selected_subset` and avoids generating designs that match patterns in the subset.
-6. Wait for all specialists to complete
-7. Spawn component-architect (consumes specialist outputs + selected_subset)
+   Each specialist receives the `selected_subset` and, when present, `batch_diversity_context`. The layout-specialist owns structural differentiation across same-session outputs.
+8. Wait for all specialists to complete
+9. Spawn component-architect (consumes specialist outputs + selected_subset + batch_diversity_context)
 
 **Artifacts produced**:
 - `plan-context`: persona, product description, references, constraints, surface, industry, audience, competitors
+- `batch_diversity_context`: nullable. Required for same-session batch generation. Captures prior structures, forbidden repeats, and the required structural delta.
 - `design-spec`: typography, color, layout, motion specifications
 - `component-spec`: component tree, variant strategy, composition
 
