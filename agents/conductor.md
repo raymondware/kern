@@ -29,12 +29,13 @@ DRAW is the new first phase. The anti-pattern-selector picks a varied subset and
 1. **Parse the user's description** and extract: product type, primary user, surface (landing page, dashboard, etc.), constraints, persona signals
 2. **Spawn the anti-pattern-selector first**, capture the subset and the audit_header. If the selector fails or returns no subset, abort.
 3. **Detect or ask for the persona** if not yet resolved
-4. **Manage phase transitions** by evaluating quality gates between each phase
-5. **Spawn agents** in the correct order, passing the persona, plan-context, AND `selected_subset` to every one of them
-6. **In REVIEW**, spawn the critic ensemble in parallel and the synthesizer afterward
-7. **Handle rework** by routing synthesizer findings to the specific specialist that can fix them
-8. **Track rework cycles** (max 2 per category) and enforce monotonic score improvement
-9. **Present the final output** with the audit_header at the top, then the critique report, then the code
+4. **Detect same-session batch generation** and create `batch_diversity_context` when the user is generating multiple related surfaces in one chat/run
+5. **Manage phase transitions** by evaluating quality gates between each phase
+6. **Spawn agents** in the correct order, passing the persona, plan-context, `selected_subset`, and `batch_diversity_context` when present
+7. **In REVIEW**, spawn the critic ensemble in parallel and the synthesizer afterward
+8. **Handle rework** by routing synthesizer findings to the specific specialist that can fix them
+9. **Track rework cycles** (max 2 per category) and enforce monotonic score improvement
+10. **Present the final output** with the audit_header at the top, then the critique report, then the code
 
 ## Phase Execution
 
@@ -54,12 +55,19 @@ DRAW is the new first phase. The anti-pattern-selector picks a varied subset and
 ### PLAN Phase
 
 1. Detect persona from description signals if not already done. Load persona file: `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/personas/[persona].md`
-2. Spawn design-researcher with persona + description + selected_subset
-3. Spawn in parallel: typography-specialist, color-specialist, layout-specialist, motion-specialist
-   - Pass each: persona file content, product description, reference findings, selected_subset
-4. Wait for all 4 specialists
-5. Spawn component-architect with all specialist outputs and selected_subset
-6. Evaluate PLAN gate
+2. Decide whether this is a same-session batch run. Treat it as batch generation when the user asks for multiple related outputs, when prior outputs in this chat share a target campaign, or when the prompt says "five leads", "batch", "another", "same session", or similar.
+3. If batch generation is active, create `batch_diversity_context`:
+   - `prior_layouts`: visible prior hero/composition/proof patterns from this chat/run
+   - `forbidden_repeats`: exact structures not allowed again
+   - `required_delta`: at least three structural changes for this output
+   - `business_metaphor`: a visual model tied to the business domain, not a generic card shell
+4. Spawn design-researcher with persona + description + selected_subset + batch_diversity_context when present
+5. Spawn in parallel: typography-specialist, color-specialist, layout-specialist, motion-specialist
+   - Pass each: persona file content, product description, reference findings, selected_subset, batch_diversity_context when present
+   - Layout-specialist must explicitly name the structure that makes this output different from prior same-session outputs
+6. Wait for all 4 specialists
+7. Spawn component-architect with all specialist outputs, selected_subset, and batch_diversity_context
+8. Evaluate PLAN gate
 
 ### INTERVIEW Phase (conditional)
 
@@ -138,6 +146,7 @@ audit_header: string (from selector)
 selected_subset: string[] (anti-pattern IDs)
 persona: string
 plan_context: { product, user, surface, industry, audience, competitors, constraints }
+batch_diversity_context?: { prior_layouts, forbidden_repeats, required_delta, business_metaphor }
 design_spec: { typography, color, layout, motion }
 component_spec: { tree, variants }
 code_files: string[]

@@ -23,6 +23,7 @@ Criteria for transitioning between pipeline phases. The conductor evaluates thes
 - typography-specialist produced a font spec (families, scale, weights)
 - color-specialist produced a palette (accent, neutrals, semantic colors)
 - layout-specialist produced layout constraints (grid, spacing, density)
+- If `batch_diversity_context` exists: layout-specialist produced a `Batch Diversity Guard` with forbidden repeats, at least 3 structural differences, and a business-specific metaphor
 - motion-specialist produced a motion spec (timing, easing, behaviors)
 - component-architect produced a component tree with variant strategy
 - design-researcher returned 3+ reference sites
