@@ -67,12 +67,12 @@ The release threshold for the fixture regression suite is 90% hit rate on seeded
 
 ## Scope Clarification: Sameness Score
 
-The Sameness Score (0-10) is a structural count of indicators from a fixed list of 10 AI-default signals. It is not:
+The Sameness Score (0-100) is a normalized structural count of indicators from a fixed list of AI-default signals. It is not:
 - A design quality score
 - A user satisfaction predictor
 - A market differentiation score
 
-A score of 0 means the design avoids those 10 specific indicators. It does not mean the design is good.
+A score of 0 means the design avoids those specific indicators. It does not mean the design is good.
 
 ---
 
@@ -81,7 +81,7 @@ A score of 0 means the design avoids those 10 specific indicators. It does not m
 - Visual anti-pattern detection in TSX/HTML/CSS
 - Microcopy and marketing-register audits
 - Interaction pattern anti-pattern detection
-- Sameness Score (0-10, 10 indicators)
+- Sameness Score (0-100 normalized from AI-default indicators)
 - Persona-first design generation (5 personas)
 - AI tool fingerprint identification and removal (v0, Lovable, Bolt.new, Cursor Composer)
 - Cross-persona divergence measurement
