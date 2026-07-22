@@ -1,0 +1,20 @@
+name: Kern CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate release evidence JSON
+        run: python3 tools/validate-release-evidence.py
+
+      - name: Render audit fixture plan
+        run: bash tests/run-audit-fixtures.sh
