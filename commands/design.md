@@ -5,7 +5,7 @@ allowed-tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
 
 # /kern:design
 
-Full design workflow for a new UI. Persona-aware. Anti-pattern resistant from the start. Uses the conductor agent to orchestrate specialist agents through a 5-phase pipeline.
+Full design workflow for a new UI. Persona-aware. Anti-pattern resistant from the start. Uses the conductor agent to orchestrate specialist agents through a 6-phase pipeline.
 
 ## Usage
 
