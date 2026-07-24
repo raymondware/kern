@@ -4,7 +4,7 @@ A Claude Code plugin that catches AI-generated design defaults before they ship.
 
 Kern routes every design through a persona system, picks a varied subset of anti-patterns per run (so two runs never produce the same critique), scores output on a 0-100 sameness scale, and fixes copy, color, layout, and interaction before the code lands.
 
-Built for Shadcn/Radix/Next.js stacks. Runs a team of specialist agents that plan, design, implement, and review collaboratively.
+Runs a team of specialist agents that plan, design, implement, and review collaboratively.
 
 ## The Problem
 
