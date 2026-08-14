@@ -12,6 +12,8 @@ AI design tools (v0, Lovable, Bolt.new, Cursor Composer) converge on the same vi
 
 Kern fixes this with persona-first generation and a sameness score that quantifies how close a design is to the AI default.
 
+Kern doesn't touch Lovable, Bolt, or v0 directly. It runs inside Claude Code and catches the same class of defaults in the code Claude generates for you.
+
 ## Installation
 
 Add the raymondware marketplace, then install Kern:
