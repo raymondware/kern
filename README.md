@@ -8,9 +8,9 @@ Runs a team of specialist agents that plan, design, implement, and review collab
 
 ## The Problem
 
-AI design tools (v0, Lovable, Bolt.new, Cursor Composer) converge on the same visual vocabulary. Purple/blue gradient, centered hero, Inter font, three identical feature cards, "Get Started" CTA. A developer tool and a consumer app look like the same product built on the same template.
+AI design tools converge on the same visual vocabulary. Purple/blue gradient, centered hero, Inter font, three identical feature cards, "Get Started" CTA. A developer tool and a consumer app look like the same product built on the same template.
 
-Kern fixes this with persona-first generation and a sameness score that quantifies how close a design is to the AI default.
+Kern fixes this with persona-first generation and a sameness score that quantifies how close a design is to the AI default. It runs inside Claude Code, auditing the code Claude generates for you.
 
 ## Installation
 
