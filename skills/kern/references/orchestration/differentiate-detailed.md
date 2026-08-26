@@ -12,6 +12,10 @@ Takes an existing AI-generated design and makes it not look AI-generated. The pr
 
 Then paste the code, screenshot description, or component you want to fix.
 
+## Reference benchmark mode
+
+An optional URL, screenshot, existing component, or `recipe:name@version` is a benchmark input. Read `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/reference-led-design.md` and `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/style-recipes.md`. Before targeted changes, record observable decisions, a `take_adapt_avoid` table, provenance, adaptation notes, and a divergence contract. Preserve user direction and the original anti-pattern draw. Do not clone the reference or apply a blind visual opposite. With no supplied reference, record the persona-appropriate exemplar fallback and why it fits.
+
 ---
 
 ## What This Does

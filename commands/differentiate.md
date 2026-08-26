@@ -18,13 +18,15 @@ Run `/kern:differentiate` when:
 ## Usage
 
 ```
-/kern:differentiate <file or component>
+/kern:differentiate <file or component> [--reference URL | screenshot | component | recipe:name@version]
 ```
 
 ## Workflow
 
 ### Step 1: Draw + Baseline
 The `anti-pattern-selector` picks a varied subset weighted toward tool-fingerprint patterns (since differentiation is about removing the fingerprint). The critic ensemble plus `critique-synthesizer` produce a baseline sameness score and identify the tool fingerprint.
+
+If a reference or recipe is supplied, build the benchmark brief before applying changes. Read `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/reference-led-design.md` and `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/style-recipes.md`. Extract the observable decisions, fill `take_adapt_avoid`, and write a divergence contract. Use the input as evidence for intentional adaptation, not as a cloning or blind opposite-style instruction. With no reference, record the persona-appropriate exemplar fallback.
 
 ### Step 2: Apply Targeted Opposites
 For each identified tool or pattern cluster in the subset, apply the inverse. See `${CLAUDE_PLUGIN_ROOT}/anti-patterns/sourced-from-research/` for tool-specific defaults.
@@ -34,6 +36,8 @@ Every well-designed product has one element that is unmistakably its own. Kern s
 
 ### Step 4: Verify Score Dropped
 The critic ensemble + synthesizer run again on the same `selected_subset` (no second draw -- rework operates within the original draw). Score must drop below input score to confirm differentiation worked.
+
+When a benchmark was supplied, also report `provenance`, `adaptation_notes`, `reference_limits`, and the divergence result. Keep user direction, existing system constraints, persona gates, and the original anti-pattern draw ahead of the reference.
 
 ## Output Format
 

@@ -21,6 +21,12 @@ Compare a single design against the AI-default baseline only (no second design n
 
 ---
 
+## Reference benchmark mode
+
+Add `--reference` with a URL, screenshot, existing component, or `recipe:name@version`. Read `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/reference-led-design.md` before comparing. Extract observable hierarchy, type roles and weights, spacing rhythm, color roles, radius/border/shadow, imagery, density, interaction/motion, and content pattern. Record `take_adapt_avoid`, provenance, adaptation notes, and the divergence contract. The reference is evidence, not a cloning target. If no reference is supplied, choose a small persona-appropriate exemplar set and state why.
+
+---
+
 ## What Gets Compared
 
 ### Option A: Two Designs Against Each Other
