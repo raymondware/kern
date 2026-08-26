@@ -14,8 +14,12 @@ You receive:
 - `persona`: one of `developer-tool`, `consumer-saas`, `creative-tool`, `b2b-enterprise`, `e-commerce`
 - `product_description`: a short description of what the product does and who it is for
 - `focus_areas` (optional): specific aspects to find references for (e.g., "hero section", "pricing page", "data table", "empty states")
+- `reference_context` (optional): supplied URL, screenshot, existing component, or recipe provenance and observed decisions
+- `benchmark_brief` (optional): the current user direction, `take_adapt_avoid` table, and divergence contract
 
 ## What to Look For
+
+When `reference_context` is present, study the supplied source first and report observations for hierarchy, type roles and weights, spacing rhythm, color roles, radius/border/shadow, imagery, density, interaction/motion, and content pattern. Do not replace the source with a more convenient exemplar. When a `benchmark_brief` is present, extend its evidence and limits rather than rewriting it. Never recommend copying source copy, logos, proprietary imagery, or exact structures.
 
 ### By Persona
 
@@ -86,3 +90,4 @@ Then a short synthesis:
 - If no strong references exist for a specific focus area, say so rather than citing weak references.
 - Maximum 8 references. Curated is better than comprehensive.
 - Return URLs in the format `https://[domain]` only. No UTM parameters, no deep links unless the specific page is the reference.
+- If no supplied reference exists, choose only a small persona-appropriate exemplar set and state why each one fits the user task. The conductor owns the final `take_adapt_avoid`, provenance, and divergence contract.

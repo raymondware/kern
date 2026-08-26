@@ -33,10 +33,10 @@ That's it. Restart Claude Code and the `/kern:*` commands are available.
 /kern:audit
 # (paste TSX when prompted)
 
-# Make an existing design less AI-looking
-/kern:differentiate
+# Make an existing design less AI-looking, optionally against a benchmark
+/kern:differentiate [--reference URL | recipe:name@version]
 
-# Generate design specs without code
+# Generate design specs without code, optionally with a recipe or reference
 /kern:plan pricing page for a developer API product
 ```
 
@@ -46,10 +46,10 @@ That's it. Restart Claude Code and the `/kern:*` commands are available.
 |---|---|
 | `/kern:design <desc>` | Full pipeline: persona detection, specialists, implementation, review |
 | `/kern:audit` | Anti-pattern scan with sameness score against existing code |
-| `/kern:differentiate` | Identify which AI tool fingerprints are present and apply targeted fixes |
+| `/kern:differentiate [--reference ...]` | Identify AI fingerprints and apply targeted fixes against an optional benchmark |
 | `/kern:plan <desc>` | Design specs only (typography, color, layout, motion) -- no code |
 | `/kern:review` | Full review pass: critic ensemble, copy editor, accessibility audit |
-| `/kern:compare <a> <b>` | Side-by-side comparison with similarity score |
+| `/kern:compare <a> <b> [--reference ...]` | Side-by-side comparison with similarity score and optional benchmark adaptation |
 | `/kern:polish` | Rewrite a component against Kern's standards, show diff |
 | `/kern:copy` | Microcopy audit: button labels, errors, empty states, CTAs |
 | `/kern:research` | Scan design communities for new anti-patterns |
@@ -77,9 +77,9 @@ Every run picks a different subset of anti-patterns. Kern reads the audit log (`
 
 Each run draws 12-18 patterns from a pool of 69, weighted by surface (landing page, dashboard, pricing), persona, industry, and audience. The selection is logged to `state/draws.jsonl` before any agent runs.
 
-### 4. Parallel Critics + Synthesizer
+### 4. Parallel Critics, Synthesizer, and Design Gauntlet
 
-Four critics run in parallel (design, hierarchy, interaction, microcopy), plus a copy editor and accessibility auditor. The synthesizer merges their output, removes duplicates, and computes a consensus sameness score.
+Four critics run in parallel (design, hierarchy, interaction, microcopy), plus a copy editor and accessibility auditor. The synthesizer merges their output, removes duplicates, and computes a consensus sameness score. The post-synthesis design-gauntlet separately checks task clarity, hierarchy, distinctiveness, content authenticity, interaction quality, responsive integrity, reference adaptation, and baseline regression when applicable. It can trigger at most two targeted cycles and reports unresolved risks when it cannot pass.
 
 ### 5. The Sameness Score
 
@@ -116,6 +116,8 @@ Kern ships with 69 anti-patterns across three base files and a research-sourced 
 | `skills/kern/references/dribbble-refs.md` | Reference shots by category |
 | `skills/kern/references/ai-fingerprints.md` | Tool-specific fingerprints for `/kern:differentiate` |
 | `skills/kern/references/personas/` | Five persona files with font, color, layout, copy rules |
+| `skills/kern/references/orchestration/reference-led-design.md` | Reference benchmark, adaptation, provenance, and divergence contract |
+| `skills/kern/references/style-recipes.md` | Versioned and scoped style recipe schema used as an input to design, compare, or differentiate |
 
 ## Agent Team
 

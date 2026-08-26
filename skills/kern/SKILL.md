@@ -1,6 +1,6 @@
 ---
 name: kern
-description: Multi-agent design quality harness for dev-built UIs. Orchestrates specialist agents for typography, color, layout, copy, and accessibility through a 6-phase pipeline (draw, plan, interview, develop, review, present). Picks a VARIED subset of anti-patterns per run with an audit log so two distinct prompts cannot produce identical critiques. Runs four critics in parallel (design, hierarchy, interaction, microcopy) and synthesizes their findings. Persona system (developer tool, consumer SaaS, creative tool, B2B enterprise, e-commerce). Sameness score catches AI defaults. Built for Shadcn/Radix/Next.js stacks.
+description: Multi-agent design quality harness for dev-built UIs. Orchestrates specialist agents for typography, color, layout, copy, accessibility, and post-synthesis design quality through a 6-phase pipeline (draw, plan, interview, develop, review, present). Builds reference benchmarks and structured regression context when supplied, picks a VARIED subset of anti-patterns per run with an audit log, and uses a critic ensemble, synthesizer, and design gauntlet to catch AI defaults without cloning references. Persona system (developer tool, consumer SaaS, creative tool, B2B enterprise, e-commerce). Built for Shadcn/Radix/Next.js stacks.
 ---
 
 # Kern v1.0.0
@@ -63,6 +63,7 @@ The `anti-pattern-selector` agent enforces all four rules. It runs first in ever
 | `conductor` | Opus 4.8 | Pipeline orchestrator. Manages state, spawns specialists, enforces quality gates. |
 | `anti-pattern-selector` | Sonnet | Picks the varied subset for this run, writes the audit log. Runs first in every pipeline. |
 | `critique-synthesizer` | Opus 4.8 | Merges parallel critic outputs, deduplicates, computes consensus sameness score. |
+| `design-gauntlet` | Opus 4.8 | Post-synthesis gate for task clarity, hierarchy, distinctiveness, content, interaction, responsive integrity, and reference divergence. |
 
 ### Design Specialists (read-only, produce specs)
 | Agent | Model | Role |
@@ -102,10 +103,10 @@ The `anti-pattern-selector` agent enforces all four rules. It runs first in ever
 The `/kern:design` command runs the full 6-phase pipeline via the conductor agent:
 
 1. **DRAW**: anti-pattern-selector picks a varied subset, writes the audit log line, emits the audit_header. Every downstream agent receives `selected_subset`.
-2. **PLAN**: Persona detection -> reference research -> parallel specialists (typography, color, layout, motion) -> component architect
+2. **PLAN**: Persona detection -> benchmark brief and optional regression context -> reference research -> parallel specialists (typography, color, layout, motion) -> component architect
 3. **INTERVIEW** (conditional): Targeted questions if specs have gaps
 4. **DEVELOP**: Style implementer -> component implementer -> accessibility implementer
-5. **REVIEW**: Critic ensemble in parallel (design + hierarchy + interaction + microcopy + copy-editor + accessibility) followed by the synthesizer. Targeted rework if needed (max 2 cycles).
+5. **REVIEW**: Critic ensemble in parallel (design + hierarchy + interaction + microcopy + copy-editor + accessibility), synthesizer, then post-synthesis design-gauntlet. Targeted rework if needed (max 2 ordinary cycles and max 2 gauntlet cycles).
 6. **PRESENT**: audit_header + synthesizer report + final code
 
 See `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/pipeline.md` for the state machine.
@@ -158,8 +159,8 @@ Gate threshold: **40** for kern-produced output, **60** for `/kern:audit` on ext
 | `/kern:plan <desc>` | Plan phase only (specs, no code) |
 | `/kern:audit` | DRAW + parallel critic ensemble + synthesizer |
 | `/kern:review` | Same as audit, broader scope (also runs copy-editor and accessibility) |
-| `/kern:differentiate` | De-AI an existing design (subset weighted to tool-fingerprint patterns) |
-| `/kern:compare` | Compare two designs |
+| `/kern:differentiate` | De-AI an existing design, with an optional reference or versioned style recipe benchmark |
+| `/kern:compare` | Compare two designs, with an optional reference or versioned style recipe benchmark |
 | `/kern:polish` | Refine a component (critic + copy) |
 | `/kern:copy` | Copy audit only |
 | `/kern:research` | Scan communities for new patterns |
@@ -182,6 +183,8 @@ Append-only audit log lives at `${CLAUDE_PLUGIN_ROOT}/state/draws.jsonl`. Every 
 | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/subagent-contract.md` | Protocol for external systems spawning kern as a subagent (used by app-factory) |
 | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/differentiate-detailed.md` | Iter-evolved worked examples for v0/Lovable/Bolt.new/Cursor de-AI-ing |
 | `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/compare-detailed.md` | Iter-evolved compare workflow with vs-baseline mode |
+| `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/reference-led-design.md` | Benchmark contract for supplied references, structured evidence, regression context, provenance, adaptation, and divergence |
+| `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/style-recipes.md` | Versioned, scoped, tool-agnostic style recipe schema and application rules |
 
 ## Tools
 

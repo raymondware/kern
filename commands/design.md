@@ -10,7 +10,7 @@ Full design workflow for a new UI. Persona-aware. Anti-pattern resistant from th
 ## Usage
 
 ```
-/kern:design <description>
+/kern:design <description> [reference URL | screenshot | existing component | recipe:name@version]
 ```
 
 The description should include:
@@ -18,6 +18,7 @@ The description should include:
 - What the product does
 - Who the primary user is
 - Any constraints (existing tech stack, existing components, color requirements)
+- Optional benchmark input: a URL, screenshot, existing component, or named style recipe. State which surface or section is relevant.
 
 ## Pipeline
 
@@ -26,15 +27,17 @@ Read `${CLAUDE_PLUGIN_ROOT}/skills/kern/references/orchestration/pipeline.md` fo
 The conductor agent manages 6 phases:
 
 1. **DRAW**: anti-pattern-selector picks a varied subset for this run, writes the audit log to `state/draws.jsonl`, and emits the audit_header. Every downstream agent receives `selected_subset`.
-2. **PLAN**: Detect persona, research references, run design specialists (typography, color, layout, motion) in parallel, then component architect
+2. **PLAN**: Detect persona, build a reference benchmark brief when an input is supplied, research references, run design specialists (typography, color, layout, motion) in parallel, then component architect
 3. **INTERVIEW** (conditional): Ask targeted questions if specs have gaps
 4. **DEVELOP**: Style implementer -> component implementer -> accessibility implementer
-5. **REVIEW**: Critic ensemble in parallel (design-critic, hierarchy-critic, interaction-critic, microcopy-critic, copy-editor, accessibility-auditor) followed by the critique-synthesizer. Targeted rework if needed (max 2 cycles).
+5. **REVIEW**: Critic ensemble in parallel (design-critic, hierarchy-critic, interaction-critic, microcopy-critic, copy-editor, accessibility-auditor), critique-synthesizer, then the post-synthesis design-gauntlet. Targeted rework if needed (max 2 ordinary cycles and max 2 gauntlet cycles).
 6. **PRESENT**: Audit header + synthesizer report + final code
 
 ## Sameness Gate
 
 The critique-synthesizer combines per-dimension scores from the four parallel critics into a consensus 0-100 sameness score. For kern-produced output the gate threshold is **40**. If the score exceeds the threshold, the conductor routes specific issues to the relevant specialist for targeted rework. Max 2 rework cycles. Score must decrease monotonically.
+
+When a reference or recipe is supplied, PLAN must also produce `reference_context`, `style_recipe_context`, and a `benchmark_brief` with observable decisions, a `take_adapt_avoid` table, provenance, adaptation notes, and an explicit divergence contract. References calibrate decisions. They do not authorize cloning. The design-gauntlet checks the implemented result after synthesis on task clarity, hierarchy, distinctiveness, content authenticity, interaction, responsive integrity, and reference adaptation when applicable. If no reference is supplied, the brief records a small persona-appropriate exemplar fallback and why it was chosen.
 
 ## Example
 
