@@ -68,30 +68,30 @@ Light mode default. Enterprise software runs in office environments, on dual mon
 
 Concrete Tailwind decisions that signal "B2B enterprise" identity.
 
-**1. Tabular numbers on ALL numeric data — non-negotiable**
+**1. Tabular numbers on ALL numeric data - non-negotiable**
 ```
-// Before (AI default — proportional numbers, columns shift width)
+// Before (AI default - proportional numbers, columns shift width)
 <td className="text-sm text-gray-700">$1,234.56</td>
 
-// After (B2B Enterprise — aligned decimals, no column jitter)
+// After (B2B Enterprise - aligned decimals, no column jitter)
 <td className="text-[13px] text-gray-700 [font-variant-numeric:tabular-nums]">$1,234.56</td>
 ```
 
-**2. Blue-gray surface tint on panels — not white or slate**
+**2. Blue-gray surface tint on panels - not white or slate**
 ```
-// Before (AI default — white card or slate-100)
+// Before (AI default - white card or slate-100)
 <aside className="bg-slate-100 border-r border-gray-200">
 
-// After (B2B Enterprise — institutional blue-gray)
+// After (B2B Enterprise - institutional blue-gray)
 <aside className="bg-[oklch(97%_0.003_240)] border-r border-[oklch(88%_0.006_240)]">
 ```
 
-**3. Compact data rows — not default table padding**
+**3. Compact data rows - not default table padding**
 ```
-// Before (AI default — generous padding, consumer-feel)
+// Before (AI default - generous padding, consumer-feel)
 <tr className="px-6 py-4 text-sm border-b">
 
-// After (B2B Enterprise — dense, information-first)
+// After (B2B Enterprise - dense, information-first)
 <tr className="px-4 py-2 text-[13px] leading-5 border-b border-[oklch(88%_0.006_240)]">
 ```
 
@@ -120,7 +120,7 @@ No "select all" or multi-row actions in data tables. Enterprise users operate on
 
 Domain-specific prescription for contract lifecycle management UIs. Applies to: contract management tools, procurement platforms, legal ops dashboards, vendor management.
 
-### Column Layout — canonical order
+### Column Layout - canonical order
 
 | Column | Width | Type | Notes |
 |--------|-------|------|-------|
@@ -133,16 +133,16 @@ Domain-specific prescription for contract lifecycle management UIs. Applies to: 
 | Status | 110px | badge | Shape + label + color (never color alone) |
 | Actions | 48px | menu | Ellipsis → hover-reveal context menu |
 
-### Status Badge TSX — shape + label + color (not color-only dots)
+### Status Badge TSX - shape + label + color (not color-only dots)
 
 ```tsx
-// Before (AI default — color-only dot, inaccessible)
+// Before (AI default - color-only dot, inaccessible)
 <span className="flex items-center gap-1">
   <span className="w-2 h-2 rounded-full bg-green-500" />
   Active
 </span>
 
-// After (B2B Enterprise — pill with semantic label, works for colorblind users)
+// After (B2B Enterprise - pill with semantic label, works for colorblind users)
 type ContractStatus = 'active' | 'in-review' | 'expired' | 'draft' | 'terminated'
 
 const STATUS_CONFIG: Record<ContractStatus, { label: string; classes: string }> = {
@@ -169,7 +169,7 @@ function StatusBadge({ status }: { status: ContractStatus }) {
 function ContractsTable({ contracts }: { contracts: Contract[] }) {
   return (
     <div className="font-['Inter',_sans-serif] rounded-md border border-[oklch(88%_0.006_240)] overflow-hidden">
-      {/* Inter — deliberate corporate-neutral choice; avoids DM Sans/Figtree/Space Grotesk consumer signals */}
+      {/* Inter - deliberate corporate-neutral choice; avoids DM Sans/Figtree/Space Grotesk consumer signals */}
 
       {/* Toolbar: search + filter + bulk actions */}
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-[oklch(88%_0.006_240)] bg-[oklch(97%_0.003_240)]">
@@ -278,7 +278,7 @@ function ContractsTable({ contracts }: { contracts: Contract[] }) {
 These patterns are AI-default for B2B enterprise specifically. They supplement the global Sameness Score rubric. Each indicator present in the design adds +1 to the score.
 
 **PSI-BE-1: KPI card grid with trend arrows at the top of every dashboard**
-Four to six cards — each containing a large number, a label, and an upward green arrow with a percentage change — arranged in a uniform grid as the first row of the dashboard. AI tools generate this for every "enterprise dashboard" prompt. Real enterprise dashboards prioritize the data the specific role needs first, not a generic metrics row. The uniform-card KPI header is the enterprise equivalent of the consumer SaaS "How It Works" section.
+Four to six cards - each containing a large number, a label, and an upward green arrow with a percentage change - arranged in a uniform grid as the first row of the dashboard. AI tools generate this for every "enterprise dashboard" prompt. Real enterprise dashboards prioritize the data the specific role needs first, not a generic metrics row. The uniform-card KPI header is the enterprise equivalent of the consumer SaaS "How It Works" section.
 
 **PSI-BE-2: Color-only status differentiation in tables**
 Status badges that use only color (green dot = active, red dot = inactive, yellow dot = pending) without a text label, shape, or secondary indicator. AI tools default to color-coded dots because they're compact and visually organized. Enterprise tools must meet accessibility standards and work for colorblind users: every status must have a text label, and color is supplementary. A green dot alone is never sufficient.

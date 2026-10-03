@@ -9,9 +9,9 @@
 # Requires: node + npx (Node >= 18). tsc is downloaded via npx if not in PATH.
 #
 # Exit codes:
-#   0 — PASS (compiles cleanly)
-#   1 — FAIL (TypeScript errors found)
-#   2 — SKIP (no ```tsx block found)
+#   0 - PASS (compiles cleanly)
+#   1 - FAIL (TypeScript errors found)
+#   2 - SKIP (no ```tsx block found)
 
 set -uo pipefail
 
@@ -45,7 +45,7 @@ cp "$SCRIPT_DIR/tsconfig.render-check.json" "$TMPDIR/tsconfig.json"
 # Write shim file: minimal ambient declarations so tsc can resolve types
 # without any npm install. Covers the standard Shadcn/ui surface area used by kern.
 cat > "$TMPDIR/Component.tsx" <<'SHIM'
-// kern render-check shim — auto-generated, do not edit
+// kern render-check shim - auto-generated, do not edit
 
 // React ambient declaration (avoids needing @types/react installed)
 declare const React: {

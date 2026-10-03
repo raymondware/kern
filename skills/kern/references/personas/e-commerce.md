@@ -64,30 +64,30 @@ Derived entirely from brand, not from "what looks like e-commerce."
 
 Concrete Tailwind decisions that signal "e-commerce" identity.
 
-**1. Portrait product images — not square**
+**1. Portrait product images - not square**
 ```
-// Before (AI default — square aspect ratio)
+// Before (AI default - square aspect ratio)
 <img className="w-full aspect-square object-cover" />
 
-// After (E-Commerce — portrait format, more product visible)
+// After (E-Commerce - portrait format, more product visible)
 <img className="w-full aspect-[3/4] object-cover object-center" />
 ```
 
 **2. Add-to-cart as the highest-contrast element**
 ```
-// Before (AI default — standard blue or filled button)
+// Before (AI default - standard blue or filled button)
 <button className="bg-blue-600 text-white px-6 py-3 rounded-lg text-sm">Add to Cart</button>
 
-// After (E-Commerce — maximum contrast, tracked uppercase, full-width on mobile)
+// After (E-Commerce - maximum contrast, tracked uppercase, full-width on mobile)
 <button className="w-full bg-black text-white py-4 text-xs font-medium tracking-[0.15em] uppercase hover:bg-black/90">Add to Cart</button>
 ```
 
-**3. Category/brand labels in small tracked caps — not plain text**
+**3. Category/brand labels in small tracked caps - not plain text**
 ```
-// Before (AI default — regular small text label)
+// Before (AI default - regular small text label)
 <span className="text-sm text-gray-500">Running Shoes</span>
 
-// After (E-Commerce — brand-register label, DTC aesthetic)
+// After (E-Commerce - brand-register label, DTC aesthetic)
 <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-gray-400">Running Shoes</span>
 ```
 
@@ -121,11 +121,11 @@ The product card is the primary unit of e-commerce collection pages. It is also 
 
 ### What a DTC collection card must have
 
-1. **Portrait aspect ratio** — 3:4 or 4:5, never square. Products, especially apparel and leather goods, are photographed in portrait. Square crops are a template signal.
-2. **Outcome-focused CTA copy** — "Add to Bag" or "Add to Leather Goods Bag" for Forge, not "Add to Cart" or "Buy Now". The CTA should match brand voice, not the default WooCommerce label.
-3. **No image overlay decorations** — no badge overlays (sale, bestseller, new) directly on the product image. If a badge exists, it renders as text below the image. Clean image area is non-negotiable for premium DTC.
-4. **Tracked-caps category/brand label** — not a plain `text-sm text-gray-500` label. DTC brands use `text-[10px] tracking-[0.12em] uppercase` for category metadata.
-5. **Price visibility** — price must be scannable on initial render, not hidden behind hover state.
+1. **Portrait aspect ratio** - 3:4 or 4:5, never square. Products, especially apparel and leather goods, are photographed in portrait. Square crops are a template signal.
+2. **Outcome-focused CTA copy** - "Add to Bag" or "Add to Leather Goods Bag" for Forge, not "Add to Cart" or "Buy Now". The CTA should match brand voice, not the default WooCommerce label.
+3. **No image overlay decorations** - no badge overlays (sale, bestseller, new) directly on the product image. If a badge exists, it renders as text below the image. Clean image area is non-negotiable for premium DTC.
+4. **Tracked-caps category/brand label** - not a plain `text-sm text-gray-500` label. DTC brands use `text-[10px] tracking-[0.12em] uppercase` for category metadata.
+5. **Price visibility** - price must be scannable on initial render, not hidden behind hover state.
 
 ### TSX signature
 
@@ -135,14 +135,14 @@ The product card is the primary unit of e-commerce collection pages. It is also 
 // outcome CTA, hover-reveal add action, serif name for heritage register
 
 <article className="group cursor-pointer">
-  {/* Image — portrait 3:4, absolutely no overlay badges or buttons */}
+  {/* Image - portrait 3:4, absolutely no overlay badges or buttons */}
   <div className="relative overflow-hidden bg-stone-100">
     <img
       src={product.image}
       alt={product.name}
       className="w-full aspect-[3/4] object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
     />
-    {/* Hover-reveal action — flush to bottom, never an overlay badge */}
+    {/* Hover-reveal action - flush to bottom, never an overlay badge */}
     <div className="absolute bottom-0 inset-x-0 translate-y-full group-hover:translate-y-0 transition-transform duration-200">
       <button className="w-full bg-stone-900/90 backdrop-blur-sm text-white py-3 text-[11px] font-medium tracking-[0.1em] uppercase">
         Add to Bag
@@ -150,19 +150,19 @@ The product card is the primary unit of e-commerce collection pages. It is also 
     </div>
   </div>
 
-  {/* Info — flush, no card border, vertical rhythm tight */}
+  {/* Info - flush, no card border, vertical rhythm tight */}
   <div className="pt-3 space-y-0.5">
-    {/* Category — tracked caps, not plain text */}
+    {/* Category - tracked caps, not plain text */}
     <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-stone-400">
       {product.category}
     </p>
 
-    {/* Product name — weight-400, let the typography do the work */}
+    {/* Product name - weight-400, let the typography do the work */}
     <h3 className="text-sm font-normal text-stone-900 leading-snug">
       {product.name}
     </h3>
 
-    {/* Price — clear, no strikethrough unless genuinely on sale */}
+    {/* Price - clear, no strikethrough unless genuinely on sale */}
     <p className="text-sm text-stone-700">
       ${product.price}
     </p>

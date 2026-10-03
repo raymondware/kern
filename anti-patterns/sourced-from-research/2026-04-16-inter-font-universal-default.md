@@ -29,8 +29,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 /* This -- deliberate pairing with typographic purpose */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@400;500&display=swap');
 :root {
-  --font-display: 'Fraunces', Georgia, serif;  /* headlines — warm editorial authority */
-  --font-body: 'DM Sans', system-ui, sans-serif; /* body — clean but friendlier than Inter */
+  --font-display: 'Fraunces', Georgia, serif;  /* headlines - warm editorial authority */
+  --font-body: 'DM Sans', system-ui, sans-serif; /* body - clean but friendlier than Inter */
 }
 ```
 

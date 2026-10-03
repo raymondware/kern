@@ -107,7 +107,7 @@ How does the persona approach accent color?
 ## How to Extract Signals
 
 1. Read each persona file fully.
-2. For each of the 6 dimensions, assign exactly ONE signal per persona. Use the persona's explicit guidance. If ambiguous, use the weaker signal (the one that maximizes overlap with adjacent personas) — the conservative read.
+2. For each of the 6 dimensions, assign exactly ONE signal per persona. Use the persona's explicit guidance. If ambiguous, use the weaker signal (the one that maximizes overlap with adjacent personas) - the conservative read.
 3. Record your extraction in a signal table.
 
 ---
@@ -118,9 +118,9 @@ For each pair of personas (10 pairs total), count the number of dimensions where
 
 | Overlap count | Rating |
 |--------------|--------|
-| 0–1 | Distinct — will produce structurally different output |
-| 2 | Caution — review those dimensions in generation instructions |
-| 3+ | At risk — these personas may produce structurally similar output |
+| 0–1 | Distinct - will produce structurally different output |
+| 2 | Caution - review those dimensions in generation instructions |
+| 3+ | At risk - these personas may produce structurally similar output |
 
 A pair is **at risk** when 3+ dimensions share the same signal.
 
@@ -167,11 +167,11 @@ If none: "No at-risk pairs. All personas are structurally distinct on 4+ of 6 di
 
 ### Verdict
 
-PASS — All pairs have overlap < 3/6. Personas are defined with sufficient structural divergence.
+PASS - All pairs have overlap < 3/6. Personas are defined with sufficient structural divergence.
 
 or
 
-FLAG — {N} pair(s) at risk. Shared dimensions: [list]. Persona files that may need reinforcement: [list].
+FLAG - {N} pair(s) at risk. Shared dimensions: [list]. Persona files that may need reinforcement: [list].
 
 ### Recommendations (only if FLAG)
 
@@ -183,7 +183,7 @@ FLAG — {N} pair(s) at risk. Shared dimensions: [list]. Persona files that may 
 ## Rules
 
 - Assign exactly one signal per dimension per persona. No "both X and Y."
-- A persona CAN share a dimension signal with another without that being a failure — only 3+ shared dimensions across the pair triggers "at risk."
+- A persona CAN share a dimension signal with another without that being a failure - only 3+ shared dimensions across the pair triggers "at risk."
 - Do not normalize or average. A mismatch in ONE dimension (e.g., font category) can be enough to produce a structurally distinct output at generation time, even if other dimensions are shared.
 - Do not read the generated output from any validation runs. Your input is the persona definition files only.
 - If a persona file is missing or unreadable, report `BLOCKED: <reason>` and stop.

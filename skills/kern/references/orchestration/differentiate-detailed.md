@@ -123,7 +123,7 @@ One worked example per tool. Each shows: identified tells → surgical changes �
 
 **Input:** Standard v0-generated landing page with centered hero, purple gradient, "Get Started" CTA, 3 feature cards.
 
-**Identified tells (Sameness Score: 9/10):**
+**Identified tells (Sameness Score: 90/100):**
 - Centered hero + radial gradient background: +2
 - Gradient text on headline: +1
 - Inter font, no explicit choice: +1
@@ -162,7 +162,7 @@ TO: 3-item list with numbered anchors and varied content lengths
 REASON: Identical card grid is the most common AI template pattern.
 ```
 
-**Sameness Score: 9/10 → 2/10**
+**Sameness Score: 90/100 → 20/100**
 
 ---
 
@@ -170,7 +170,7 @@ REASON: Identical card grid is the most common AI template pattern.
 
 **Input:** Lovable-generated onboarding hero for a habit-tracking app. Warm emerald gradient section, Framer Motion on every element, "Elevate Your Daily Routine" headline, emoji feature icons.
 
-**Identified tells (Sameness Score: 8/10):**
+**Identified tells (Sameness Score: 80/100):**
 - Warm gradient background section (emerald/teal): +1
 - Centered hero + CTA: +1
 - Gradient text on headline: +1
@@ -229,7 +229,7 @@ REASON: Warm gradient background is a Lovable default. -1
 
 CHANGE: Remove Framer Motion from static content
 FROM: motion.div with initial/animate entrance on hero
-TO: plain div — motion is for state transitions, not page load
+TO: plain div - motion is for state transitions, not page load
 REASON: Entrance animation on static content is a Lovable/consumer tell.
 
 CHANGE: Hero layout
@@ -239,7 +239,7 @@ REASON: Centered hero -1.
 
 CHANGE: Headline
 FROM: "Elevate Your Daily Routine" (gradient text, marketing verb)
-TO: "Miss a day? Tide shows you why — and resets the streak gently."
+TO: "Miss a day? Tide shows you why - and resets the streak gently."
 REASON: Gradient text -1. Marketing verb -1. Replaced with specific product behavior.
 
 CHANGE: CTA
@@ -259,7 +259,7 @@ REASON: Glassmorphism on gradient = compound Lovable tell. -1
 ```
 
 ```tsx
-// AFTER (differentiated — consumer-saas persona)
+// AFTER (differentiated - consumer-saas persona)
 <section className="bg-white dark:bg-zinc-950 border-b border-zinc-100
                     dark:border-zinc-900 py-20 px-8">
   <div className="max-w-2xl flex flex-col gap-4">
@@ -268,7 +268,7 @@ REASON: Glassmorphism on gradient = compound Lovable tell. -1
     </p>
     <h1 className="text-4xl font-semibold text-zinc-900 dark:text-zinc-100
                    leading-tight">
-      Miss a day? Tide shows you why — and resets the streak gently.
+      Miss a day? Tide shows you why - and resets the streak gently.
     </h1>
     <p className="text-base text-zinc-500 max-w-md">
       Designed for one habit at a time. Not a dashboard for your ambitions.
@@ -284,7 +284,7 @@ REASON: Glassmorphism on gradient = compound Lovable tell. -1
       { Icon: TargetIcon, title: "One habit at a time",
         desc: "Tide is not a goal tracker. Pick one thing." },
       { Icon: FlameIcon, title: "Streak recovery, not streak anxiety",
-        desc: "Miss a day — Tide asks what got in the way." },
+        desc: "Miss a day - Tide asks what got in the way." },
       { Icon: CheckIcon, title: "Private by default",
         desc: "No social feed. No badges. Just you and your habit." },
     ].map((f, i) => (
@@ -304,7 +304,7 @@ REASON: Glassmorphism on gradient = compound Lovable tell. -1
 </section>
 ```
 
-**Sameness Score: 8/10 → 2/10**
+**Sameness Score: 80/100 → 20/100**
 
 ---
 
@@ -312,7 +312,7 @@ REASON: Glassmorphism on gradient = compound Lovable tell. -1
 
 **Input:** Bolt.new-generated dashboard hero for a fintech analytics platform. Cyan-purple gradient CTA, animated blur orbs behind the headline, background dot-grid pattern, "Start Building Free" CTA.
 
-**Identified tells (Sameness Score: 9/10):**
+**Identified tells (Sameness Score: 90/100):**
 - Radial gradient orbs (animated): +2 (hero glow + radial gradient)
 - Cyan-to-purple gradient button: +1
 - Background grid pattern: +1
@@ -377,7 +377,7 @@ REASON: AI-prefix badge is a Bolt.new tell. Enterprise buyers read it as vapor.
 ```
 
 ```tsx
-// AFTER (differentiated — b2b-enterprise persona)
+// AFTER (differentiated - b2b-enterprise persona)
 <div className="min-h-screen bg-zinc-950">
   <div className="max-w-6xl mx-auto px-8 py-20">
     <div className="grid grid-cols-2 gap-16 items-start">
@@ -392,7 +392,7 @@ REASON: AI-prefix badge is a Bolt.new tell. Enterprise buyers read it as vapor.
         </h1>
         <p className="text-zinc-400 text-base leading-relaxed">
           Built for legal ops teams at Series B–D companies.
-          Not a document store — a workflow system.
+          Not a document store - a workflow system.
         </p>
         <div className="flex gap-3">
           <Button className="rounded-md bg-white text-zinc-950
@@ -429,7 +429,7 @@ REASON: AI-prefix badge is a Bolt.new tell. Enterprise buyers read it as vapor.
 </div>
 ```
 
-**Sameness Score: 9/10 → 1/10**
+**Sameness Score: 90/100 → 10/100**
 
 ---
 
@@ -437,7 +437,7 @@ REASON: AI-prefix badge is a Bolt.new tell. Enterprise buyers read it as vapor.
 
 **Input:** Cursor Composer-generated marketing page for a developer monitoring tool. Split-pane layout on a marketing page, AI-prefixed feature list, uniform thin zinc borders throughout, text-primary defaulting to indigo.
 
-**Identified tells (Sameness Score: 6/10):**
+**Identified tells (Sameness Score: 60/100):**
 - Centered hero + CTA: +1
 - Inter / default font (text-primary resolves to indigo): +1
 - Split-pane layout on marketing page: structural tell
@@ -520,7 +520,7 @@ REASON: No active-state distinction signals incomplete design.
 ```
 
 ```tsx
-// AFTER (differentiated — developer-tool persona)
+// AFTER (differentiated - developer-tool persona)
 // globals.css: --primary: 24 24 27; (zinc-900)
 
 <div className="max-w-4xl mx-auto px-8 py-16">
@@ -566,4 +566,4 @@ REASON: No active-state distinction signals incomplete design.
 </div>
 ```
 
-**Sameness Score: 6/10 → 1/10**
+**Sameness Score: 60/100 → 10/100**

@@ -69,30 +69,30 @@ Status colors: muted, never neon. Differentiate by shape and label first, color 
 
 Concrete Tailwind decisions that signal "developer tool" identity. Use these when kern generates code for this persona.
 
-**1. Dense row sizing — not card padding**
+**1. Dense row sizing - not card padding**
 ```
-// Before (AI default — card-padded, too loose)
+// Before (AI default - card-padded, too loose)
 <tr className="py-4 px-6 text-sm">
 
-// After (Developer Tool — tight rows, mono data)
+// After (Developer Tool - tight rows, mono data)
 <tr className="py-2 px-3 text-[13px] font-mono">
 ```
 
 **2. Cool-dark borders, not generic gray**
 ```
-// Before (AI default — bright gray border)
+// Before (AI default - bright gray border)
 <div className="border border-gray-700 rounded-lg">
 
-// After (Developer Tool — barely-there cool tint)
+// After (Developer Tool - barely-there cool tint)
 <div className="border border-white/[0.06] rounded">
 ```
 
 **3. Muted accent, not electric blue**
 ```
-// Before (AI default — saturated Tailwind blue)
+// Before (AI default - saturated Tailwind blue)
 <button className="bg-blue-500 hover:bg-blue-600 text-white">
 
-// After (Developer Tool — muted, high-trust)
+// After (Developer Tool - muted, high-trust)
 <button className="bg-[oklch(42%_0.06_220)] hover:bg-[oklch(50%_0.07_220)] text-white">
 ```
 
@@ -100,7 +100,7 @@ Concrete Tailwind decisions that signal "developer tool" identity. Use these whe
 
 ## Hero Section Patterns
 
-The hero section for a developer tool is the highest-risk surface for AI defaults. It is a marketing page component, but it must signal "designed for engineers" — not "designed to appeal to a generic tech buyer." These prescriptions apply whenever the brief includes "hero", "landing", "marketing page", or "homepage" for a developer tool.
+The hero section for a developer tool is the highest-risk surface for AI defaults. It is a marketing page component, but it must signal "designed for engineers" - not "designed to appeal to a generic tech buyer." These prescriptions apply whenever the brief includes "hero", "landing", "marketing page", or "homepage" for a developer tool.
 
 ### The left-aligned status rule
 
@@ -108,22 +108,22 @@ Never center the headline and CTA. Centering is a consumer/marketing default. De
 
 The hero layout has two columns:
 - Left: product claim (short, precise) + primary action + credibility signal
-- Right: the actual interface — a real screenshot or a data surface. NOT a glowing terminal mock.
+- Right: the actual interface - a real screenshot or a data surface. NOT a glowing terminal mock.
 
 ### What NOT to do (AI defaults that add to Sameness Score)
 
-- **Centered headline + CTA** — the first AI default for any SaaS hero; wrong for a technical audience
-- **"Ship faster" or "Move fast" headline copy** — developer tool marketing cliché; say what the product actually does
-- **Floating terminal screenshot with glowing border** — see PSI-DT-1; real tools show real UI, not promotional mocks
-- **Three-column icon grid below the hero** — feature list by icon count is the lowest-trust way to convey capability
-- **Purple/blue/cyan gradient background** — see anti-patterns/visual.md; signals AI generation immediately
-- **Radial glow behind the headline** — decorative, says nothing about the product
-- **KPI cards showing zeros** — show demo data, not "Get started to see metrics"
+- **Centered headline + CTA** - the first AI default for any SaaS hero; wrong for a technical audience
+- **"Ship faster" or "Move fast" headline copy** - developer tool marketing cliché; say what the product actually does
+- **Floating terminal screenshot with glowing border** - see PSI-DT-1; real tools show real UI, not promotional mocks
+- **Three-column icon grid below the hero** - feature list by icon count is the lowest-trust way to convey capability
+- **Purple/blue/cyan gradient background** - see anti-patterns/visual.md; signals AI generation immediately
+- **Radial glow behind the headline** - decorative, says nothing about the product
+- **KPI cards showing zeros** - show demo data, not "Get started to see metrics"
 
 ### TSX signature: left-aligned status hero
 
 ```tsx
-// Before (AI default — centered, gradient, glowing mock, "Ship faster")
+// Before (AI default - centered, gradient, glowing mock, "Ship faster")
 <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center text-center">
   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(139,92,246,0.3)_0%,_transparent_70%)]" />
   <div className="relative z-10 max-w-4xl mx-auto px-4">
@@ -138,13 +138,13 @@ The hero layout has two columns:
   </div>
 </section>
 
-// After (developer-tool — left-aligned, dark, operational data in the right column)
+// After (developer-tool - left-aligned, dark, operational data in the right column)
 <section className="bg-[oklch(9%_0.008_220)] min-h-screen flex items-center">
   <div className="max-w-6xl mx-auto px-8 grid grid-cols-2 gap-16 items-center">
 
     {/* Left: claim + action + credibility */}
     <div>
-      {/* Status badge — shows the product is already working */}
+      {/* Status badge - shows the product is already working */}
       <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded border border-[oklch(22%_0.012_220)] bg-[oklch(13%_0.009_220)]">
         <span className="w-1.5 h-1.5 rounded-full bg-[oklch(65%_0.15_142)]" />
         <span className="text-[11px] font-mono text-[oklch(52%_0.018_220)]">3,241 pipelines observed today</span>
@@ -156,7 +156,7 @@ The hero layout has two columns:
       </h1>
 
       <p className="mt-4 text-[oklch(52%_0.018_220)] text-[15px] leading-relaxed max-w-sm">
-        Drift correlates deploy events, log streams, and alert signals into a single timeline — no dashboards to configure.
+        Drift correlates deploy events, log streams, and alert signals into a single timeline - no dashboards to configure.
       </p>
 
       <div className="mt-8 flex items-center gap-4">
@@ -177,7 +177,7 @@ The hero layout has two columns:
       </p>
     </div>
 
-    {/* Right: actual data surface — not a glowing mock */}
+    {/* Right: actual data surface - not a glowing mock */}
     <div className="rounded border border-[oklch(22%_0.012_220)] bg-[oklch(13%_0.009_220)] overflow-hidden">
       {/* Header bar */}
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-[oklch(22%_0.012_220)]">
@@ -185,13 +185,13 @@ The hero layout has two columns:
         <span className="text-[11px] font-mono text-[oklch(65%_0.15_142)]">● all systems nominal</span>
       </div>
 
-      {/* Pipeline rows — data table, not cards */}
+      {/* Pipeline rows - data table, not cards */}
       {[
         { pipeline: "deploy/production", duration: "2m 14s", status: "pass", sha: "a3f9c1e", ts: "4m ago" },
         { pipeline: "test/integration",  duration: "4m 02s", status: "pass", sha: "a3f9c1e", ts: "4m ago" },
         { pipeline: "deploy/staging",    duration: "1m 55s", status: "pass", sha: "b7d2a0f", ts: "18m ago" },
         { pipeline: "test/unit",         duration: "38s",    status: "pass", sha: "b7d2a0f", ts: "18m ago" },
-        { pipeline: "deploy/production", duration: "—",      status: "fail", sha: "c1e8b3d", ts: "2h ago" },
+        { pipeline: "deploy/production", duration: "-",      status: "fail", sha: "c1e8b3d", ts: "2h ago" },
       ].map((row, i) => (
         <div
           key={i}
@@ -211,7 +211,7 @@ The hero layout has two columns:
 </section>
 ```
 
-**Why this works:** Left alignment signals "app, not marketing." The status badge shows live operational context before the user reads a word. The right column is a data table — the thing the product actually does — not a screenshot of a terminal inside a glowing card. Credibility is specific (named companies) not generic ("10,000 teams"). Font choices: Geist Sans for UI, mono for all data values.
+**Why this works:** Left alignment signals "app, not marketing." The status badge shows live operational context before the user reads a word. The right column is a data table - the thing the product actually does - not a screenshot of a terminal inside a glowing card. Credibility is specific (named companies) not generic ("10,000 teams"). Font choices: Geist Sans for UI, mono for all data values.
 
 ---
 

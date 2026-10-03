@@ -46,15 +46,15 @@ Produce a side-by-side analysis:
 - [list visual decisions that match: same color approach, same font choice, same spacing rhythm]
 
 ### Sameness Score
-- Design A: {n}/10
-- Design B: {n}/10
-- Overlap score: {n}/10 (how much the two designs resemble each other)
+- Design A: {n}/100
+- Design B: {n}/100
+- Overlap score: {n}/100 (how much the two designs resemble each other)
 
 ### Verdict
 [One paragraph: are these two designs meaningfully different? If not, what specific changes would differentiate them?]
 ```
 
-An **Overlap Score** above 6/10 means: these two designs will be perceived as variations of the same thing, not as two different products. Run `/kern differentiate` on at least one of them.
+An **Overlap Score** above 60/100 means: these two designs will be perceived as variations of the same thing, not as two different products. Run `/kern differentiate` on at least one of them.
 
 ### Option B: Single Design vs AI Baseline
 
@@ -69,7 +69,7 @@ Compare the design against the known AI-default patterns:
 ### Departures From Default
 - [list elements where an intentional decision was made that deviates from AI defaults]
 
-### Sameness Score: {n}/10
+### Sameness Score: {n}/100
 {Explanation}
 
 ### Assessment
@@ -128,7 +128,7 @@ One worked example per mode. Each shows realistic input context and the full com
 
 ---
 
-### Example: Mode A — Two Designs Against Each Other
+### Example: Mode A - Two Designs Against Each Other
 
 **Scenario:** Two kern-generated designs for different personas. Design A: consumer-saas pricing page (Tide, habit-tracking app). Design B: b2b-enterprise data table (Counterpart, contract lifecycle management).
 
@@ -138,13 +138,13 @@ One worked example per mode. Each shows realistic input context and the full com
 ## Comparison: Design A vs Design B
 
 ### Sameness Scores
-- Design A: 2/10 — indicators: none in rubric (warm palette, left-aligned layout, specific CTA)
-- Design B: 1/10 — indicators: none (tabular, dense, domain language throughout)
+- Design A: 20/100 - indicators: none in rubric (warm palette, left-aligned layout, specific CTA)
+- Design B: 10/100 - indicators: none (tabular, dense, domain language throughout)
 
-### Overlap Score: 2/10
+### Overlap Score: 20/100
 Layout 0/1 (pricing cards vs data table). Components 0/1 (tier card vs row + actions).
 Copy 0/1 (warm/personal vs formal/functional). Color 0/1 (rose/warm-purple vs
-institutional blue-gray). Font 1/1 (both Inter — different intent, not a shared default).
+institutional blue-gray). Font 1/1 (both Inter - different intent, not a shared default).
 Spacing 0/1 (generous whitespace vs compact 13px rows). Score: 1/6 × 10 = 2.
 
 ### Structural Similarities
@@ -164,7 +164,7 @@ Spacing 0/1 (generous whitespace vs compact 13px rows). Score: 1/6 × 10 = 2.
   functional ("Export selected", "New contract", "Archive").
 
 ### Verdict
-These two designs are meaningfully different. Overlap Score 2/10 is well below the 6/10
+These two designs are meaningfully different. Overlap Score 20/100 is well below the 60/100
 concern threshold. The divergence is structural, not cosmetic: consumer-saas requires
 warmth and forward progression; b2b-enterprise requires density and domain specificity.
 No differentiation work needed on either design.
@@ -172,7 +172,7 @@ No differentiation work needed on either design.
 
 ---
 
-### Example: Mode B — Single Design vs AI Baseline
+### Example: Mode B - Single Design vs AI Baseline
 
 **Scenario:** A v0-generated pricing page for a developer observability tool. Key patterns in the input:
 - `bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600` on the headline
@@ -185,25 +185,25 @@ No differentiation work needed on either design.
 **Output:**
 
 ```markdown
-## AI Baseline Comparison: Pricing Page — developer-tool
+## AI Baseline Comparison: Pricing Page - developer-tool
 
 ### Matches AI Default
-- Gradient headline (`bg-clip-text text-transparent`): matches v0 default — gradient text
+- Gradient headline (`bg-clip-text text-transparent`): matches v0 default - gradient text
   on hero/section headline
-- Three identical `rounded-2xl shadow-md` cards: matches v0 default — uniform card grid
-- "Get Started" CTA: matches v0/Lovable default — vague verb CTA, not action-specific
-- Floating "Most Popular" badge on middle card: matches v0 default — badge near
+- Three identical `rounded-2xl shadow-md` cards: matches v0 default - uniform card grid
+- "Get Started" CTA: matches v0/Lovable default - vague verb CTA, not action-specific
+- Floating "Most Popular" badge on middle card: matches v0 default - badge near
   card header
-- Gradient CTA button (purple → indigo): matches v0 default — gradient on primary action
+- Gradient CTA button (purple → indigo): matches v0 default - gradient on primary action
 - Inter with no explicit import or font decision: matches v0/generic default
 
 ### Departures From Default
-- Pricing is annual-only with a monthly/annual toggle — intentional product constraint,
+- Pricing is annual-only with a monthly/annual toggle - intentional product constraint,
   not AI-default behavior
 - Card copy names specific developer use cases ("up to 5 services", "unlimited pipelines")
-  rather than generic feature labels — a design tool would not invent those terms
+  rather than generic feature labels - a design tool would not invent those terms
 
-### Sameness Score: 7/10
+### Sameness Score: 70/100
 Six rubric indicators hit: purple/blue gradient (headline + CTA button = +2), centered
 hero with CTA (+1), identical 3-card feature grid (+1), floating badge (+1), Inter
 default (+1), gradient text (+1). Score of 7 is the no-ship threshold.
@@ -211,7 +211,7 @@ default (+1), gradient text (+1). Score of 7 is the no-ship threshold.
 ### Assessment
 The compound gradient stack (headline + CTA button + card border all purple/indigo
 gradient) is the primary v0 fingerprint here. Removing gradients alone drops the score
-to approximately 4/10. The developer-specific copy ("unlimited pipelines") is the
+to approximately 40/100. The developer-specific copy ("unlimited pipelines") is the
 strongest existing differentiator and worth preserving. Run `/kern differentiate` to
 target the gradient stack first; restructure the card grid second.
 ```
@@ -236,17 +236,17 @@ Persona (optional, for context): {PERSONA or "unknown"}
 
 Follow these steps in order.
 
-Step 1 — Load designs:
+Step 1 - Load designs:
   Read {DESIGN_A_PATH} and extract the TSX code block (under "Generated TSX").
   Read {DESIGN_B_PATH} and extract the TSX code block.
   Label them Design A and Design B internally.
 
-Step 2 — Score each design independently:
+Step 2 - Score each design independently:
   Read ${CLAUDE_PLUGIN_ROOT}/agents/design-critic.md.
   Apply the Sameness Score rubric to Design A. Record score + indicators hit.
   Apply the Sameness Score rubric to Design B. Record score + indicators hit.
 
-Step 3 — Compute Overlap Score:
+Step 3 - Compute Overlap Score:
   Compare the two designs on these 6 dimensions. Score 0-1 per dimension (1 = identical):
     1. Layout pattern (same structural arrangement of elements?)
     2. Component types (same set of UI components in same positions?)
@@ -254,18 +254,18 @@ Step 3 — Compute Overlap Score:
     4. Color approach (same palette family or same use of color?)
     5. Font choice (same typeface family or weight strategy?)
     6. Spacing rhythm (same density, same section spacing?)
-  Overlap Score = sum / 6 * 10 (rounds to nearest integer, 0-10).
+  Overlap Score = sum / 6 * 100 (rounds to nearest integer, 0-100).
 
-Step 4 — Save output to {OUTPUT_PATH}:
+Step 4 - Save output to {OUTPUT_PATH}:
   Write a single markdown file with this structure:
 
   ## Comparison: Design A vs Design B
 
   ### Sameness Scores
-  - Design A: {n}/10 — indicators: {list}
-  - Design B: {n}/10 — indicators: {list}
+  - Design A: {n}/100 - indicators: {list}
+  - Design B: {n}/100 - indicators: {list}
 
-  ### Overlap Score: {n}/10
+  ### Overlap Score: {n}/100
   {One sentence: dimension-by-dimension breakdown}
 
   ### Structural Similarities
@@ -275,7 +275,7 @@ Step 4 — Save output to {OUTPUT_PATH}:
   - {element where the two designs diverge}
 
   ### Verdict
-  {One paragraph: are these meaningfully different? If Overlap Score > 6, name the specific changes needed.}
+  {One paragraph: are these meaningfully different? If Overlap Score > 60, name the specific changes needed.}
 ```
 
 ### Mode B: Single Design vs AI Baseline
@@ -291,31 +291,31 @@ Persona: {PERSONA}
 
 Follow these steps in order.
 
-Step 1 — Load design:
+Step 1 - Load design:
   Read {DESIGN_PATH} and extract the TSX code block (under "Generated TSX").
 
-Step 2 — Score against AI baseline:
+Step 2 - Score against AI baseline:
   Read ${CLAUDE_PLUGIN_ROOT}/agents/design-critic.md.
   Apply the Sameness Score rubric. For each indicator hit, identify which AI tool it matches
   (v0, Lovable, Bolt.new, Cursor Composer, or Generic AI).
   Read ${CLAUDE_PLUGIN_ROOT}/references/ai-fingerprints.md for precise tool fingerprints.
 
-Step 3 — Identify departures:
+Step 3 - Identify departures:
   For each design decision that does NOT match an AI default, note it explicitly.
   A "departure" is any choice a naive AI tool would not make for this component type and persona.
 
-Step 4 — Save output to {OUTPUT_PATH}:
+Step 4 - Save output to {OUTPUT_PATH}:
   Write a single markdown file with this structure:
 
-  ## AI Baseline Comparison: {component name} — {persona}
+  ## AI Baseline Comparison: {component name} - {persona}
 
   ### Matches AI Default
-  - {element}: matches {tool name} default — {specific pattern}
+  - {element}: matches {tool name} default - {specific pattern}
 
   ### Departures From Default
   - {element}: {why this is a non-default choice}
 
-  ### Sameness Score: {n}/10
+  ### Sameness Score: {n}/100
   {One sentence explanation}
 
   ### Assessment
@@ -330,4 +330,4 @@ After the compare subagent completes:
 2. An optional `external-judge` subagent can re-score Design A or B independently using `${CLAUDE_PLUGIN_ROOT}/agents/external-judge.md` if the sameness scores seem inconsistent.
 3. Results are recorded in the harness's results file alongside the source design paths.
 
-Regression threshold: an Overlap Score ≥ 7 between two designs that were supposed to be different personas means the differentiation workflow failed. Flag for human review.
+Regression threshold: an Overlap Score ≥ 70 between two designs that were supposed to be different personas means the differentiation workflow failed. Flag for human review.

@@ -69,7 +69,7 @@ Examples:
 
 **Why it fails**: Motivational empty states tell the user what they don't have instead of showing them what they could have. They're also condescending -- the user knows the space is empty, they're using the product for the first time. The job of an empty state is to demonstrate value and lower the barrier to the first action, not to cheerlead.
 
-_Community: "AI generates the perfect happy path every time. No loading state, no empty state, no error state. Ship it and users see blank screens when the API is slow. Every. Single. Time." — r/webdev. "The AI optimizes for the demo screenshot, not the shipped product." — Hacker News_
+_Community: "AI generates the perfect happy path every time. No loading state, no empty state, no error state. Ship it and users see blank screens when the API is slow. Every. Single. Time." - r/webdev. "The AI optimizes for the demo screenshot, not the shipped product." - Hacker News_
 
 **Fix**: Show sample data by default if the product supports it. This is what Linear, Notion, and most well-designed tools do -- the first time you open them, there's already something there. If sample data isn't appropriate, the empty state should be: a description of what appears here + one clear CTA.
 

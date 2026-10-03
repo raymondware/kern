@@ -9,7 +9,7 @@ Each pattern includes: what to look for, a before (tool default) snippet, an aft
 ## How to Use
 
 1. Scan the submitted code against each tool's section.
-2. Count pattern hits per tool — the tool with the most matches is the likely generator.
+2. Count pattern hits per tool - the tool with the most matches is the likely generator.
 3. Apply the "After" replacements for that tool's hits first.
 4. Cross-check remaining tells against `anti-patterns/visual.md`.
 
@@ -171,10 +171,10 @@ v0 defaults to a violet/indigo palette, centered hero with radial glow, Inter fo
 **Signal:** No explicit font import in the component or root layout. The default Next.js `next/font/google` import is `Inter`.
 
 ```tsx
-// BEFORE (v0 default — no font decision, Inter is just there)
+// BEFORE (v0 default - no font decision, Inter is just there)
 // In layout.tsx: const inter = Inter({ subsets: ['latin'] })
 
-// AFTER (differentiated — explicit font decision tied to persona)
+// AFTER (differentiated - explicit font decision tied to persona)
 // developer-tool: Geist Sans + Geist Mono
 // consumer-saas: Plus Jakarta Sans
 // b2b-enterprise: IBM Plex Sans
@@ -199,9 +199,9 @@ Lovable (formerly GPT Engineer) favors warmer, rounder, more consumer-friendly a
 import { Poppins } from 'next/font/google'
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700', '800'] })
 
-// AFTER (differentiated — match persona)
+// AFTER (differentiated - match persona)
 // Replace with persona-appropriate font choice. See references/fonts.md.
-// The issue is not the font itself — it's using a rounded display font as the default
+// The issue is not the font itself - it's using a rounded display font as the default
 // without a reason tied to product character.
 ```
 
@@ -268,7 +268,7 @@ const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700', '800
 
 // AFTER (differentiated)
 // Replace with a specific, concrete claim. What does the product actually do?
-<h1>Ship features your users asked for — in days, not quarters.</h1>
+<h1>Ship features your users asked for - in days, not quarters.</h1>
 ```
 
 **Sameness Score impact:** −1 (marketing verb + generic value prop).
@@ -325,7 +325,7 @@ const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700', '800
 
 ## Bolt.new (StackBlitz)
 
-Bolt.new produces a "tech startup circa 2024" aesthetic: cyan-purple neon palette, background grid patterns, glassmorphism, and glow effects. It is visually aggressive — high contrast, high saturation, high decoration.
+Bolt.new produces a "tech startup circa 2024" aesthetic: cyan-purple neon palette, background grid patterns, glassmorphism, and glow effects. It is visually aggressive - high contrast, high saturation, high decoration.
 
 ### bolt-1: Cyan-to-purple gradient as primary action color
 
@@ -466,7 +466,7 @@ Bolt.new produces a "tech startup circa 2024" aesthetic: cyan-purple neon palett
 
 ## Cursor Composer
 
-Cursor Composer produces more developer-oriented designs than the others — closer to correct but with recognizable tells. It defaults to dark mode zinc palettes, dense layouts, and occasionally includes IDE-like split-pane structures. The biggest tells are AI-prefixed feature names, heavy use of Markdown-rendered code blocks in hero sections, and thin borders used uniformly throughout.
+Cursor Composer produces more developer-oriented designs than the others - closer to correct but with recognizable tells. It defaults to dark mode zinc palettes, dense layouts, and occasionally includes IDE-like split-pane structures. The biggest tells are AI-prefixed feature names, heavy use of Markdown-rendered code blocks in hero sections, and thin borders used uniformly throughout.
 
 ### cursor-1: AI-prefixed feature names everywhere
 
@@ -510,7 +510,7 @@ Cursor Composer produces more developer-oriented designs than the others — clo
   <Button>Try Cursor</Button>
 </section>
 
-// AFTER (differentiated — developer-tool persona)
+// AFTER (differentiated - developer-tool persona)
 <section className="py-16 px-8 max-w-4xl">
   <div className="flex gap-4 items-start mb-6">
     <span className="font-mono text-xs text-zinc-500 mt-1.5">→</span>
@@ -537,19 +537,19 @@ Cursor Composer produces more developer-oriented designs than the others — clo
 
 ### cursor-3: Uniform thin zinc borders
 
-**Signal:** `border border-zinc-700/50` or `border-zinc-800` applied to every container at the same weight — cards, inputs, code blocks, feature sections — with no visual hierarchy through border variation.
+**Signal:** `border border-zinc-700/50` or `border-zinc-800` applied to every container at the same weight - cards, inputs, code blocks, feature sections - with no visual hierarchy through border variation.
 
 ```tsx
-// BEFORE (Cursor default — all same weight)
+// BEFORE (Cursor default - all same weight)
 <div className="border border-zinc-800 rounded-lg p-6">
   <div className="border border-zinc-800 rounded p-3 mb-4">  {/* nested same weight */}
     <input className="border border-zinc-800 rounded px-3 py-2 bg-zinc-900" />
   </div>
 </div>
 
-// AFTER (differentiated — border hierarchy)
+// AFTER (differentiated - border hierarchy)
 <div className="border border-zinc-800 rounded-lg p-6">        {/* container */}
-  <div className="rounded bg-zinc-900/50 p-3 mb-4">           {/* inner — no border, use bg */}
+  <div className="rounded bg-zinc-900/50 p-3 mb-4">           {/* inner - no border, use bg */}
     <input className="border border-zinc-700 rounded px-3 py-2 bg-zinc-950 
                       focus:border-zinc-500 focus:outline-none" />
   </div>
@@ -565,7 +565,7 @@ Cursor Composer produces more developer-oriented designs than the others — clo
 **Signal:** Page layout immediately reaches for a 2-column split with a narrow sidebar (`w-64` or `w-72`) even for marketing pages or onboarding flows where density isn't needed.
 
 ```tsx
-// BEFORE (Cursor default — over-applied split-pane)
+// BEFORE (Cursor default - over-applied split-pane)
 <div className="flex h-screen">
   <aside className="w-64 border-r border-zinc-800 bg-zinc-950 p-4">
     {/* nav items */}
@@ -575,7 +575,7 @@ Cursor Composer produces more developer-oriented designs than the others — clo
   </main>
 </div>
 
-// AFTER (differentiated — use split-pane only for actual app UIs)
+// AFTER (differentiated - use split-pane only for actual app UIs)
 // For marketing/landing: single column, max-w-4xl centered
 // For app UIs: split-pane is fine, but sidebar width should match content needs
 <div className="max-w-4xl mx-auto px-8 py-16">
@@ -589,14 +589,14 @@ Cursor Composer produces more developer-oriented designs than the others — clo
 
 ### cursor-5: `text-primary` where primary defaults to indigo/violet
 
-**Signal:** Using semantic color tokens (`text-primary`, `bg-primary`, `border-primary`) without overriding the default Shadcn `primary` which maps to a blue/indigo hue. The actual hex rarely appears in Cursor output — it uses the token and inherits the default.
+**Signal:** Using semantic color tokens (`text-primary`, `bg-primary`, `border-primary`) without overriding the default Shadcn `primary` which maps to a blue/indigo hue. The actual hex rarely appears in Cursor output - it uses the token and inherits the default.
 
 ```tsx
-// BEFORE (Cursor default — inherited indigo primary)
+// BEFORE (Cursor default - inherited indigo primary)
 <Button variant="default">  {/* renders with bg-primary = indigo */}
 <span className="text-primary font-medium">New feature</span>
 
-// AFTER (differentiated — explicit color decision)
+// AFTER (differentiated - explicit color decision)
 // In globals.css: override --primary to match persona
 // developer-tool: --primary: zinc-900 (near-black)
 // b2b-enterprise: --primary: slate-700
@@ -604,16 +604,16 @@ Cursor Composer produces more developer-oriented designs than the others — clo
 // Then your components inherit the right palette automatically.
 ```
 
-**Sameness Score impact:** −1 (implicit Inter font pattern analog — using default tokens without a decision).
+**Sameness Score impact:** −1 (implicit Inter font pattern analog - using default tokens without a decision).
 
 ---
 
 ### cursor-6: Dense icon + label sidebar nav with no active-state logic
 
-**Signal:** Navigation items with `flex items-center gap-2 text-sm` structure where all items are rendered identically regardless of active state — no visual differentiation for the current route.
+**Signal:** Navigation items with `flex items-center gap-2 text-sm` structure where all items are rendered identically regardless of active state - no visual differentiation for the current route.
 
 ```tsx
-// BEFORE (Cursor default — all nav items look identical)
+// BEFORE (Cursor default - all nav items look identical)
 {navItems.map((item) => (
   <a key={item.href} href={item.href}
      className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800">
@@ -622,7 +622,7 @@ Cursor Composer produces more developer-oriented designs than the others — clo
   </a>
 ))}
 
-// AFTER (differentiated — active state has semantic distinction)
+// AFTER (differentiated - active state has semantic distinction)
 {navItems.map((item) => (
   <a key={item.href} href={item.href}
      className={cn(

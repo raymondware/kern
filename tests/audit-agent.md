@@ -1,4 +1,4 @@
-# kern audit-agent — automated fixture evaluator
+# kern audit-agent - automated fixture evaluator
 
 A self-contained agent for programmatic audit of TSX fixtures against kern anti-patterns.
 No interactive skill invocation required. Callable from subagents and CI pipelines.
@@ -29,7 +29,7 @@ You are running a kern audit evaluation.
    {"fixture": "<FIXTURE_PATH>", "hits": ["violation-id-1", ...], "notes": "..."}
    Use the exact pattern IDs from the anti-pattern files (e.g. "gradient-slop",
    "centered-glowing-hero", "marketing-verbs"). Do NOT include patterns that
-   are only mentioned in comments or fixtures labels — only flag patterns
+   are only mentioned in comments or fixtures labels - only flag patterns
    that are genuinely detectable from the code structure.
 5. Save the JSON result to: <OUTPUT_PATH>
 ```
@@ -70,7 +70,7 @@ Steps:
 {
   "fx-01": {
     "hits": ["gradient-slop", "centered-glowing-hero", "gradient-text"],
-    "notes": "get-started-cta not flagged — 'Get Started' present but not checked as CTA copy pattern"
+    "notes": "get-started-cta not flagged - 'Get Started' present but not checked as CTA copy pattern"
   },
   "fx-02": {
     "hits": ["nested-card-soup"],

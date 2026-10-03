@@ -115,7 +115,7 @@ compute_hit_rate() {
   if [[ "${rate%.*}" -ge "$threshold_pct" ]]; then
     echo "STATUS: PASS (>= ${threshold_pct}% threshold)"
   else
-    echo "STATUS: FAIL (< ${threshold_pct}% threshold — kern audit needs improvement)"
+    echo "STATUS: FAIL (< ${threshold_pct}% threshold - kern audit needs improvement)"
   fi
 }
 

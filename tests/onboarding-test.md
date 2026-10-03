@@ -1,4 +1,4 @@
-# kern onboarding test — 7-minute exercise
+# kern onboarding test - 7-minute exercise
 
 Verifies a fresh dev can use kern for design, audit, polish, and compare without prior context.
 
@@ -15,7 +15,7 @@ Verifies a fresh dev can use kern for design, audit, polish, and compare without
 
 ---
 
-## Exercise 1 — Generate a component (< 2 min)
+## Exercise 1 - Generate a component (< 2 min)
 
 Run this command in Claude Code:
 
@@ -28,12 +28,12 @@ Run this command in Claude Code:
 **Pass criteria:**
 - [ ] Persona is detected (should be `b2b-enterprise`)
 - [ ] TSX component is produced (not a mockup description)
-- [ ] Sameness Score is reported (0-10)
+- [ ] Sameness Score is reported (0-100)
 - [ ] Score is ≤ 6 (not flagged for differentiation)
 
 ---
 
-## Exercise 2 — Audit existing code (< 2 min)
+## Exercise 2 - Audit existing code (< 2 min)
 
 Copy this minimal TSX snippet into a file (`/tmp/test-card.tsx`), then audit it:
 
@@ -63,17 +63,17 @@ Run:
 
 ---
 
-## Exercise 3 — Interpret the output (< 30 seconds)
+## Exercise 3 - Interpret the output (< 30 seconds)
 
 After the audit, answer these without looking at source files:
 
-1. What Sameness Score would you expect for this card? (answer: 7-8)
+1. What Sameness Score would you expect for this card? (answer: 70-80)
 2. Which anti-pattern file covers "gradient-slop"? (answer: `anti-patterns/visual.md`)
 3. What command would you run to fix the design? (answer: `/kern differentiate` or `/kern polish`)
 
 ---
 
-## Exercise 4 — Polish with persona detection (< 1 min)
+## Exercise 4 - Polish with persona detection (< 1 min)
 
 Copy this TSX snippet (it signals b2b-enterprise: table, checkbox column, status badges):
 
@@ -103,7 +103,7 @@ Run:
 
 ---
 
-## Exercise 5 — Compare against AI baseline (< 1 min)
+## Exercise 5 - Compare against AI baseline (< 1 min)
 
 Run:
 ```
@@ -123,4 +123,4 @@ Run:
 **PASS:** All pass criteria met, total time ≤ 7 minutes.
 **FAIL:** Any criterion missed, OR time > 7 minutes (SKILL.md needs clarification).
 
-If fail: note which exercise failed and open a PLAN.md item targeting that specific gap.
+If fail: note which exercise failed and open an issue targeting that specific gap.

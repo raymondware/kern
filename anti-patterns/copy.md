@@ -179,7 +179,7 @@ Examples:
 
 **Why it fails**: These headlines are interchangeable across products. "Seamless Collaboration" appears on every B2B SaaS site since 2017. They're category descriptions, not differentiators.
 
-_Community: "AI generates headline copy by averaging every headline it has ever seen. 'Build the future of work', 'Scale without limits', 'Your all-in-one platform.' Swap the copy between any five SaaS landing pages and nothing breaks. That's the problem." — r/startups. "The biggest issue with AI-generated website content isn't that it's poorly written; it's that it sounds like everyone else." — Hacker News_
+_Community: "AI generates headline copy by averaging every headline it has ever seen. 'Build the future of work', 'Scale without limits', 'Your all-in-one platform.' Swap the copy between any five SaaS landing pages and nothing breaks. That's the problem." - r/startups. "The biggest issue with AI-generated website content isn't that it's poorly written; it's that it sounds like everyone else." - Hacker News_
 
 **Fix**: Specific claim or imperative.
 

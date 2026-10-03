@@ -48,7 +48,7 @@ Pick one radius size for cards and stick to it. Mixing radius-lg on some cards a
 | text-2xl | 24px | 32px (1.33) | text-2xl      | Page titles, major headings              |
 | text-3xl | 30px | 36px (1.2) | text-3xl       | Feature headings                         |
 | text-4xl | 36px | 40px (1.11) | text-4xl      | Hero headings (with restraint)           |
-| text-5xl | 48px | 48px (1.0) | text-5xl       | Display — hero only, one per page max    |
+| text-5xl | 48px | 48px (1.0) | text-5xl       | Display - hero only, one per page max    |
 
 Body text lives at text-base (14px) for dense developer UIs, text-lg (16px) for consumer-facing products.
 
@@ -123,13 +123,13 @@ One scale. Use the smallest shadow that communicates the elevation correctly.
 
 ```css
 :root {
-  /* For: tooltips, dropdowns, popovers — floating above page */
+  /* For: tooltips, dropdowns, popovers - floating above page */
   --shadow-float: 0 4px 16px rgba(0, 0, 0, 0.32);
 
-  /* For: modals, dialogs — significantly elevated */
+  /* For: modals, dialogs - significantly elevated */
   --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.48);
 
-  /* For: dragged items — explicitly elevated by user action */
+  /* For: dragged items - explicitly elevated by user action */
   --shadow-drag: 0 12px 48px rgba(0, 0, 0, 0.56);
 }
 ```

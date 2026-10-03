@@ -67,30 +67,30 @@ This is the one category where a distinctive palette is actively expected. The a
 
 Concrete Tailwind decisions that signal "creative tool" identity.
 
-**1. Neutral chrome — not blue-tinted dark**
+**1. Neutral chrome - not blue-tinted dark**
 ```
-// Before (AI default — blue-gray dark, generic "dark mode")
+// Before (AI default - blue-gray dark, generic "dark mode")
 <aside className="bg-gray-900 border-r border-gray-800">
 
-// After (Creative Tool — pure neutral, canvas stays as hero)
+// After (Creative Tool - pure neutral, canvas stays as hero)
 <aside className="bg-[oklch(12%_0_0)] border-r border-[oklch(22%_0_0)]">
 ```
 
-**2. Hairline borders — not chunky dividers**
+**2. Hairline borders - not chunky dividers**
 ```
-// Before (AI default — 1px solid visible border)
+// Before (AI default - 1px solid visible border)
 <div className="border border-gray-700 rounded-md">
 
-// After (Creative Tool — near-invisible, panel feels like infrastructure)
+// After (Creative Tool - near-invisible, panel feels like infrastructure)
 <div className="border border-[rgba(255,255,255,0.06)] rounded-[3px]">
 ```
 
-**3. Compact tool labels — not default text-sm**
+**3. Compact tool labels - not default text-sm**
 ```
-// Before (AI default — normal weight, full-size label)
+// Before (AI default - normal weight, full-size label)
 <span className="text-sm text-gray-400">Opacity</span>
 
-// After (Creative Tool — minimal, stepped back from the work)
+// After (Creative Tool - minimal, stepped back from the work)
 <span className="text-[11px] font-medium tracking-[0.08em] uppercase text-white/40">Opacity</span>
 ```
 
@@ -124,10 +124,10 @@ An empty state in a creative tool is not an opportunity to explain the product. 
 ### What to do
 
 - Fill the viewport with canvas surface (not a card or modal)
-- One quiet center affordance: a `+` button or keyboard shortcut hint — nothing else
+- One quiet center affordance: a `+` button or keyboard shortcut hint - nothing else
 - If examples are shown, render them ghosted/faded behind the canvas as ambient context, not as a card grid above the fold
-- Keyboard shortcut to start (`N` for new, `⌘N`) — professionals use keys, not buttons
-- For AI/generative tools: the prompt input at full size IS the empty state — the blinking cursor is the call to action
+- Keyboard shortcut to start (`N` for new, `⌘N`) - professionals use keys, not buttons
+- For AI/generative tools: the prompt input at full size IS the empty state - the blinking cursor is the call to action
 
 ### What NOT to do (all are AI defaults that add to Sameness Score)
 
@@ -136,14 +136,14 @@ An empty state in a creative tool is not an opportunity to explain the product. 
 - Motivational headline: "Let's get creative!", "Start your first project!", "You're one click away from something great"
 - Feature checklist in the empty state: "Add shapes • Export SVG • Share with team"
 - Three-card feature highlight grid (generic SaaS pattern, wrong for a creative tool)
-- Centered card with icon + title + subtitle + button (the universal empty state pattern — too generic here)
-- **Dot-grid `radial-gradient` as canvas texture** — this is the Figma/Excalidraw cliché and AI tools reach for it by default. Use a fine hairline crosshatch (`linear-gradient` grid lines at low opacity) or no texture. The dot-grid signals "I looked at Figma for inspiration," not "I made a considered decision."
-- **Vignette `radial-gradient` as canvas overlay** — darkening-corner effects via `radial-gradient(ellipse at center, transparent ..., rgba(0,0,0,0.N) 100%)` layered over the canvas. AI tools reach for this to add "atmospheric depth." The hairline crosshatch texture and pure neutral dark background already provide sufficient depth cues. A vignette overlay triggers the structural sameness indicator for radial gradients without adding aesthetic value. Use box-shadow on the canvas border instead if edge definition is needed.
+- Centered card with icon + title + subtitle + button (the universal empty state pattern - too generic here)
+- **Dot-grid `radial-gradient` as canvas texture** - this is the Figma/Excalidraw cliché and AI tools reach for it by default. Use a fine hairline crosshatch (`linear-gradient` grid lines at low opacity) or no texture. The dot-grid signals "I looked at Figma for inspiration," not "I made a considered decision."
+- **Vignette `radial-gradient` as canvas overlay** - darkening-corner effects via `radial-gradient(ellipse at center, transparent ..., rgba(0,0,0,0.N) 100%)` layered over the canvas. AI tools reach for this to add "atmospheric depth." The hairline crosshatch texture and pure neutral dark background already provide sufficient depth cues. A vignette overlay triggers the structural sameness indicator for radial gradients without adding aesthetic value. Use box-shadow on the canvas border instead if edge definition is needed.
 
 ### TSX signature: canvas-first empty state
 
 ```tsx
-// Before (AI default — centered card, motivational copy, dashed border)
+// Before (AI default - centered card, motivational copy, dashed border)
 <div className="flex flex-col items-center justify-center h-full p-12 text-center">
   <div className="border-2 border-dashed border-gray-300 rounded-xl p-16 mb-8">
     <Sparkles className="mx-auto mb-4 text-gray-400" size={48} />
@@ -153,10 +153,10 @@ An empty state in a creative tool is not an opportunity to explain the product. 
   </div>
 </div>
 
-// After (canvas-first — the surface IS the invitation)
+// After (canvas-first - the surface IS the invitation)
 <div className="h-screen bg-[oklch(10%_0_0)] flex flex-col">
   <div className="flex-1 relative cursor-crosshair bg-[oklch(13%_0_0)]">
-    {/* Hairline crosshatch — NOT dot-grid (dot-grid is the Figma/Excalidraw cliché) */}
+    {/* Hairline crosshatch - NOT dot-grid (dot-grid is the Figma/Excalidraw cliché) */}
     <div
       className="absolute inset-0 opacity-[0.07]"
       style={{
@@ -177,7 +177,7 @@ An empty state in a creative tool is not an opportunity to explain the product. 
 </div>
 ```
 
-**Why this works:** The canvas occupies the viewport. The single affordance is subordinate to the surface. No explanation of features. Professionals know what to do — they just need the tool to get out of the way.
+**Why this works:** The canvas occupies the viewport. The single affordance is subordinate to the surface. No explanation of features. Professionals know what to do - they just need the tool to get out of the way.
 
 ---
 
@@ -186,10 +186,10 @@ An empty state in a creative tool is not an opportunity to explain the product. 
 These patterns are AI-default for creative tools specifically. They supplement the global Sameness Score rubric. Each indicator present in the design adds +1 to the score.
 
 **PSI-CT-1: Dashed-border upload zone as empty state**
-Using a dashed rectangle with a cloud-upload icon and "Drop files here" copy as the empty state for a creative tool. This is the generic file-input pattern — appropriate for a form, not for a canvas-based creative app. Real creative tools start with a blank canvas (Figma), a full-screen writing environment (iA Writer), or a contextual invitation to create (Pitch). The dashed box signals "this was designed by engineers who haven't used creative tools."
+Using a dashed rectangle with a cloud-upload icon and "Drop files here" copy as the empty state for a creative tool. This is the generic file-input pattern - appropriate for a form, not for a canvas-based creative app. Real creative tools start with a blank canvas (Figma), a full-screen writing environment (iA Writer), or a contextual invitation to create (Pitch). The dashed box signals "this was designed by engineers who haven't used creative tools."
 
 **PSI-CT-2: Inspiration gallery grid before the canvas**
-An onboarding or empty state that shows a browsable grid of "example" or "template" thumbnails before the user has done anything. AI tools default to this because it fills whitespace with pixels. Real creative tools for professionals either go straight to blank canvas (power move) or offer templates as equal to blank — never as the default first screen. Templates before canvas signals "we don't trust you to start from scratch."
+An onboarding or empty state that shows a browsable grid of "example" or "template" thumbnails before the user has done anything. AI tools default to this because it fills whitespace with pixels. Real creative tools for professionals either go straight to blank canvas (power move) or offer templates as equal to blank - never as the default first screen. Templates before canvas signals "we don't trust you to start from scratch."
 
 **PSI-CT-3: Pill-tab switcher for every tool panel category**
-A top-bar row of pill-shaped tabs to switch between "Design / Prototype / Code" or "Layers / Assets / Plugins" — organizing the entire tool's panels through a single pill switcher. This is an AI-default structure that collapses the tool's capability model into a flat tab row. Real creative tools use icon-based collapsible panels (Figma), contextual panel appearance (Adobe XD), or keyboard-driven mode switching — never a marketing-style tab row inside the app chrome.
+A top-bar row of pill-shaped tabs to switch between "Design / Prototype / Code" or "Layers / Assets / Plugins" - organizing the entire tool's panels through a single pill switcher. This is an AI-default structure that collapses the tool's capability model into a flat tab row. Real creative tools use icon-based collapsible panels (Figma), contextual panel appearance (Adobe XD), or keyboard-driven mode switching - never a marketing-style tab row inside the app chrome.

@@ -83,7 +83,7 @@ _Tags: hero, layout, gradient, color, ai-tell · Affects: developer-tool, consum
 
 **Why it fails**: This layout is the output of every AI design tool and most "SaaS landing page" templates from 2023-2025. It signals that no design decision was made. The glow specifically is a red flag -- it exists to add visual interest without requiring real typographic or layout skill.
 
-_Community: "It's always the same: big centered headline, purple/blue gradient glow behind it, subheadline, two buttons. I can spot a v0 site instantly now." — r/web_design. "The centered hero with the radial gradient is the new 'Lorem ipsum' placeholder. It means: we haven't designed anything yet." — Hacker News_
+_Community: "It's always the same: big centered headline, purple/blue gradient glow behind it, subheadline, two buttons. I can spot a v0 site instantly now." - r/web_design. "The centered hero with the radial gradient is the new 'Lorem ipsum' placeholder. It means: we haven't designed anything yet." - Hacker News_
 
 **Fix**: Left-align. Remove the glow. Make the headline do the work with weight and size, not color effects. A strong headline over a flat background is harder to pull off and looks significantly better.
 

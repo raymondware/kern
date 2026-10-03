@@ -6,7 +6,7 @@ Inter is technically excellent. That's why you should think twice before reachin
 
 Inter became the default "good font" for developer tools and SaaS products around 2020. By 2023 it was everywhere: dashboards, marketing sites, admin panels, landing pages. When every product uses the same typeface, the typeface signals nothing. Inter now reads as "I didn't choose a font; I picked the default."
 
-If you're consciously choosing Inter because your product needs its extreme neutrality — high information density, complex tables, data-heavy UIs where the font should disappear — that's a defensible choice. But "it looked clean" is not a reason.
+If you're consciously choosing Inter because your product needs its extreme neutrality - high information density, complex tables, data-heavy UIs where the font should disappear - that's a defensible choice. But "it looked clean" is not a reason.
 
 ## Display fonts
 
@@ -79,11 +79,11 @@ If you're consciously choosing Inter because your product needs its extreme neut
 ## The avoid list
 
 - **Inter** as a default (see above)
-- **Roboto** — the Android system font, carries consumer mobile associations
-- **Open Sans** — pleasant but signals nothing; the "safe" choice circa 2015
-- **system-ui / -apple-system** as the only choice for marketing sites — fine for app UI, reads as undesigned for product pages
-- **Nunito, Poppins, Raleway** — rounded/geometric fonts that peaked in their moment and now signal a specific era
-- **Any Google Font picked by visual similarity to Helvetica** — if you want Helvetica, use Helvetica (or Neue Haas Grotesk)
+- **Roboto** - the Android system font, carries consumer mobile associations
+- **Open Sans** - pleasant but signals nothing; the "safe" choice circa 2015
+- **system-ui / -apple-system** as the only choice for marketing sites - fine for app UI, reads as undesigned for product pages
+- **Nunito, Poppins, Raleway** - rounded/geometric fonts that peaked in their moment and now signal a specific era
+- **Any Google Font picked by visual similarity to Helvetica** - if you want Helvetica, use Helvetica (or Neue Haas Grotesk)
 
 ## Pairing guidance
 
@@ -94,7 +94,7 @@ Example: Developer tool
   Display: Geist Sans (600-700)
   Body: Geist (400-500)
   Mono: Geist Mono (400)
-  Scale: xs 12/16 — sm 13/20 — base 14/22 — lg 16/24 — xl 20/28 — 2xl 24/32 — 3xl 30/36 — 4xl 36/40 — 5xl 48/48
+  Scale: xs 12/16 - sm 13/20 - base 14/22 - lg 16/24 - xl 20/28 - 2xl 24/32 - 3xl 30/36 - 4xl 36/40 - 5xl 48/48
 
 Example: Editorial/marketing
   Display: Söhne (500-700)
@@ -110,4 +110,4 @@ Example: Consumer product
 
 Weight discipline: pick two weights for body (regular + medium). Three weights max across the entire scale. Adding semibold, bold, and extrabold to everything flattens hierarchy.
 
-Tracking: tighten display sizes (-0.02em to -0.04em for 2xl+). Leave body at 0. Never add positive tracking to lowercase body text — it reads as stretched, not airy.
+Tracking: tighten display sizes (-0.02em to -0.04em for 2xl+). Leave body at 0. Never add positive tracking to lowercase body text - it reads as stretched, not airy.

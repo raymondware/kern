@@ -44,7 +44,7 @@ Kern's job is to catch these defaults before they ship, using a team of speciali
 
 ## The Variation Rule
 
-The biggest failure mode of any "anti-pattern checker" is that the checker itself becomes a template. If kern critiqued every site against the same 48 patterns, two distinct prompts would produce identical critiques and the design direction would converge.
+The biggest failure mode of any "anti-pattern checker" is that the checker itself becomes a template. If kern critiqued every site against the same 69 patterns, two distinct prompts would produce identical critiques and the design direction would converge.
 
 Kern enforces a hard rule:
 

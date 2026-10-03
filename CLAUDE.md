@@ -14,7 +14,6 @@ kern/
 ├── skills/kern/        # SKILL.md + reference files
 ├── anti-patterns/      # Base + research-sourced anti-pattern library
 │   └── manifest.json   # Stable ID catalog read by the selector and critics
-├── research/           # Research pipeline state files
 └── state/              # Append-only audit log (state/draws.jsonl)
 ```
 

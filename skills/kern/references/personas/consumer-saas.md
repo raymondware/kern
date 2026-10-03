@@ -64,30 +64,30 @@ The audience uses this during the day, on phones, in various lighting conditions
 
 Concrete Tailwind decisions that signal "consumer SaaS" identity.
 
-**1. Warm white background — not clinical white**
+**1. Warm white background - not clinical white**
 ```
-// Before (AI default — pure white or cool gray)
+// Before (AI default - pure white or cool gray)
 <main className="bg-white min-h-screen">
 
-// After (Consumer SaaS — slightly warm, human-feeling)
+// After (Consumer SaaS - slightly warm, human-feeling)
 <main className="bg-[oklch(98%_0.004_80)] min-h-screen">
 ```
 
 **2. Approachable card radius and padding**
 ```
-// Before (AI default — sharp or generic)
+// Before (AI default - sharp or generic)
 <div className="rounded-lg p-4 border border-gray-200 shadow-sm">
 
-// After (Consumer SaaS — rounded, inviting, softer shadow)
+// After (Consumer SaaS - rounded, inviting, softer shadow)
 <div className="rounded-2xl p-5 border border-[oklch(90%_0.005_80)] shadow-[0_1px_4px_oklch(0%_0_0/0.06)]">
 ```
 
-**3. Readable body type — not default small**
+**3. Readable body type - not default small**
 ```
-// Before (AI default — 14px, tight leading)
+// Before (AI default - 14px, tight leading)
 <p className="text-sm text-gray-600">
 
-// After (Consumer SaaS — 15px, comfortable reading)
+// After (Consumer SaaS - 15px, comfortable reading)
 <p className="text-[15px] leading-relaxed text-[oklch(40%_0.01_80)]">
 ```
 
@@ -114,15 +114,15 @@ Hitting the user with upgrade prompts before they have experienced the product's
 
 ## Pricing Page Patterns
 
-Pricing pages are the highest-risk surface for consumer SaaS — AI tools converge on one template. These prescriptions apply whenever the brief includes "pricing", "plans", or "tiers".
+Pricing pages are the highest-risk surface for consumer SaaS - AI tools converge on one template. These prescriptions apply whenever the brief includes "pricing", "plans", or "tiers".
 
 ### Structural differentiation (required)
 
-Never generate three cards with identical inner structure. The recommended tier must differ structurally — not just by color highlight or a "Popular" badge, but by layout, information density, or visual weight.
+Never generate three cards with identical inner structure. The recommended tier must differ structurally - not just by color highlight or a "Popular" badge, but by layout, information density, or visual weight.
 
 **What NOT to do (AI default):**
 ```tsx
-// Three identical cards — same layout, same CTA, just a highlighted middle
+// Three identical cards - same layout, same CTA, just a highlighted middle
 <div className="grid grid-cols-3 gap-6">
   {tiers.map(tier => (
     <div className={`rounded-xl p-6 border ${tier.featured ? 'border-purple-500' : 'border-gray-200'}`}>
@@ -135,7 +135,7 @@ Never generate three cards with identical inner structure. The recommended tier 
 </div>
 ```
 
-**What to do instead — recommended tier elevated structurally:**
+**What to do instead - recommended tier elevated structurally:**
 ```tsx
 // Free tier: minimal, text-forward, no chrome
 <div className="py-8 px-6 border-b border-[oklch(90%_0.005_80)]">
@@ -186,10 +186,10 @@ These exact strings (and their close synonyms) signal AI-default copy. Never use
 | "Get Started" | Product-specific action: "Begin your practice", "Start meditating", "Open Tide" |
 | "Start Free Trial" | "Try free for 14 days", "Start free" |
 | "Sign Up" (as a CTA on a pricing page) | "Create your account", "Join {product}" |
-| "Choose Plan" | Remove — the tier card is already a choice UI |
+| "Choose Plan" | Remove - the tier card is already a choice UI |
 | "Most Popular" badge | Use copy that explains *why*: "Most chosen by solo meditators" |
 
-### Trust signals — specific, not decorative
+### Trust signals - specific, not decorative
 
 Avoid avatar grids and generic star ratings (PSI-CS-3). Use product-specific trust signals:
 
@@ -197,10 +197,10 @@ Avoid avatar grids and generic star ratings (PSI-CS-3). Use product-specific tru
 // Instead of: "★★★★★ Loved by 40,000+ users"
 <p className="text-sm text-[oklch(45%_0.01_80)]">
   "I've kept a streak going for 4 months. Tide actually makes me want to open it."
-  <span className="mt-1 block text-xs text-[oklch(60%_0.01_80)]">— Maya K., meditating since January</span>
+  <span className="mt-1 block text-xs text-[oklch(60%_0.01_80)]">- Maya K., meditating since January</span>
 </p>
 
-// Policy copy — plain, specific, not marketing
+// Policy copy - plain, specific, not marketing
 <p className="text-xs text-[oklch(55%_0.01_80)]">30-day refund if it's not working for you. No questions.</p>
 ```
 
@@ -211,7 +211,7 @@ Avoid avatar grids and generic star ratings (PSI-CS-3). Use product-specific tru
 These patterns are AI-default for consumer SaaS specifically. They supplement the global Sameness Score rubric. Each indicator present in the design adds +1 to the score.
 
 **PSI-CS-1: Three-tier pricing with identical card structure**
-A pricing page with exactly three cards — "Starter / Pro / Business" (or synonyms) — each containing the same layout: name, price, tagline, bullet-point feature list, CTA button. AI tools generate this for every pricing request. Real consumer SaaS pricing pages differentiate tiers structurally: one tier might emphasize social proof, one might show a feature comparison, one might be visually elevated. Identical structure signals template-thinking.
+A pricing page with exactly three cards - "Starter / Pro / Business" (or synonyms) - each containing the same layout: name, price, tagline, bullet-point feature list, CTA button. AI tools generate this for every pricing request. Real consumer SaaS pricing pages differentiate tiers structurally: one tier might emphasize social proof, one might show a feature comparison, one might be visually elevated. Identical structure signals template-thinking.
 
 **PSI-CS-2: How-it-works section with 3 numbered steps and icons**
 A section titled "How It Works" (or "Get Started in 3 Steps") containing three numbered items with an icon each: Step 1 = sign up, Step 2 = configure/add data, Step 3 = achieve goal. This is the most generated section in AI-built consumer SaaS landing pages. It communicates nothing a user couldn't infer from signing up. If present in the app shell (not a marketing page), it's almost always AI-generated.

@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 # Reproducibility report for kern validation suite.
 # Reads baseline.json history[] judge scores and reports variance per case.
-# Exit 0 = all cases PASS (spread < 1.5). Exit 1 = any case FAIL or insufficient data.
+# Exit 0 = all cases PASS (spread < 15). Exit 1 = any case FAIL or insufficient data.
 #
 # By default uses the last WINDOW entries only (post-prescription window).
 # This excludes pre-prescription runs that are no longer representative.
 #
 # Usage:
-#   ./reproducibility-report.sh [path/to/baseline.json] [--window N] [--all]
+#   ./reproducibility-report.sh <path/to/baseline.json> [--window N] [--all]
 #
 # Options:
 #   --window N   Number of most recent history entries to include (default: 8)
 #   --all        Include all history entries (legacy behavior; overrides --window)
 #
-# Default baseline path: ~/path/to/baseline.json
+# The baseline path is required. There is no default.
 
 set -euo pipefail
 
@@ -39,8 +39,13 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-BASELINE="${BASELINE:-${HOME}/path/to/baseline.json}"
-THRESHOLD=1.5   # max-min spread that counts as PASS
+if [[ -z "${BASELINE}" ]]; then
+    echo "ERROR: baseline path is required" >&2
+    echo "Usage: $0 <path/to/baseline.json> [--window N] [--all]" >&2
+    exit 2
+fi
+
+THRESHOLD=15    # max-min spread that counts as PASS (judge scores are 0-100)
 MIN_RUNS=3      # minimum history entries needed to report
 
 if [[ ! -f "${BASELINE}" ]]; then
@@ -115,9 +120,9 @@ if [[ "${INSUFFICIENT}" == "true" ]]; then
 fi
 
 if [[ "${OVERALL_PASS}" == "true" ]]; then
-    echo "RESULT: PASS — all cases with sufficient runs show spread < ${THRESHOLD}"
+    echo "RESULT: PASS - all cases with sufficient runs show spread < ${THRESHOLD}"
     exit 0
 else
-    echo "RESULT: FAIL — one or more cases show spread >= ${THRESHOLD}"
+    echo "RESULT: FAIL - one or more cases show spread >= ${THRESHOLD}"
     exit 1
 fi

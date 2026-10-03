@@ -7,7 +7,7 @@ sources:
     quote: "Purple gradients everywhere. Blue-to-purple backgrounds. Lavender buttons. Purple gradient text. Once fresh, now the official color scheme of 'we used AI.'"
   - platform: hn
     context: HN threads on AI-generated landing pages, startup design
-    quote: "AI tools trained on thousands of SaaS landing pages have learned that purple-to-blue gradients are the most 'safe' choice. It's not aesthetics — it's probability mass in training data."
+    quote: "AI tools trained on thousands of SaaS landing pages have learned that purple-to-blue gradients are the most 'safe' choice. It's not aesthetics - it's probability mass in training data."
 additional_sources: 8
 ---
 

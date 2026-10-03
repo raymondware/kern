@@ -36,7 +36,7 @@ MAJOR.MINOR.PATCH
 
 ## How to bump
 
-1. Update the `version:` field in `SKILL.md` frontmatter.
+1. Update the `version` field in `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`.
 2. Summarize the change in the commit message.
 3. Tag the kern repo: `git tag kern-vMAJOR.MINOR.PATCH`.
 

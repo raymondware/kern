@@ -7,7 +7,7 @@ sources:
     quote: "Every card in my AI-generated dashboard was identical. Same size, same structure, same padding, same icon position. It looked like a component library demo. I had to go through and manually differentiate each one to make it feel like a real product."
   - platform: hn
     context: HN "Show HN" comment threads on vibe-coded apps
-    quote: "Don't make them identical. Two with trend arrows, one with a progress bar, one with comparison text. Variation keeps it from feeling robotic. The AI treats every data point as interchangeable — real design doesn't."
+    quote: "Don't make them identical. Two with trend arrows, one with a progress bar, one with comparison text. Variation keeps it from feeling robotic. The AI treats every data point as interchangeable - real design doesn't."
 additional_sources: 3
 ---
 

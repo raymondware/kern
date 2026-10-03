@@ -54,7 +54,7 @@ If a mobile signal is found, activate **mobile-first constraints**:
 - All Tailwind classes must use mobile-as-base pattern: start with the mobile class, add breakpoint overrides for larger screens (e.g., `flex-col md:flex-row`)
 - Touch targets: minimum `h-12` (48px) for all interactive elements
 - Typography: body copy `text-base` (never smaller on mobile), headings proportional
-- No hover-only interactions — use tap/press patterns instead
+- No hover-only interactions - use tap/press patterns instead
 
 If no mobile signal is found, use the default (desktop-first with responsive classes).
 
@@ -79,10 +79,10 @@ Runner-up: {persona or "none"}
 ```
 
 Confidence guide:
-- 1.0 — Brief uses explicit domain terms for exactly one persona, no overlap
-- 0.7–0.9 — Strong signal for one persona, one or two signals for another
-- 0.5–0.69 — Hybrid brief: meaningful signals across two personas
-- < 0.5 — Genuinely ambiguous; two or more personas equally plausible
+- 1.0 - Brief uses explicit domain terms for exactly one persona, no overlap
+- 0.7–0.9 - Strong signal for one persona, one or two signals for another
+- 0.5–0.69 - Hybrid brief: meaningful signals across two personas
+- < 0.5 - Genuinely ambiguous; two or more personas equally plausible
 
 **If confidence < 0.7 (interactive / user mode):** Stop and ask:
 > "This brief has mixed signals. Best match: {persona} ({confidence}). Runner-up: {runner_up}. Proceed with {persona}, or switch to {runner_up}?"
@@ -141,10 +141,10 @@ Build the component/page with:
 - Copy that matches the persona voice from `${CLAUDE_PLUGIN_ROOT}/agents/copy-editor.md` voice guide
 - Tailwind + Shadcn/Radix stack unless otherwise specified
 
-**TSX output constraints (required for compilability — validate with `${CLAUDE_PLUGIN_ROOT}/tools/render-check.sh`):**
-- Tailwind classes only — no inline `style={}` props, no CSS modules, no external stylesheets
+**TSX output constraints (required for compilability - validate with `${CLAUDE_PLUGIN_ROOT}/tools/render-check.sh`):**
+- Tailwind classes only - no inline `style={}` props, no CSS modules, no external stylesheets
 - Shadcn imports use the exact path alias `@/components/ui/{name}` (e.g., `import { Button } from "@/components/ui/button"`)
-- Self-contained: the component renders with no props — use hardcoded, realistic demo data for any lists or content
+- Self-contained: the component renders with no props - use hardcoded, realistic demo data for any lists or content
 - Single default export (e.g., `export default function HeroSection() { ... }`)
 - Minimal hooks: no `useEffect`, no external API calls, no custom hooks from unknown paths
 - Any `cn()` utility imported from `"@/lib/utils"`
@@ -159,10 +159,10 @@ Build the component/page with:
 
 Before showing output, mentally apply the Sameness Score from `${CLAUDE_PLUGIN_ROOT}/agents/design-critic.md`. Score your own output.
 
-**Revision limit: 2 passes maximum.** If self-score is 7 or higher on the first pass: go back to Step 3 and change at least 3 elements. If still 7+ after a second revision, present the output anyway with a warning:
-> "Score remains {n}/10 after 2 revision passes — proceeding with best attempt. Consider adjusting the persona reference or using `/kern differentiate` for further de-defaulting."
+**Revision limit: 2 passes maximum.** If self-score is 70 or higher on the first pass: go back to Step 3 and change at least 3 elements. If still 70+ after a second revision, present the output anyway with a warning:
+> "Score remains {n}/100 after 2 revision passes - proceeding with best attempt. Consider adjusting the persona reference or using `/kern differentiate` for further de-defaulting."
 
-If self-score is 5-6: note this in the output and flag which elements could be further differentiated.
+If self-score is 50-60: note this in the output and flag which elements could be further differentiated.
 
 ### Step 5: Copy Audit
 
@@ -175,14 +175,14 @@ Output format:
 ## [Component/Page Name] -- [Persona]
 
 ### Persona Detected
-{persona} — confidence {0.0–1.0}{, runner-up: {persona} if confidence < 1.0}
+{persona} - confidence {0.0–1.0}{, runner-up: {persona} if confidence < 1.0}
 
 ### Differentiation Decisions
 - [decision 1 and why it was made]
 - [decision 2]
 - [decision 3]
 
-### Sameness Score: [n]/10
+### Sameness Score: [n]/100
 [One sentence explanation]
 
 [Generated code]

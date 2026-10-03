@@ -24,7 +24,7 @@ Kern will flag "inverted-light dark mode" as a visual anti-pattern (applying dar
 **Use instead:** Polypane or a contrast checker after generating.
 
 ### Design Systems and Token Governance
-Kern has a reference tokens file (`references/tokens.md`) but does not enforce token usage, detect hardcoded colors, or validate that a component uses only in-system values. It does not read your `tailwind.config.ts` or your design token source.
+Kern has a reference tokens file (`skills/kern/references/tokens.md`) but does not enforce token usage, detect hardcoded colors, or validate that a component uses only in-system values. It does not read your `tailwind.config.ts` or your design token source.
 
 **Use instead:** Token linting via Theo, Style Dictionary, or a custom ESLint rule.
 
